@@ -13,7 +13,13 @@
  *= require_tree .
  *= require_self
  */
-.background-base {
+.base {
     background: rgb(2,0,36);
-    background: linear-gradient(309deg, rgba(2,0,36,1) 0%, rgba(108,108,255,1) 0%, rgba(0,212,255,1) 100%); 
+    background: linear-gradient(309deg, rgba(2,0,36,1) 0%, rgb(81, 124, 202) 0%, rgba(47, 162, 185, 0.658) 100%); 
 }
+
+#main-title {
+    font-size: 48pt;
+    font-family: Comfortaa;
+}
+

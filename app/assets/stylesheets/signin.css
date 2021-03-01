@@ -13,15 +13,7 @@ body {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background: rgb(2,0,36);
-  background: linear-gradient(309deg, rgba(2,0,36,1) 0%, rgba(108,108,255,1) 0%, rgba(0,212,255,1) 100%); 
 
-}
-
-#main-title {
-  
-  font-size: 48pt;
-  font-family: Comfortaa;
 }
 
 #subtitle {
@@ -36,9 +28,10 @@ body {
   padding: 15px;
   margin: auto;
   font-family: Helvetica neue, sans-serif;
-  background-color: #8acdf5;
+  background-color: #61baee;
   border-radius: 3px;
   opacity: 0.9;
+  border-radius: 10px;
   
 }
 
@@ -53,10 +46,6 @@ body {
   to {opacity: 1.0;}
 }
 
-
-.form-signin .checkbox {
-  font-weight: 400;
-}
 .form-signin .form-control {
   position: relative;
   box-sizing: border-box;
@@ -69,15 +58,24 @@ body {
 }
 
 #inputEmail, #inputPassword {
-  background-color:  #8acdf5;
+  background-color:  #61baee;
   border: none;
   border-bottom: 2px solid white;
+  color: white;
+  font-size: 14pt;
  
 }
 
 #signin-submit {
-  font-family: Comfortaa;
+  font-family: Arial;
+  border-radius: 10px;
+  background-color: rgb(55, 142, 182);
   width: 80%;
+  height: 50px;
+  border: none;
+  font-size: 24pt;
+
+  
 }
 
 .form-signin input[type="email"] {
@@ -95,6 +93,7 @@ body {
 
 .link {
   color: white;
+  margin-top: 10px;
 }
 
 

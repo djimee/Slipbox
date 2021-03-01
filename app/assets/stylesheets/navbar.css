@@ -1,0 +1,41 @@
+
+ 
+ #nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 92px;
+    color:white;  
+    padding: 2% 2%;
+    font-family: Comfortaa;
+    
+}
+
+.navbar-nav {
+    display: inline-block;
+    width: 100%;
+    padding: 2% 2%;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-size: 16pt;
+    margin-left: 30px;
+}
+
+.nav-item-button {
+    float: right;
+    border:none;
+    font-size: 18pt;
+    background-color: #47A6BE;
+    color: white;
+    
+}
+
+.nav-item-button:hover {
+    background-color: white;
+    color: black;
+}
