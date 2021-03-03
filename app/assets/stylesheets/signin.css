@@ -1,11 +1,10 @@
-* {
-  color: white;
-}
+* { color: white; }
 
-html,
-body {
+html, body {
   height: 100%;
   font-family: Comfortaa, Arial, Helvetica, sans-serif;
+  background: rgb(2,0,36);
+  background: linear-gradient(309deg, rgba(2,0,36,1) 0%, rgb(81, 124, 202) 0%, rgba(47, 162, 185, 0.658) 100%); 
 }
 
 body {
@@ -13,7 +12,11 @@ body {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
+}
 
+#main-title {
+  font-size: 48px;
+  font-family: Comfortaa;
 }
 
 #subtitle {
@@ -22,10 +25,7 @@ body {
   margin: 0 0 30px 0;
 }
 
-#signin-form {
-  margin: 30px 0 0 0;
-}
-
+#signin-form { margin: 30px 0 0 0; }
 
 .signin {
   width: 100%;
@@ -38,7 +38,6 @@ body {
   border-radius: 3px;
   opacity: 0.9;
   border-radius: 10px;
-  
 }
 
 .signin .form-control {
@@ -48,9 +47,7 @@ body {
   padding: 10px;
   font-size: 16px;
 }
-.signin .form-control:focus {
-  z-index: 2;
-}
+.signin .form-control:focus { z-index: 2; }
 
 #inputEmail, #inputPassword {
   background-color:  #61baee;
@@ -58,7 +55,6 @@ body {
   border-bottom: 4px solid white;
   color: white;
   font-size: 14pt;
-  
 }
 
 #signin-submit {
@@ -70,29 +66,19 @@ body {
   border: none;
   font-size: 18pt;
   margin: 25px 0px 35px 0px;
-
-  
 }
 
 .signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  
-
 }
+
 .signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-a.link {
-  color: white;
-}
-
-a.link:hover {
-  color: blue;
-}
-
-
+a.link { color: white; }
+a.link:hover { color: blue; }
