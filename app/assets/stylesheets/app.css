@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* --- Semantic sections styling ---*/
+#wrapper {
+    display: grid;
+    grid-template-columns: 250px 5fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-rows: minmax(250px, auto);
+    width: 100vw;
+    height: 100vh;
+}
+
+#main-title {
+    font-size: 36pt;
+    font-family: Comfortaa;
+}
+
+#navbar {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 6;
+    background-color: #00a4d3; 
+    padding: 10px 20px;
+}
+
+#top-navbar {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    border: 1px solid #c0c0c0;
+    background-color:#f7f6f6;
+    height: 83px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.navbar-item {
+    font-size: 16pt;
+    margin-top: 20px;
+}
+
+
+/* --- Per element styling ---*/
+html, body { height: 100%; }
+
+a { text-decoration: none; }
+
+h1, h2, a, ul, small {
+    font-family: Comfortaa;
+    color: #ffffff;
+}
+
+h2, small {
+    font-size: 12pt;
+}
+
+ul { list-style-type: none; }
+
+
+
