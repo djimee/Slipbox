@@ -1,16 +1,14 @@
 module TreeHelper
-    =begin
-        
-    tree_helper.rb contains the structuring and
-    methods for generating and parsing 
-    N-array trees into HTML format
+=begin
     
-    when a node is deleted, the whole tree is reparsed
-    from a given dataset
-    
-    
-        
-    =end
+tree_helper.rb contains the structuring and
+methods for generating and parsing 
+N-array trees into HTML format
+
+when a node is deleted, the whole tree is reparsed
+from a given dataset
+
+=end
     
         class Tree
             attr_accessor :children, :value
