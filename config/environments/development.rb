@@ -1,5 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_controller.action_on_unpermitted_parameters = :raise
+  config.reload_classes_only_on_change = false
+
+  # Preview email in the browser instead of sending it
+  config.action_mailer.delivery_method = :letter_opener
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

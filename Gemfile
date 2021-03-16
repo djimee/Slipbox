@@ -1,54 +1,81 @@
-source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
+source "https://rubygems.org"
 ruby '2.6.6'
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
+git_source(:gitlab) { |repo_name| "git@git.shefcompsci.org.uk:#{repo_name}.git" }
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
-# Use Puma as the app server
-gem 'puma', '~> 4.1'
-# Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'airbrake', github: 'epigenesys/airbrake', branch: 'airbrake-v4'
+gem 'rubycas-client', gitlab: 'gems/rubycas-client'
+gem 'epi_js'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'rails', '6.0.3.3'
+gem 'activerecord-session_store'
+gem 'bootsnap'
+gem 'responders'
+gem 'puma'
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'pg'
+
+gem 'haml-rails'
+gem 'sassc-rails'
+gem 'sassc'
+gem 'uglifier'
+gem 'coffee-rails'
+
+gem 'jquery-rails'
+gem 'bootstrap'
+gem 'font-awesome-sass'
+# select2-rails is vendored under vendor/assets
+
+gem 'simple_form'
+gem 'draper'
+gem 'ransack'
+
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
+gem 'devise'
+gem 'devise_ldap_authenticatable'
+gem 'devise_cas_authenticatable'
+gem 'cancancan'
+
+gem 'whenever'
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+gem 'delayed-plugins-airbrake'
+gem 'daemons', '1.1.9'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'byebug'
+  gem 'sqlite3'
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'epi_deploy', github: 'epigenesys/epi_deploy'
+
+  gem 'listen'
+  gem 'web-console'
+
+  gem 'capistrano'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-passenger', require: false
+
+  gem 'eventmachine'
+  gem 'letter_opener'
+  gem 'annotate'
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'capybara-select2', github: 'goodwill/capybara-select2'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'capybara'
   gem 'webdrivers'
-end
+  gem 'rspec-instafail', require: false
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'simplecov'
+end

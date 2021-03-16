@@ -1,33 +1,20 @@
-# README
+# template
+---
 
-(James)
-Do we want to format it like this?
+### Description
+Describe your app here...
 
-Title 
-About
-Demos
-Usage(requirements)
+### Significant Features/Technology
+The system has the following:
 
+* Some significant thing...
+* Another one...
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Special Development Pre-requisites
+None.
 
-Things you may want to cover:
+### Deployment
+*QA -> Demo -> Production* using the `epi-deploy` gem.
 
-  
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Customer Contact
+Some Customer <some.customer@epigenesys.co.uk>
