@@ -1,5 +1,5 @@
 ## Application configuration
-set :application,             'template'
+set :application,             'project'
 set :branch,                  -> { fetch(:stage) }
 set :repo_url,                'git@git.shefcompsci.org.uk:group-name/project-name.git'
 set :linked_files,            fetch(:linked_files,  fetch(:env_links, [])).push('config/database.yml', 'config/secrets.yml')

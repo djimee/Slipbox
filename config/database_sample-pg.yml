@@ -1,9 +1,9 @@
 development:
   adapter: postgresql
-  database: template_dev
+  database: project_dev
   min_messages: warning
 
 test:
   adapter: postgresql
-  database: template_test
+  database: project_test
   min_messages: warning
