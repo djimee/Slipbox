@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get :"signin", to: "signin#index"
   get :"signup", to: "signup#index"
+  get :"myslipboxes", to: "myslipboxes#index"
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
 

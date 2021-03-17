@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta author="Team 19 COM3240 Sheffield Computer Science 2021">
+<meta description="Sign in page for Slipbox">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%= stylesheet_link_tag "myslipboxes" %>
+
+<title>Slipbox - My Slipboxes</title>
+<body>
+  
+  <div id="wrapper">
+    
+
+    <section id="navbar">
+    
+    
+      <h1><strong><u id="main-title" class="title">Slipbox</u></strong></h1>
+
+      <ul>
+        <li class="navbar-item"><a href="">Slipboxes</a></li>
+        <li class="navbar-item"><a href="">Threads</a></li>
+      
+        <li class="navbar-item"><a href="">Edit Notes</a></li>
+        <li class="navbar-item"><a href="">References</a></li>
+        <div class="separator"></div>
+        <li class="navbar-item"><a href="">Help </a></li>
+        <li class="navbar-item"><a href="">Settings</a></li>
+        <li class="navbar-item"><a href="">Logout</a></li>
+      </ul>
+      
+    </section>
+
+    <section id="welcome">
+
+      <h2> Welcome Username </h2>
+
+      <p> Signed in as example@email.com - Admin </p>
+
+      <p>Last note worked on: Subtitle 2 - ID - 07/03/2021 </p>
+    </section>
+    
+    <section id="mySlipboxes">
+      <h2> My Slipboxes </h2>
+      <hr class="solid">
+      <div class="slipFlexContainer">
+        <div class="slipboxWrapper">
+          <h3> Title </h3>
+          <p> Slipbox description: This can be a short sentence  </p>
+      
+          <p>No. of Collaborators: 3 </p>
+          
+          <p> Last edited - 06/03/2021 </p>
+        </div>
+        <div class="slipboxWrapper">
+          <h3> Title </h3>
+          <p> Slipbox description: This can be a short sentence  </p>
+      
+          <p>No. of Collaborators: 3 </p>
+          
+          <p> Last edited - 06/03/2021 </p>
+        </div>
+    </div>
+    <hr class="solid">
+    </section>
+
+    <section id="createSlipbox">
+      <h2> Create a new Slipbox </h2>
+      <form id="form-inline">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="description">Description:</label><br>
+        <input type="text" id="description" name="description"><br>
+        <label for="collaborators">Collaborators:</label><br>
+        <input type="text" id="collaborators" name="collaborators"><br>
+        <button type="submit" id="addslipbox" class="slipFormSubmit">Add Slipbox</button>
+      </form>
+      <hr class="solid">
+    </section> 
+    
+    <section id="editSlipbox">
+    <h2> Create a new Slipbox </h2>
+      <form id="form-inline">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="description">Description:</label><br>
+        <input type="text" id="description" name="description"><br>
+        <label for="collaborators">Collaborators:</label><br>
+        <input type="text" id="collaborators" name="collaborators"><br>
+        <button type="submit" id="addslipbox" class="slipFormSubmit">Give Access</button>
+        <button type="submit" id="addslipbox" class="slipFormSubmit">Give Admin</button>
+        <button type="submit" id="addslipbox" class="slipFormSubmit">Leave Slipbox</button>
+      </form>
+      <hr class="solid">
+    </section>
+  </div>
+</body>
+</html>
+
+
+

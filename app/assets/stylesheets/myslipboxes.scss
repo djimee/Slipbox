@@ -1,0 +1,107 @@
+#navbar{
+    position: fixed;
+    left: 0px;
+    width: 250px;
+    height: 100%;
+    top: 0;
+    
+    background: linear-gradient(330deg, rgb(175, 222, 227) 10%, rgb(127, 162, 225) 57%, rgb(26, 68, 124) 97%)
+}
+#navbar ul {
+    list-style-type: none;
+
+}
+#navbar li {
+    padding: 20px;
+    
+    
+}
+
+.title{
+    margin-left: 20px;
+}
+
+#navbar li a{
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+ul li:hover a{
+    padding-left: 30px;
+}
+
+#welcome{
+    background: rgb(127, 162, 225);
+    padding: 20px;
+    color: #fff;
+    border-radius: 8px;
+}
+
+hr.solid {
+    border-top: 1px solid #000;
+}
+.slipboxWrapper{
+    background: #364258;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
+    margin-right: 10px;
+}
+.slipFlexContainer{
+    display: flex;
+}
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  
+  /* Add some margins for each label */
+  .form-inline label {
+    margin: 5px 10px 5px 0;
+  }
+  
+  /* Style the input fields */
+  .form-inline input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  /* Style the submit button */
+  .form-inline #addslipbox {
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+  }
+  
+  .form-inline #addslipbox:hover {
+    background-color: royalblue;
+  }
+  
+  /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+  @media (max-width: 800px) {
+    .form-inline input {
+      margin: 10px 0;
+    }
+  
+    .form-inline {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+.slipFormSubmit{
+    padding: 10px 20px;
+    background-color: #3d7a9e;
+    border: 1px solid #ddd;
+    color: white;
+    
+    margin-top: 10px;
+}
