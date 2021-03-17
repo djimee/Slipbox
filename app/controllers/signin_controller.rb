@@ -1,9 +1,10 @@
 class SigninController < ApplicationController
   
   $username = "Bob"
-  
-  def signin
-    
+  def index
+  end
 
+  def signin
+  
   end
 end
