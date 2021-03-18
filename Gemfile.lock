@@ -1,5 +1,5 @@
 GIT
-  remote: git@git.shefcompsci.org.uk:gems/rubycas-client.git
+  remote: https://git.shefcompsci.org.uk/gems/rubycas-client.git
   revision: f20eaa7ccaba35f2bf976bb7c0d1e7fcbf6be964
   specs:
     rubycas-client (2.3.11)
@@ -458,4 +458,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.11
+   2.2.14

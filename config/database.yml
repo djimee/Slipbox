@@ -1,7 +1,9 @@
 development:
   adapter: postgresql
+  encoding: unicode
   database: project_dev
   min_messages: warning
+  socket: /var/pgsql_socket  
 test:
   adapter: postgresql
   database: project_test
