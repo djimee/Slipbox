@@ -18,13 +18,16 @@
 
 /* Set default styling */
 * {
-
+  color: #fff;
   padding: 0;
   margin: 0;
-  color: #fff;
+  
   font-size: 1em;
-  font-family: Helvetica;
+  font-family: Helvetica neue, sans-serif;
 }
+
+
+
 
 /****************************/
 /* Element grid positioning */
@@ -32,6 +35,7 @@
 
 #wrapper {
     display: grid;
+    
     grid-template-columns: 210px 7fr;
     grid-template-rows: repeat(5, 1fr);
     grid-auto-rows: minmax(250px, auto);
@@ -57,8 +61,9 @@
 }
 
 #welcome {
+  margin-top: 10px;
   grid-column-start: 2;
-  grid-column-end: 4;
+  grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 2;
   background: rgb(127, 162, 225);
@@ -79,6 +84,8 @@ grid-column-start: 2;
 grid-column-end: 4;
 grid-row-start: 3;
 grid-row-end: 4;
+padding-bottom:  10px;
+color: #000;
 }
 
 #editSlipbox {
@@ -87,9 +94,6 @@ grid-column-end: 4;
 grid-row-start: 4;
 grid-row-end: 5;
 }
-
-
-
 
 #navbar ul { list-style-type: none; }
 
@@ -114,9 +118,6 @@ ul li:hover a{
     padding-left: 30px;
 }
 
-
-
-
 hr.solid {
     border-top: 1px solid #000;
 }
@@ -140,6 +141,7 @@ hr.solid {
   /* Add some margins for each label */
   .form-inline label {
     margin: 5px 10px 5px 0;
+    color: #000;
   }
   
   /* Style the input fields */
@@ -153,17 +155,20 @@ hr.solid {
   
   /* Style the submit button */
   .form-inline #addslipbox {
-    padding: 10px 20px;
+    padding: 10px 10px;
     background-color: dodgerblue;
     border: 1px solid #ddd;
     color: white;
   }
+
   
   .form-inline #addslipbox:hover {
     background-color: royalblue;
   }
   
- 
+ #form-inline label{
+   color: black;
+ }
 
 .slipFormSubmit{
     padding: 10px 20px;
@@ -171,4 +176,8 @@ hr.solid {
     border: 1px solid #ddd;
     color: white;
     margin-top: 10px;
+}
+
+.blackTitle {
+  color: #000;
 }
