@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :update_headers_to_disable_caching
-  before_action :ie_warning
+  before_action :authenticate_user!
 
   ## The following are used by our Responder service classes so we can access
   ## the instance variable for the current resource easily via a standard method
