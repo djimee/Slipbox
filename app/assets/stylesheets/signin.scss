@@ -21,7 +21,10 @@ body {
   font-family: Comfortaa;
 }
 
-#subtitle { font-family: Comfortaa; }
+#subtitle { 
+  font-family: Comfortaa; 
+  
+}
 #signin-form { margin: 40px 0 0 0; }
 
 .signin {
@@ -89,5 +92,22 @@ input[type="email"]::placeholder, input[type="password"]::placeholder {
 h1 { font-size: 1.5rem; font-family: Comfortaa }
 a.link { color: white; }
 a.link:hover { color: blue; }
+
+label, .card-header{
+  color: #fff;
+}
+input{
+  background: black;
+}
+.form-control {
+  background-color: black;
+}
+.card-body, .card-header{
+  background : linear-gradient(309deg, #020024 0%, #517cca 0%, rgba(26, 68, 124, 0.658) 100%);
+}
+
+#subtitle {
+  margin-bottom: 50px;
+}
 
 

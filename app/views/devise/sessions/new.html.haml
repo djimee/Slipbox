@@ -1,15 +1,32 @@
 - content_for :title, 'Log In'
-
-.row.justify-content-center
-  .col-sm-6.col-lg-4
-    .card.card-light
-      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .card-header
-          Log In
-        .card-body
-          = f.input :email, autofocus: true, required: true
-          = f.input :password, required: true
-        .card-footer
-          = submit_button 'Log in'
-          .mt-3= render "devise/shared/links"
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "UTF-8"}/
+    %meta{:author => "Team 19 COM3240 Sheffield Computer Science 2021"}/
+    %meta{:description => "Sign in page for Slipbox"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:crossorigin => "anonymous", :href => "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css", :integrity => "sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl", :rel => "stylesheet"}/
+    = stylesheet_link_tag "signin"
+    %link{:href => "/assets/stylesheets/application.css", :rel => "stylesheet"}/
+    %title Slipbox - Sign in
+  %body.text-center.base
+    %main.signin
+      %h1#main-title
+        %strong
+          %u Slipbox
+      %small#subtitle
+        %em A notetaking tool
+      .row.justify-content-center
+        .col-sm-6.col-lg-12
+          .card.card-light
+            = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+              .card-header
+                Log In
+              .card-body
+                = f.input :email, autofocus: true, required: true
+                = f.input :password, required: true
+              .card-footer
+                = submit_button 'Log in'
+                .mt-3= render "devise/shared/links"
 
