@@ -10,26 +10,9 @@
     %title Slipbox - My Slipboxes
   %body
     #wrapper
-      %section#navbar
-        %h1
-          %strong
-            %u#main-title.title Slipbox
-        %ul
-          %li.navbar-item
-            %a{href: ""} Slipboxes
-          %li.navbar-item
-            %a{href: ""} Threads
-          %li.navbar-item
-            %a{href: ""} Edit Notes
-          %li.navbar-item
-            %a{href: ""} References
-          .separator
-          %li.navbar-item
-            %a{href: ""} Help
-          %li.navbar-item
-            %a{href: ""} Settings
-          %li.navbar-item
-            %a{href: ""} Logout
+     
+      = render "partials/navbar"
+
       %section#welcome
         %h2 Welcome Username
         %p Signed in as example@email.com - Admin
