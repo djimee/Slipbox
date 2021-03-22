@@ -1,4 +1,11 @@
+
+
 module TreeHelper
+
+#Sanitize gem config
+
+
+
 =begin
     
 tree_helper.rb contains the structuring and
@@ -7,6 +14,11 @@ N-array trees into HTML format
 
 when a node is deleted, the whole tree is reparsed
 from a given dataset
+
+
+TODO:
+
+-Check for nil values in DFS to prevent crashes
 
 =end
         
@@ -23,45 +35,56 @@ from a given dataset
 
         def add_node(val)
             @trees.push(Tree.new(val))
-        end   
+        end  
         
+        def add_tree(tree)
+            @trees.push(tree)
+        end
+
         
-
-
     end
 
     class DepthFirstSearch
     
-        # def search(tree, val) 
-        #     tree.children.each do |child|
-        #         if child.chilren.length > 0
-        #             if child.value === val
-        #                 return child
-        #             end
-        #             search(child, val)
-        #         end
-        #     end
-        # end
+        def search_append(t, a, val) 
+            if t.value === val
+                t.add_tree(a)
+                puts t.trees
+                return "Added tree"
+            end
+            t.trees.each do |child|
+               
+                if child.value === val
+                    child.add_tree(a)
+                    puts child.trees
+                    return "Added tree"
+                end
+                search_append(child, a, val)
+            end
+            return "Could not find node"
+        end
     end
 
     class HTMLParser
 
-        attr_accessor :html_tree
+        attr_accessor :html_tree, :margin_top
 
         def initialize()
             @html_tree = ""
+            @margin_top = 10
         end
 
-        def construct(tree)
+        def construct(tree, mar)
             @html_tree += "<ul>"
-          
+            mar += 30
             tree.trees.each do |child|
-                @html_tree += "<li class='node'>"
-                @html_tree += "<p class='thread-button'>" + child.value + "</p>"
+                @html_tree += "<li class='node' style='margin-left:" + mar.to_s + "px; margin-top: "+ @margin_top.to_s + "px;'>"
+                @html_tree += "<p>" + child.value + "</p>"
              
-                construct(child)
+                construct(child, mar)
                 @html_tree += "</li>"
             end
+            mar -= 30
             @html_tree += "</ul>" 
 
         end
@@ -70,14 +93,21 @@ from a given dataset
 
     def generate_tree
         _tree = Tree.new("a")
-         _parse = HTMLParser.new()
-          _tree.add_node("b")
+
+        _tree2 = Tree.new("b")
+        _tree2.add_node("b1")
+        _tree2.add_node("b2")
+        _tree2.add_node("b3")
+        _DFS = DepthFirstSearch.new
+        puts _DFS.search_append(_tree, _tree2, "a")
+
+
+         #build tree
+       _parse = HTMLParser.new()
+        _parse.construct(_tree, 30) 
+        return  "<li id='root-node'>" + _tree.value + "</li>" + _parse.html_tree 
         
-         _tree.add_node("c")
-      
-         _parse.construct(_tree) 
-        puts _parse.html_tree
-        return  + _parse.html_tree 
+    
     end
 end
         

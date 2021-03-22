@@ -52,9 +52,8 @@
       margin-top: 5px;
     }
 
-  
 
-  .node {
+  .node, #root-node{
     width: 100px;
     border-radius: 5px;
     height: 25px;
@@ -64,6 +63,8 @@
     margin: 5px;
     background-color:rgb(26, 68, 124);
   }
+  #root-node { background-color: black; }
+
 
   #thread-tree {
     color: #000;
