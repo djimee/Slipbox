@@ -9,7 +9,8 @@
         <div id="wrapper">
             <%= render "partials/navbar" %>
             <section id="thread-tree">
-            <%= render generate_tree.html_safe %>
+           
+            <%= sanitize generate_tree %>
             </section>
         </div>
     </body>

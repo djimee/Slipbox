@@ -11,37 +11,37 @@ from a given dataset
 =end
         
     class Tree
+        
+        attr_accessor :trees
+        attr_accessor :value
+
 
         def initialize(val)
             @value = val
-            @children = []
-        end
-
-        def get_children
-            return @children
-        end
-
-        def get_val
-            return @value
+            @trees = []
         end
 
         def add_node(val)
-            @children.push(Tree.new(val))
-        end    
+            @trees.push(Tree.new(val))
+        end   
+        
+        
+
+
     end
 
     class DepthFirstSearch
     
-        def search(tree, val) 
-            tree.children.each do |child|
-                if child.chilren.length > 0
-                    if child.value === val
-                        return child
-                    end
-                    search(child, val)
-                end
-            end
-        end
+        # def search(tree, val) 
+        #     tree.children.each do |child|
+        #         if child.chilren.length > 0
+        #             if child.value === val
+        #                 return child
+        #             end
+        #             search(child, val)
+        #         end
+        #     end
+        # end
     end
 
     class HTMLParser
@@ -53,35 +53,31 @@ from a given dataset
         end
 
         def construct(tree)
-            puts  tree.to_s
             @html_tree += "<ul>"
-            tree.get_children do |child|
-                @html_tree += "\n" + "<li>"
-                
-                    if child.get_val === val
-                        @html_tree += "<button>" + val + "</button>"
-                    end
-                    construct(child)
-                    @html_tree += "</li>"
-
+          
+            tree.trees.each do |child|
+                @html_tree += "<li class='node'>"
+                @html_tree += "<p class='thread-button'>" + child.value + "</p>"
+             
+                construct(child)
+                @html_tree += "</li>"
             end
             @html_tree += "</ul>" 
 
         end
-
-        def get_tree 
-            return @html_tree
-        end
-
     end
 
 
     def generate_tree
-        _tree = Tree.new("a").add_node("b")
+        _tree = Tree.new("a")
          _parse = HTMLParser.new()
+          _tree.add_node("b")
+        
+         _tree.add_node("c")
+      
          _parse.construct(_tree) 
-        puts _parse.get_tree
-        return _tree
+        puts _parse.html_tree
+        return  + _parse.html_tree 
     end
 end
         

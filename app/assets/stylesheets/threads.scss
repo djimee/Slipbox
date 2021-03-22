@@ -7,7 +7,7 @@
   
     padding: 0;
     margin: 0;
-    color: #fff;
+    color: white;
     font-size: 1em;
     font-family: Helvetica;
   }
@@ -15,7 +15,7 @@
   /****************************/
   /* Element grid positioning */
   /****************************/
-  
+
   #wrapper {
       display: grid;
       grid-template-columns: 210px 7fr;
@@ -51,5 +51,27 @@
       padding: 20px;
       margin-top: 5px;
     }
+
+  
+
+  .node {
+    width: 100px;
+    border-radius: 5px;
+    height: 25px;
+    padding: 2px;
+
+    text-align: center;
+    margin: 5px;
+    background-color:rgb(26, 68, 124);
+  }
+
+  #thread-tree {
+    color: #000;
+    background-color: rgb(127, 162, 225);
+  }
+
+  ul {
+    list-style-type: none;
+  }
 
   
