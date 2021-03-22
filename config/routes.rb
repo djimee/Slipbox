@@ -2,10 +2,9 @@ Rails.application.routes.draw do
 
   match "/403", to: "errors#error_403", via: :all
 
+  get :"myslipboxes", to: "myslipboxes#index"
   get :"signin", to: "signin#index"
   get :"signup", to: "signup#index"
-  get :"threads", to: "threads#index"
-  get :"myslipboxes", to: "myslipboxes#index"
   get :"threads", to: "threads#index"
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
