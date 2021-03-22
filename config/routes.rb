@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get :"signin", to: "signin#index"
   get :"signup", to: "signup#index"
+  get :"threads", to: "threads#index"
   get :"myslipboxes", to: "myslipboxes#index"
   get :"threads", to: "threads#index"
   get :ie_warning, to: 'errors#ie_warning'
