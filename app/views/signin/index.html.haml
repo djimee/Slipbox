@@ -1,0 +1,30 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{author: "Team 19 COM3240 Sheffield Computer Science 2021"}/
+    %meta{description: "Sign in page for Slipbox"}/
+    %link{crossorigin: "anonymous", href: "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css", integrity: "sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl", rel: "stylesheet"}/
+    = stylesheet_link_tag "signin"
+    %title Slipbox - Sign in
+  %body.text-center.base
+    %main.signin
+      %h1#main-title
+        %strong
+          %u Slipbox
+      %small#subtitle
+        %em A notetaking tool
+      %form#signin-form
+        %label.visually-hidden{for: "inputEmail"} Please enter email address
+        %input#inputEmail.form-control{autofocus: "", placeholder: "example@email.com", required: "yes", type: "email"}/
+        %label.visually-hidden{for: "inputPassword"} Password
+        %input#inputPassword.form-control{placeholder: "password", required: "yes", type: "password"}/
+        /
+          <label for="remember-me">Remember Me</label>
+          <input type="checkbox" id="remember-me">
+        %br/
+        %button#signin-submit{type: "submit"} Sign in
+        %br/
+        %a.link{href: ""} Forgot your password ?
+        %br/
+        %a.link{href: "/signup"} Register a new account

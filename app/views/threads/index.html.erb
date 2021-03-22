@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta description="Threads page for Slipbox">
+        <title>Threads</title>
+        <%= stylesheet_link_tag "threads" %>
+    </head>
+    <body>  
+        <div id="wrapper">
+            <%= render "partials/navbar" %>
+            <section id="thread-tree">
+            <%= render generate_tree.html_safe %>
+            </section>
+        </div>
+    </body>
+</html>
+
+
+

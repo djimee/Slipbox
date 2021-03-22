@@ -2,35 +2,17 @@
 <html lang="en">
 
 <head>
-<meta author="Team 19 COM3240 Sheffield Computer Science 2021">
 <meta description="Sign in page for Slipbox">
 
 <%= stylesheet_link_tag "myslipboxes" %>
 
-<title>Slipbox - My Slipboxes</title>
+<title>My Slipboxes</title>
+</head>
 <body>
   
   <div id="wrapper">
-    
 
-    <section id="navbar">
-    
-    
-      <h1><strong><u id="main-title" class="title">Slipbox</u></strong></h1>
-
-      <ul>
-        <li class="navbar-item"><a href="">Slipboxes</a></li>
-        <li class="navbar-item"><a href="">Threads</a></li>
-      
-        <li class="navbar-item"><a href="">Edit Notes</a></li>
-        <li class="navbar-item"><a href="">References</a></li>
-        <div class="separator"></div>
-        <li class="navbar-item"><a href="">Help </a></li>
-        <li class="navbar-item"><a href="">Settings</a></li>
-        <li class="navbar-item"><a href="">Logout</a></li>
-      </ul>
-      
-    </section>
+    <%= render "partials/navbar" %>
 
     <section id="welcome">
 
@@ -95,7 +77,6 @@
       <hr class="solid">
     </section>
   </div>
-  <% render "signin/index"  %>
 
 
 </body>
