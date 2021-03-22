@@ -1,0 +1,88 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{charset: "UTF-8"}/
+    %meta{author: "Team 19 COM3240 Sheffield Computer Science 2021"}/
+    %meta{description: "Sign in page for Slipbox"}/
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
+    = stylesheet_link_tag "myslipboxes"
+    %title Slipbox - My Slipboxes
+  %body
+    #wrapper
+      %section#navbar
+        %h1
+          %strong
+            %u#main-title.title Slipbox
+        %ul
+          %li.navbar-item
+            %a{href: ""} Slipboxes
+          %li.navbar-item
+            %a{href: ""} Threads
+          %li.navbar-item
+            %a{href: ""} Edit Notes
+          %li.navbar-item
+            %a{href: ""} References
+          .separator
+          %li.navbar-item
+            %a{href: ""} Help
+          %li.navbar-item
+            %a{href: ""} Settings
+          %li.navbar-item
+            %a{href: ""} Logout
+      %section#welcome
+        %h2 Welcome Username
+        %p Signed in as example@email.com - Admin
+        %p Last note worked on: Subtitle 2 - ID - 07/03/2021
+      %section#mySlipboxes
+        %h2 My Slipboxes
+        %hr.solid/
+        .slipFlexContainer
+          .slipboxWrapper
+            %h3 Title
+            %p Slipbox description: This can be a short sentence
+            %p No. of Collaborators: 3
+            %p Last edited - 06/03/2021
+          .slipboxWrapper
+            %h3 Title
+            %p Slipbox description: This can be a short sentence
+            %p No. of Collaborators: 3
+            %p Last edited - 06/03/2021
+        %hr.solid/
+      %section#createSlipbox
+        %h2 Create a new Slipbox
+        %form#form-inline
+          %label{for: "title"} Title:
+          %br/
+          %input#title{name: "title", type: "text"}/
+          %br/
+          %label{for: "description"} Description:
+          %br/
+          %input#description{name: "description", type: "text"}/
+          %br/
+          %label{for: "collaborators"} Collaborators:
+          %br/
+          %input#collaborators{name: "collaborators", type: "text"}/
+          %br/
+          %button#addslipbox.slipFormSubmit{type: "submit"} Add Slipbox
+        %hr.solid/
+      %section#editSlipbox
+        %h2 Create a new Slipbox
+        %form#form-inline
+          %label{for: "title"} Title:
+          %br/
+          %input#title{name: "title", type: "text"}/
+          %br/
+          %label{for: "description"} Description:
+          %br/
+          %input#description{name: "description", type: "text"}/
+          %br/
+          %label{for: "collaborators"} Collaborators:
+          %br/
+          %input#collaborators{name: "collaborators", type: "text"}/
+          %br/
+          %button#addslipbox.slipFormSubmit{type: "submit"} Give Access
+          %button#addslipbox.slipFormSubmit{type: "submit"} Give Admin
+          %button#addslipbox.slipFormSubmit{type: "submit"} Leave Slipbox
+        %hr.solid/
+        

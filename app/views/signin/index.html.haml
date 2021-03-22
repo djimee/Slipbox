@@ -1,4 +1,3 @@
-- content_for :title, 'Log In'
 !!!
 %html{:lang => "en"}
   %head
@@ -17,16 +16,17 @@
           %u Slipbox
       %small#subtitle
         %em A notetaking tool
-      .row.justify-content-center
-        .col-sm-6.col-lg-12
-          .card.card-light
-            = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-              .card-header
-                Log In
-              .card-body
-                = f.input :email, autofocus: true, required: true
-                = f.input :password, required: true
-              .card-footer
-                = submit_button 'Log in'
-                .mt-3= render "devise/shared/links"
-
+      %form#signin-form
+        %label.visually-hidden{:for => "inputEmail"} Please enter email address
+        %input#inputEmail.form-control{:autofocus => "", :placeholder => "example@email.com", :required => "yes", :type => "email"}/
+        %label.visually-hidden{:for => "inputPassword"} Password
+        %input#inputPassword.form-control{:placeholder => "password", :required => "yes", :type => "password"}/
+        /
+          <label for="remember-me">Remember Me</label>
+          <input type="checkbox" id="remember-me">
+        %br/
+        %button#signin-submit{:type => "submit"} Sign in
+        %br/
+        %a.link{:href => ""} Forgot your password ?
+        %br/
+        %a.link{:href => "/signup"} Register a new account
