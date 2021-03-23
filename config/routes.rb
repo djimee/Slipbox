@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get :"signup", to: "signup#index"
   get :"threads", to: "threads#index"
   get :"edit", to: "edit#index"
+  get :"mynotes", to: "mynotes#index"
   get :ie_warning, to: 'errors#ie_warning'
+
   get :javascript_warning, to: 'errors#javascript_warning'
   
 
