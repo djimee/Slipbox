@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get :"signin", to: "signin#index"
   get :"signup", to: "signup#index"
   get :"threads", to: "threads#index"
+  get :"mynotes", to: "mynotes#index"
   get :ie_warning, to: 'errors#ie_warning'
+
   get :javascript_warning, to: 'errors#javascript_warning'
   
 
