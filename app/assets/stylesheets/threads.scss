@@ -25,31 +25,7 @@
       height: 100vh;
   }
   
-  #navbar{
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 8;
-    background: linear-gradient(330deg, rgb(175, 222, 227) 10%, rgb(127, 162, 225) 57%, rgb(26, 68, 124) 97%);
-  }
-
-  #navbar li a{
-    font-size: 1.5em;
-    text-decoration: none;
-    transition: 0.3s;
-    }
-  
-  #navbar ul { list-style-type: none; }
-  #navbar li { padding: 20px;}
-
-  .navbar-item li {font-family: Comfortaa;}
-
-  #main-title {
-      font-size: 3em;
-      font-family: Comfortaa;
-      padding: 20px;
-      margin-top: 5px;
-    }
+ 
 
   .node, #root-node{
     
