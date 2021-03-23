@@ -8,9 +8,13 @@
     <body>  
         <div id="wrapper">
             <%= render "partials/navbar" %>
+
             <section id="thread-tree">
-            <%= raw generate_tree.html_safe %>
+                <div class="container">
+                    <%= raw generate_tree.html_safe %>
+                </div>
             </section>
+
         </div>
     </body>
 </html>

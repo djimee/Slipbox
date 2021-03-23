@@ -79,8 +79,8 @@ TODO:
             mar += 30
             tree.trees.each do |child|
                 @html_tree += "<li class='node' style='margin-left:" + mar.to_s + "px; margin-top: "+ @margin_top.to_s + "px;'>"
-                @html_tree += "<p>" + child.value + "</p>"
-             
+                @html_tree += "<a href=''>" + child.value + "</a>"
+                @html_tree += "<button class='delete'>del</button>"
                 construct(child, mar)
                 @html_tree += "</li>"
             end
