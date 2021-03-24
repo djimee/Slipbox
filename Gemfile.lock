@@ -370,6 +370,8 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    trix (0.10.1)
+      rails
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
@@ -448,6 +450,7 @@ DEPENDENCIES
   simple_form
   simplecov
   sqlite3
+  trix
   uglifier
   web-console
   webdrivers

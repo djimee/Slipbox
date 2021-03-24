@@ -4,6 +4,8 @@
     <meta description="Threads page for Slipbox">
         <title>Threads</title>
         <%= stylesheet_link_tag "edit" %>
+
+    
     </head>
     <body>  
         <div id="wrapper">
@@ -11,18 +13,19 @@
 
             <section id="top-navbar">
                 <ul id="note-n">
-                    <li class="note-ni"><h1>Subtitle - Title - ID </h1><small> Last Edited - 06/03/2021</small></li>
-                    <li class="note-ni"><img src="" alt=""/><p>Save Note</p></li> 
-                    <li class="note-ni"><img src="" alt=""/><p>Group Settings</p></li>
-                    <li class="note-ni"><img src="" alt=""/><p>Delete Note</p></li>
+                    <li id="note-ni-title" class="note-ni"><h1 class="subtitle">Subtitle - Title - ID </h1><small> Last Edited - 06/03/2021</small></li>
+                    <li class="note-ni"><button><%= image_tag("Save_Icon_1.png", :alt => "save") %><p class="tn-p">Save Note</p></button></li> 
+                    <li class="note-ni"><button><%= image_tag("Group_Icon_1.png", :alt => "group settings") %><p class="tn-p">Group Settings</p></button></li>
+                    <li class="note-ni"><button><%= image_tag("Group_Icon_1.png", :alt => "delete forever") %><p class="tn-p">Delete Note</p></button></li>
                 </ul>
             </section>
             <section id="edit-note">
                 <div id="edit-note-container">
                     
-                    <textarea wrap="hard">
-                    </textarea>
-                            
+                    <div class="trix-content">
+                        <trix-editor input="post-body"></trix-editor>
+                    </div>
+                         
                 <div>
                             
                       
