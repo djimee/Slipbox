@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_16_144104) do
+ActiveRecord::Schema.define(version: 2021_03_30_144736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,28 @@ ActiveRecord::Schema.define(version: 2021_03_16_144104) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "notes", primary_key: "unique_identifier", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tree_id"
+  end
+
+  create_table "notes_references", id: false, force: :cascade do |t|
+    t.bigint "note_unique_identifier"
+    t.bigint "reference_id"
+    t.index ["note_unique_identifier"], name: "index_notes_references_on_note_unique_identifier"
+    t.index ["reference_id"], name: "index_notes_references_on_reference_id"
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.string "author", null: false
+    t.string "rest_of_reference", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
@@ -37,6 +59,38 @@ ActiveRecord::Schema.define(version: 2021_03_16_144104) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "slipbox_references", id: false, force: :cascade do |t|
+    t.bigint "slipbox_id"
+    t.bigint "reference_id"
+    t.index ["reference_id"], name: "index_slipbox_references_on_reference_id"
+    t.index ["slipbox_id"], name: "index_slipbox_references_on_slipbox_id"
+  end
+
+  create_table "slipboxes", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "trees", force: :cascade do |t|
+    t.bigint "slipbox_id"
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
