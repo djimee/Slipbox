@@ -9,5 +9,7 @@
 #
 class Slipbox < ApplicationRecord
     has_many :trees
+    has_many :slipbox_users
+    has_many :notes, :through => :slipbox_users
     has_and_belongs_to_many :references
 end

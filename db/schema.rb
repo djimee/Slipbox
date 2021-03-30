@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_160127) do
+ActiveRecord::Schema.define(version: 2021_03_30_161333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 2021_03_30_160127) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "references_slipboxes", id: false, force: :cascade do |t|
+    t.bigint "slipbox_id", null: false
+    t.bigint "reference_id", null: false
+    t.index ["reference_id", "slipbox_id"], name: "index_references_slipboxes_on_reference_id_and_slipbox_id"
+    t.index ["slipbox_id", "reference_id"], name: "index_references_slipboxes_on_slipbox_id_and_reference_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
@@ -60,6 +67,12 @@ ActiveRecord::Schema.define(version: 2021_03_30_160127) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "slipbox_users", id: false, force: :cascade do |t|
+    t.boolean "admin"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "slipboxes", force: :cascade do |t|
