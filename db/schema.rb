@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_161333) do
+ActiveRecord::Schema.define(version: 2021_03_30_183630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 2021_03_30_161333) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "notes", id: false, force: :cascade do |t|
+  create_table "notes", force: :cascade do |t|
     t.string "title"
-    t.string "content"
+    t.string "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "thread_id", null: false
+    t.bigint "tree_id", null: false
     t.string "unique_identifier", null: false
   end
 
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_03_30_161333) do
   end
 
   create_table "references", force: :cascade do |t|
-    t.string "author"
+    t.string "author", null: false
     t.string "rest_of_reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -70,9 +70,11 @@ ActiveRecord::Schema.define(version: 2021_03_30_161333) do
   end
 
   create_table "slipbox_users", id: false, force: :cascade do |t|
-    t.boolean "admin"
+    t.boolean "admin", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "slipbox_id", null: false
+    t.bigint "user_id", null: false
   end
 
   create_table "slipboxes", force: :cascade do |t|

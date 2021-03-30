@@ -3,7 +3,7 @@
 # Table name: references
 #
 #  id                :bigint           not null, primary key
-#  author            :string
+#  author            :string           not null
 #  rest_of_reference :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
