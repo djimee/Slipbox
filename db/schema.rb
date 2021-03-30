@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_144736) do
+ActiveRecord::Schema.define(version: 2021_03_30_151116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,19 +30,11 @@ ActiveRecord::Schema.define(version: 2021_03_30_144736) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "notes", primary_key: "unique_identifier", id: :serial, force: :cascade do |t|
+  create_table "notes", id: false, force: :cascade do |t|
     t.string "title"
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "tree_id"
-  end
-
-  create_table "notes_references", id: false, force: :cascade do |t|
-    t.bigint "note_unique_identifier"
-    t.bigint "reference_id"
-    t.index ["note_unique_identifier"], name: "index_notes_references_on_note_unique_identifier"
-    t.index ["reference_id"], name: "index_notes_references_on_reference_id"
   end
 
   create_table "references", force: :cascade do |t|
@@ -61,13 +53,6 @@ ActiveRecord::Schema.define(version: 2021_03_30_144736) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "slipbox_references", id: false, force: :cascade do |t|
-    t.bigint "slipbox_id"
-    t.bigint "reference_id"
-    t.index ["reference_id"], name: "index_slipbox_references_on_reference_id"
-    t.index ["slipbox_id"], name: "index_slipbox_references_on_slipbox_id"
-  end
-
   create_table "slipboxes", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
@@ -75,10 +60,10 @@ ActiveRecord::Schema.define(version: 2021_03_30_144736) do
   end
 
   create_table "trees", force: :cascade do |t|
-    t.bigint "slipbox_id"
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "slipbox_id", null: false
   end
 
   create_table "users", force: :cascade do |t|

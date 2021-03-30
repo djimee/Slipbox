@@ -1,12 +1,12 @@
 # == Schema Information
 #
-# Table name: slipboxes
+# Table name: notes
 #
-#  id         :bigint           not null, primary key
+#  content    :string
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Slipbox < ApplicationRecord
-    has_many :trees
+class Note < ApplicationRecord
+    belongs_to :tree
 end
