@@ -12,4 +12,5 @@
 class Note < ApplicationRecord
     self.primary_key = "unique_identifier"
     belongs_to :tree
+    has_and_belongs_to_many :references
 end

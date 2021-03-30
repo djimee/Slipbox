@@ -9,4 +9,5 @@
 #
 class Slipbox < ApplicationRecord
     has_many :trees
+    has_and_belongs_to_many :references
 end

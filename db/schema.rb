@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_151505) do
+ActiveRecord::Schema.define(version: 2021_03_30_160127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,9 +39,16 @@ ActiveRecord::Schema.define(version: 2021_03_30_151505) do
     t.string "unique_identifier", null: false
   end
 
+  create_table "notes_references", id: false, force: :cascade do |t|
+    t.bigint "note_id", null: false
+    t.bigint "reference_id", null: false
+    t.index ["note_id", "reference_id"], name: "index_notes_references_on_note_id_and_reference_id"
+    t.index ["reference_id", "note_id"], name: "index_notes_references_on_reference_id_and_note_id"
+  end
+
   create_table "references", force: :cascade do |t|
-    t.string "author", null: false
-    t.string "rest_of_reference", null: false
+    t.string "author"
+    t.string "rest_of_reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
