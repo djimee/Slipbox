@@ -75,11 +75,11 @@ TODO:
         end
 
         def construct(tree, mar)
+            @html_tree += "<a href=''><p>" + tree.value + "</p></a>"
             @html_tree += "<ul class='list-start'>"
             mar += 30
             tree.trees.each do |child|
                 @html_tree += "<li class='node'>"
-                @html_tree += "<a href=''><p>" + child.value + "</p></a>"
                 construct(child, mar)
                 @html_tree += "</li>"
             end
@@ -98,29 +98,22 @@ TODO:
         _tree2 = Tree.new("b")
         _tree2.add_node("b1")
         _tree2.add_node("b2")
-        _tree2.add_node("b2")
-        _tree2.add_node("b2")
-        _tree2.add_node("b2")
-        _tree2.add_node("b2")
-        _tree2.add_node("b2")
-        _tree2.add_node("b2")
-        _tree2.add_node("b2")
-        _tree2.add_node("b2")
-        _tree2.add_node("b2")
-        _tree2.add_node("b2")
+        
+
 
         _tree3 = Tree.new("c")
         _tree3.add_node("c1")
+
         _DFS = DepthFirstSearch.new
 
-        puts _DFS.search_append(_tree2, _tree3, "b")
+        #puts _DFS.search_append(_tree2, _tree3, "b")
         puts _DFS.search_append(_tree, _tree2, "a")
 
 
          #build tree
        _parse = HTMLParser.new()
         _parse.construct(_tree, 30) 
-        return  "<li class='root-node'>" + _tree.value + "</li>" + _parse.html_tree 
+        return  "<div class='center-container'>" + _parse.html_tree + "</div>"
         
     
     end

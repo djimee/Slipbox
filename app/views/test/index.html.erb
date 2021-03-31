@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta description="Threads page for Slipbox">
+        <title>Threads</title>
+        <%= stylesheet_link_tag "threads" %>
+        <%= javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js" %>
+    </head>
+    <body>  
+        <div id="wrapper">
+            <canvas id="canvas" width="1000px" height="1000px" ></canvas>
+
+
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+<script>
+"use strict"
+
+
+class Node {
+
+    constructor(id, val, children) {
+        this.id = id;
+        this.value = val;
+        this.children = [];
+    }
+
+    getId() {
+        return this.id;
+    }
+
+    getValue() {
+        return this.value;
+    }
+
+    getChildren() {
+        return this.children;
+    }
+    
+   
+    
+
+}
+
+class GenerateTree {
+
+   
+
+    findRootNode(nodeList) {
+        let items = nodeList[0].split(":");
+        return new Node(items[0], items[1], items[2]);
+    }; 
+
+    addNode(tree, id, node) {
+        let nodeInfo = node.split(":");
+        if (tree.getChildren().length > 0) {
+            //recurse on child node
+            for (let c in tree.getChildren()) {
+                let childID = tree.getChildren()[c].getId();
+                if (childID.substring(0, id+1) == node.substring(0, id+1)) {
+                    if (childID.substring(0, id+2) == node.substring(0, id+2)) {
+                        this.addNode(tree.getChildren()[c], id + 1, node);                        
+                    } else {
+                        console.log("Adding recursive step child");
+                        let items = node.split(":");
+                        tree.getChildren().push(new Node(items[0], items[1], items[2]));
+      
+                    }
+                    break;
+                }
+            }                
+        } else {
+            console.log("Adding child");
+            let items = node.split(":");
+            tree.getChildren().push(new Node(items[0], items[1], items[2]));
+       }
+        return tree;
+    };
+
+
+    generateTree(nodeList) {
+        let list = ["1:asd"];
+        let tree = this.findRootNode(list);
+        //initial call to recursively add a node
+        
+        for (let n in nodeList) {
+            tree = this.addNode(tree, 0, nodeList[n]);
+        }
+        console.log(tree);
+        return tree;
+    };
+
+
+
+}
+
+let tree = new GenerateTree();
+tree.generateTree(["1i:asd3", "1ii:asd2", "1iii:asd4", "1i2:asd4"]);
+</script>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'test/idnex'
   get 'edit/index'
   match "/403", to: "errors#error_403", via: :all
 
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   get :"threads", to: "threads#index"
   get :"edit", to: "edit#index"
   get :"mynotes", to: "mynotes#index"
+  get :"test", to: "test#index"
   get :ie_warning, to: 'errors#ie_warning'
 
   get :javascript_warning, to: 'errors#javascript_warning'
