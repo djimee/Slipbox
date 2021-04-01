@@ -3,14 +3,13 @@
     <head>
     <meta description="Threads page for Slipbox">
         <title>Threads</title>
-        <%= stylesheet_link_tag "threads" %>
+        <%= stylesheet_link_tag "test" %>
         <%= javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js" %>
+
     </head>
     <body>  
         <div id="wrapper">
-            <canvas id="canvas" width="1000px" height="1000px" ></canvas>
-
-
+            <canvas id="canvas" width="1500px" height="500px" ></canvas>
         </div>
     </body>
 </html>
@@ -101,6 +100,75 @@ class GenerateTree {
 
 }
 
+
+class RenderTree {
+
+    constructor(tree) {
+        this.canvas = new fabric.Canvas('canvas');
+        this.canvas.selection = false;
+        this.NODE_WIDTH = 100;
+        this.NODE_HEIGHT = 50;
+        this.INITAL_OFF_X = 50
+        this.drawTree(tree, this.canvas.width / 2, 20);
+        this.canvas.renderAll();
+
+
+    }
+
+
+    drawNode(node, x, y) {
+        let obj = new fabric.Text(node.getValue() + " " + node.getId(), 
+        {
+            left: x,
+            top: y,
+            fontFamily: 'Helvetica',
+            fontSize: 16
+        });
+
+        
+
+        obj.set('selectable', false);
+
+        //add node to canvas
+        this.canvas.add(obj);
+    }
+
+    drawTree(tree, x, y) {
+        //draw node
+        this.drawNode(tree, x, y);
+        if (tree.getChildren() == []) {
+            y += this.NODE_HEIGHT;
+        }
+
+        //recurse through tree
+        for (let i in tree.getChildren()) {
+            let child = tree.getChildren()[i];
+            let offsetX = -(this.INITAL_OFF_X * (tree.getChildren().length - 1)) +  i * this.NODE_WIDTH;
+            let cX =  (x + offsetX);
+            let cY =  y + this.NODE_HEIGHT;
+            console.log(child);
+            this.drawTree(child, cX, cY);
+        
+            //draw line
+            // let line = new fabric.Line([x, y, cX, cY], {});
+            // line.set('selectable', false);
+            // this.canvas.add(line)
+
+        }
+
+
+    }
+}
+
+
+
 let tree = new GenerateTree();
-tree.generateTree(["1i:asd3", "1ii:asd2", "1iii:asd4", "1i2:asd4"]);
+let children = []
+
+for (let x = 0; x < 100; x++) {
+    children.push("1i:asd" + x.toString())
+}
+let result = tree.generateTree(children);
+let render = new RenderTree(result);
+
 </script>

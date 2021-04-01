@@ -4,19 +4,24 @@
     <meta description="Threads page for Slipbox">
         <title>Threads</title>
         <%= stylesheet_link_tag "threads" %>
+        <%= javascript_include_tag "https://d3js.org/d3.v6.min.js" %>
+
     </head>
     <body>  
         <div id="wrapper">
             <%= render "partials/navbar" %>
 
             <section id="thread-tree">
-                <div id="container">
-                    <%= sanitize generate_tree.html_safe %>
-                </div>
+                <div id="thread-container">
+                    <svg></svg>
+                </div>                
             </section>
 
         </div>
     </body>
+    
+    <%= javascript_include_tag "threads" %>
+
 </html>
 
 
