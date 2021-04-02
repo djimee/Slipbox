@@ -30,19 +30,18 @@
     grid-row-start: 2;
     grid-row-end: 11;
     border: 1px solid #c0c0c0;
-    padding: 1%;
-    overflow-y: scroll;
+    padding: 2%;
   }
 
   
   #thread-container {
-
-    width: 800px;
-    height: 800px;
-
-
-
+   height: 100%;
   }
+
+  svg {
+    height: 100%;
+  }
+
   p {
     text-align: center;
     background-color: #6688c7;
@@ -67,9 +66,16 @@
     height: 25px;
   }   
 
+  text {
+    pointer-events: pointer;
+
+
+  }
+
   path {
     fill: none;
-    stroke: black;
+    stroke: #c0c0c0;
+    
   }
 
  
