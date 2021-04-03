@@ -1,22 +1,20 @@
 = stylesheet_link_tag "navbar"
-
-
 %section#navbar
   %h1
     #main-title.title Slipbox
   %ul
     %li.navbar-item
-      %a{:href => "/myslipboxes"} Slipboxes
+      %a{href: "/myslipboxes"} Slipboxes
     %li.navbar-item
-      %a{:href => "/threads"} Threads
+      %a{href: "/threads"} Threads
     %li.navbar-item
-      %a{:href => "/edit"} Edit Notes
+      %a{href: "/edit"} Edit Notes
     %li.navbar-item
-      %a{:href => ""} References
+      %a References
     .separator
     %li.navbar-item
-      %a{:href => ""} Help
+      %a Help
     %li.navbar-item
-      %a{:href => ""} Settings
+      %a Settings
     %li.navbar-item
-      %a{:href => ""} Logout
+      = link_to('Logout', destroy_user_session_path, method: :delete)
