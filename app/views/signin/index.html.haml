@@ -29,6 +29,4 @@
         %br/
         %button#signin-submit{:type => "submit"} Sign in
         %br/
-        %a.link{:href => ""} Forgot your password ?
-        %br/
-        %a.link{:href => "/signup"} Register a new account
+        = mail_to "info@epigenesys.org.uk", "Forgot your password?"
