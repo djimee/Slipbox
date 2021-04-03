@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag "navbar" %>
+<section id="navbar">
+  <h1>
+    <div class="title" id="main-title">Slipbox</div>
+  </h1>
+  <ul>
+  <%# navbar for when on the index page %> 
+  <% if current_page?(root_path) %>
+    <li class="navbar-item">
+      <a href="/">Slipboxes</a>
+    </li>
+  <%# navbar for when on the slipboxes page %> 
+  <%# navbar for when on the threads page %> 
+  <%# navbar for when on any other page %> 
+  <% end %>
+    <li class="navbar-item">
+      <a href="/threads">Threads</a>
+    </li>
+    <li class="navbar-item">
+      <a href="/edit">Edit Notes</a>
+    </li>
+    <li class="navbar-item">
+      <a>References</a>
+    </li>
+    <div class="separator"></div>
+    <li class="navbar-item">
+      <a>Help</a>
+    </li>
+    <li class="navbar-item">
+      <a>Settings</a>
+    </li>
+    <li class="navbar-item">
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    </li>
+  </ul>
+</section>
