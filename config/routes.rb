@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :user 
+  mount EpiCas::Engine, at: "/"
+  devise_for :users
   
   get 'test/idnex'
   get 'edit/index'
