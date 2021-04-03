@@ -17,29 +17,26 @@
         <p>Signed in as: <%= current_user.email %></p>
         <p>Last note worked on: Subtitle 2 - ID - 07/03/2021</p>
       </section>
-      <section id="mySlipboxes">
-        <h2>My Slipboxes</h2>
-        <hr class="solid"/>
-        <div class="slipFlexContainer">
-          <div class="slipboxWrapper">
-            <h3>Title</h3>
-            <p>Slipbox description: This can be a short sentence</p>
-            <p>No. of Collaborators: 3</p>
-            <p>Last edited - 06/03/2021</p>
+      <% if Slipbox.any?%>
+        <section id="mySlipboxes">
+          <h2>My Slipboxes</h2>
+          <hr class="solid"/>
+          <div class="slipFlexContainer">
+            <div class="slipboxWrapper">
+              <h3><%= Slipbox.first.title %></h3>
+              <p>Description: <%= Slipbox.first.description %></p>
+              <p>No. of Collaborators: 3</p>
+              <p>Last edited - <%= Slipbox.first.updated_at %></p>
+            </div>
           </div>
-          <div class="slipboxWrapper">
-            <h3>Title</h3>
-            <p>Slipbox description: This can be a short sentence</p>
-            <p>No. of Collaborators: 3</p>
-            <p>Last edited - 06/03/2021</p>
-          </div>
-        </div>
-        <hr class="solid"/>
-      </section>
+          <hr class="solid"/>
+        </section>
+      <% end %>
       <section id="createSlipbox">
         <h2>Create a new Slipbox</h2>
           <%= simple_form_for @slipbox do |f| %>
             <%= f.input :title %>
+            <%= f.input :description %>
             <%= f.button :submit %>
           <% end %>
         <hr class="solid"/>
