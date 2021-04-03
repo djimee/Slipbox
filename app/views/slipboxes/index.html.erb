@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta charset="UTF-8"/>
+    <meta author="Team 19 COM3240 Sheffield Computer Science 2021"/>
+    <meta description="Sign in page for Slipbox"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <%= stylesheet_link_tag "myslipboxes" %>
+    <title>Slipbox - My Slipboxes</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <%= render "partials/navbar" %>
+      <section id="welcome">
+        <h2>Welcome Username</h2>
+        <p>Signed in as example@email.com - Admin</p>
+        <p>Last note worked on: Subtitle 2 - ID - 07/03/2021</p>
+      </section>
+      <section id="mySlipboxes">
+        <h2>My Slipboxes</h2>
+        <hr class="solid"/>
+        <div class="slipFlexContainer">
+          <div class="slipboxWrapper">
+            <h3>Title</h3>
+            <p>Slipbox description: This can be a short sentence</p>
+            <p>No. of Collaborators: 3</p>
+            <p>Last edited - 06/03/2021</p>
+          </div>
+          <div class="slipboxWrapper">
+            <h3>Title</h3>
+            <p>Slipbox description: This can be a short sentence</p>
+            <p>No. of Collaborators: 3</p>
+            <p>Last edited - 06/03/2021</p>
+          </div>
+        </div>
+        <hr class="solid"/>
+      </section>
+      <section id="createSlipbox">
+        <h2>Create a new Slipbox</h2>
+          <%= simple_form_for @slipbox do |f| %>
+            <%= f.input :title %>
+            <%= f.button :submit %>
+          <% end %>
+        <hr class="solid"/>
+      </section>
+      <section id="editSlipbox">
+        <h2>Create a new Slipbox</h2>
+        <form id="form-inline">
+          <label for="title">Title:</label>
+          <br/>
+          <input id="title" name="title" type="text">/</input>
+          <br/>
+          <label for="description">Description:</label>
+          <br/>
+          <input id="description" name="description" type="text">/</input>
+          <br/>
+          <label for="collaborators">Collaborators:</label>
+          <br/>
+          <input id="collaborators" name="collaborators" type="text">/</input>
+          <br/>
+          <button class="slipFormSubmit" id="addslipbox" type="submit">Give Access</button>
+          <button class="slipFormSubmit" id="addslipbox" type="submit">Give Admin</button>
+          <button class="slipFormSubmit" id="addslipbox" type="submit">Leave Slipbox</button>
+        </form>
+        <hr class="solid"/>
+      </section>
+    </div>
+  </body>
+</html>
