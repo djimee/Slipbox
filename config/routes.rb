@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get :javascript_warning, to: 'errors#javascript_warning'
   
+  resource :slipboxes
 
   # root to: "pages#home"
   root to: "slipboxes#index"
