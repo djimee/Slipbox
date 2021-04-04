@@ -23,7 +23,7 @@
           <hr class="solid"/>
           <div class="slipFlexContainer">
             <div class="slipboxWrapper">
-              <h3><%= Slipbox.first.title %></h3>
+              <h3><%= link_to Slipbox.first.title, {:actions => @slipbox_id } %></h3>
               <p>Description: <%= Slipbox.first.description %></p>
               <p>No. of Collaborators: 3</p>
               <p>Last edited - <%= Slipbox.first.updated_at %></p>

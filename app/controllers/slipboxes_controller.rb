@@ -9,7 +9,7 @@ class SlipboxesController < ApplicationController
     end
         
     def create
-      slipbox_params = params.require(:slipbox).permit(:title, :description)
+     
       @slipbox = Slipbox.new(slipbox_params)
 
       if @slipbox.save
@@ -18,4 +18,21 @@ class SlipboxesController < ApplicationController
         render :index
       end
     end
-  end
+
+    def show 
+    end
+
+    def update
+    end
+
+    def edit
+    end
+
+    def search
+    end
+
+    def slipbox_params
+      params.require(:slipbox).permit(:title, :description)
+    end
+
+end
