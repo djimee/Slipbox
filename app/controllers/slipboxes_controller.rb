@@ -2,6 +2,7 @@ class SlipboxesController < ApplicationController
     def index
       @slipboxes = Slipbox.all
       @slipbox = Slipbox.new
+      @slipbox_id = Slipbox.first.id
     end
       
     def new
@@ -20,6 +21,7 @@ class SlipboxesController < ApplicationController
     end
 
     def show 
+      # @slipboxes = Slipbox.where(slipbox_id:)
     end
 
     def update
