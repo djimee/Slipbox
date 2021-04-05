@@ -1,48 +1,50 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <meta charset="UTF-8"/>
-    <meta author="Team 19 COM3240 Sheffield Computer Science 2021"/>
-    <meta description="Sign in page for Slipbox"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <%= stylesheet_link_tag "myslipboxes" %>
-    <title>Slipbox - My Slipboxes</title>
-  </head>
-  <body>
-    <div id="wrapper">
-      <%= render "partials/navbar" %>
-      <section id="welcome">
-        <h2>Welcome <%= current_user.username %></h2>
-        <p>Signed in as: <%= current_user.email %></p>
-        <p>Last note worked on: Subtitle 2 - ID - 07/03/2021</p>
-      </section>
-      <% if Slipbox.any?%>
-        <section id="mySlipboxes">
-          <h2>My Slipboxes</h2>
-          <hr class="solid"/>
-          <div class="slipFlexContainer">
-            <%= @slipboxes.each do |slipbox| %>
-              <div class="slipboxWrapper">
-                <h3><%= link_to slipbox.title, {:actions => slipbox.id } %></h3>
-                <p>Description: <%= slipbox.description %></p>
-                <p>No. of Collaborators: 3</p>
-                <p>Last edited - <%= slipbox.updated_at %></p>
-              </div>
-            <% end %>
-          </div>
-          <hr class="solid"/>
-        </section>
-      <% end %>
-      <section id="createSlipbox">
-        <h2>Create a new Slipbox</h2>
-          <%= simple_form_for @slipbox do |f| %>
-            <%= f.input :title %>
-            <%= f.input :description %>
-            <%= f.button :submit %>
-          <% end %>
-        <hr class="solid"/>
-      </section>
-    </div>
-  </body>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+		<meta charset="UTF-8"/>
+		<meta author="Team 19 COM3240 Sheffield Computer Science 2021"/>
+		<meta description="Sign in page for Slipbox"/>
+		<meta content="width=device-width, initial-scale=1" name="viewport"/>
+		<%= stylesheet_link_tag "myslipboxes" %>
+		<title>Slipbox - My Slipboxes</title>
+	</head>
+	<body>
+		<div id="wrapper">
+			<%= render "partials/navbar" %>
+			<section id="welcome">
+				<h2>Welcome <%= current_user.username %></h2>
+				<p>Signed in as: <%= current_user.email %></p>
+				<p>Last note worked on: Subtitle 2 - ID - 07/03/2021</p>
+			</section>
+			<% if Slipbox.any?%>
+			<section id="mySlipboxes">
+				<h2>My Slipboxes</h2>
+				<hr class="solid"/>
+				<div class="slipFlexContainer">
+					<%= @slipboxes.each do |slipbox| %>
+					<div class="slipboxWrapper">
+						<h3><%= link_to slipbox.title, {:actions => slipbox.id } %></h3>
+						<p>Description: <%= slipbox.description %></p>
+						<p>No. of Collaborators: 3</p>
+						<p>Last edited - <%= slipbox.updated_at %></p>
+					</div>
+					<% end %>
+        <% else %>
+        
+        <% end %>  
+				</div>
+				<hr class="solid"/>
+			</section>
+			<section id="createSlipbox">
+				<h2>Create a new Slipbox</h2>
+				<%= simple_form_for @slipbox do |f| %>
+				<%= f.input :title %>
+				<%= f.input :description %>
+				<%= f.button :submit %>
+				<% end %>
+				<hr class="solid"/>
+			</section>
+		</div>
+	</body>
 </html>
