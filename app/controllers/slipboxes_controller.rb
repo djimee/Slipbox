@@ -1,12 +1,9 @@
 class SlipboxesController < ApplicationController
-    def index
+  # GET /slipboxes  
+  def index
       @slipboxes = Slipbox.all
       @slipbox = Slipbox.new
       @slipbox_id = Slipbox.first.id
-    end
-      
-    def new
-      @slipbox = Slipbox.new
     end
         
     def create
@@ -20,8 +17,9 @@ class SlipboxesController < ApplicationController
       end
     end
 
+    # GET /slipboxes/1
     def show 
-      # @slipboxes = Slipbox.where(slipbox_id:)
+      # NEED A SEPERATE VIEW ()
     end
 
     def update
