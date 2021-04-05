@@ -31,8 +31,8 @@
 				<h2>My Slipboxes</h2>
 				<hr class="solid"/>
 				<div class="slipFlexContainer">
-					<%= @slipboxes.each do |slipbox| %>
-					<div class="slipboxWrapper">
+					<% @slipboxes.each do |slipbox| %>
+					<div class="slipboxWrapper" >
 						<h3><%= link_to slipbox.title, {:actions => slipbox.id } %></h3>
 						<!-- check if slipbox has a description, if not don't display description -->
 						<% if !slipbox.description.empty? %>
