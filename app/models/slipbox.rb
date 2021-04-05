@@ -15,5 +15,5 @@ class Slipbox < ApplicationRecord
     has_and_belongs_to_many :references
 
     # ensure there is a title
-    validates :title, presence: true, uniqueness: true
+    validates :title, presence: true, uniqueness: { case_sensitive: false }
 end

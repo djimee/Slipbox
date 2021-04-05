@@ -3,7 +3,7 @@ class SlipboxesController < ApplicationController
   def index
       @slipboxes = Slipbox.all
       @slipbox = Slipbox.new
-      # @slipbox_id = Slipbox.id
+      # gets most recently update note 
       @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
   end
         
@@ -28,11 +28,10 @@ class SlipboxesController < ApplicationController
   def edit
   end
 
-  def search
-  end
-
-  def slipbox_params
-    params.require(:slipbox).permit(:title, :description)
-  end
+  private 
+    # Only allow a trusted parameter "white list" through.
+    def slipbox_params
+      params.require(:slipbox).permit(:title, :description)
+    end
 
 end
