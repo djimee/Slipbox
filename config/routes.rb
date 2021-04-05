@@ -2,16 +2,18 @@ Rails.application.routes.draw do
   mount EpiCas::Engine, at: "/"
   devise_for :users
   
-  get 'test/idnex'
+  get 'test/index'
   get 'edit/index'
   match "/403", to: "errors#error_403", via: :all
 
-  get :"slipboxes", to: "slipboxes#index"
   get :"signin", to: "signin#index"
   get :"signup", to: "signup#index"
+
+  get :"slipboxes", to: "slipboxes#index"
   get :"threads", to: "threads#index"
   get :"edit", to: "edit#index"
   get :"mynotes", to: "mynotes#index"
+  
   get :"test", to: "test#index"
   get :ie_warning, to: 'errors#ie_warning'
 
