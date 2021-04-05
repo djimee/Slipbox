@@ -25,11 +25,11 @@
             <%= Slipbox.all.each do |s| %>
               <div class="slipboxWrapper">
               
-                <h3><%= link_to s.title, {:actions => @slipbox_id } %></h3>
+                <h3><%= link_to s.title, {:actions => s.id } %></h3>
                 <p>Description: <%= s.description %></p>
                 <p>No. of Collaborators: 3</p>
                 <p>Last edited - <%= s.updated_at %></p>
-                  
+
               </div>
             <% end %>
           </div>

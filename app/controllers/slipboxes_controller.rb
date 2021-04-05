@@ -3,7 +3,7 @@ class SlipboxesController < ApplicationController
   def index
       @slipboxes = Slipbox.all
       @slipbox = Slipbox.new
-      @slipbox_id = Slipbox.first.id
+      # @slipbox_id = Slipbox.id
     end
         
     def create
