@@ -4,35 +4,35 @@ class SlipboxesController < ApplicationController
       @slipboxes = Slipbox.all
       @slipbox = Slipbox.new
       # @slipbox_id = Slipbox.id
-    end
+      @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
+  end
         
-    def create
-     
-      @slipbox = Slipbox.new(slipbox_params)
+  def create
+    @slipbox = Slipbox.new(slipbox_params)
 
-      if @slipbox.save
-        redirect_to slipboxes_path, notice: 'Slipbox was created.'
-      else
-        render :index
-      end
+    if @slipbox.save
+      redirect_to slipboxes_path, notice: 'Slipbox was created.'
+    else
+      render :index
     end
+  end
 
-    # GET /slipboxes/1
-    def show 
-      # NEED A SEPERATE VIEW ()
-    end
+  # GET /slipboxes/1
+  def show 
+    # NEED A SEPERATE VIEW ()
+  end
 
-    def update
-    end
+  def update
+  end
 
-    def edit
-    end
+  def edit
+  end
 
-    def search
-    end
+  def search
+  end
 
-    def slipbox_params
-      params.require(:slipbox).permit(:title, :description)
-    end
+  def slipbox_params
+    params.require(:slipbox).permit(:title, :description)
+  end
 
 end
