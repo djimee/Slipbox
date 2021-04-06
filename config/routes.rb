@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   get :"slipboxes", to: "slipboxes#index"
   get :"threads", to: "threads#index"
-  get :"edit", to: "edit#index"
   get :"mynotes", to: "mynotes#index"
   
   get :"test", to: "test#index"
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
 
   get :javascript_warning, to: 'errors#javascript_warning'
   
-  resource :slipboxes
+  resources :slipboxes
 
   # root to: "pages#home"
   root to: "slipboxes#index"
