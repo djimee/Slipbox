@@ -4,20 +4,20 @@
     <div class="title" id="main-title">Slipbox</div>
   </h1>
   <ul>
-  <%# navbar for when on the index/slipboxes page %> 
-  <% if current_page?(root_path) %>
-  <%# navbar for when on the threads page %> 
-  <%# navbar for when on any other page %> 
+  <!-- navbar for when on the index/slipboxes page --> 
+  <% if current_page?(slipboxes_path) %>
+    <li class="navbar-item">
+      <a href="/slipboxes">My Slipboxes</a>
+    </li>
+
+  <!-- navbar for when on the threads page --> 
+  <%# elsif current_page?(threads_path) %>
+  <!-- navbar for when on notes -->
+  <%# elsif current_page?(notes_path) %>
+
   <% end %>
-    <li class="navbar-item">
-      <a href="/slipboxes/<%=current_user.username%>">My Slipboxes</a>
-    </li>
-    <li class="navbar-item">
-      <a href="/threads">Threads</a>
-    </li>
-    <li class="navbar-item">
-      <a href="/edit">Edit Notes</a>
-    </li>
+
+    <!-- links that will be shown on the navbar regardless of current page -->
     <li class="navbar-item">
       <a href="/references/<%=current_user.username%>">References</a>
     </li>
