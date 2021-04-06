@@ -1,5 +1,6 @@
 class SlipboxesController < ApplicationController
   before_action :set_slipbox, only: [:show, :edit, :update, :destroy]
+
   # GET /slipboxes  
   def index
       @slipboxes = Slipbox.all
@@ -23,16 +24,19 @@ class SlipboxesController < ApplicationController
     # NEED A SEPERATE VIEW ()
   end
 
+  # GET /slipboxes/1/edit
+  def edit
+    render layout: false
+  end
+    
   # PATCH/PUT /slipboxes/1
   def update
     if @slipbox.update(slipbox_params)
-      redirect_to slipboxs_path, notice: 'Slipbox was successfully updated.'
+      @slipboxes = Slipbox.all
+      render 'update_success'
     else
-      render :index
+      render 'update_failure'
     end
-  end
-
-  def edit
   end
 
   private 
