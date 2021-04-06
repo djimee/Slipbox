@@ -37,7 +37,7 @@
 						<% if !slipbox.description.empty? %>
 						<p>Description: <%= slipbox.description %></p>
 						<% end %>
-						<p>No. of Collaborators: 3</p>
+						<!-- <p>No. of Collaborators: 3</p> uncomment once implemented -->
 						<p>Last edited - <%= slipbox.updated_at %></p>
 						<%= link_to 'Edit', edit_slipbox_path(slipbox), class: 'ajax-modal' %>
 					</div>
@@ -51,12 +51,7 @@
 			<!-- form to create a slipbox -->
 			<section id="createSlipbox">
 				<h2>Create a new Slipbox</h2>
-				<%= simple_form_for Slipbox.new do |f| %>
-				<%= f.input :title %>
-				<%= f.input :description, hint: 'Max 20 words' %> <!-- implement max word count later on -->
-				<%= f.button :submit %>
-				<% end %>
-				<hr class="solid"/>
+				<%= render 'form' %>
 			</section>
 		</div>
 	</body>
