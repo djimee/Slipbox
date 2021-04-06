@@ -1,4 +1,5 @@
 class SlipboxesController < ApplicationController
+  before_action :set_slipbox, only: [:show, :edit, :update, :destroy]
   # GET /slipboxes  
   def index
       @slipboxes = Slipbox.all
@@ -22,13 +23,24 @@ class SlipboxesController < ApplicationController
     # NEED A SEPERATE VIEW ()
   end
 
+  # PATCH/PUT /slipboxes/1
   def update
+    if @slipbox.update(slipbox_params)
+      redirect_to slipboxs_path, notice: 'Slipbox was successfully updated.'
+    else
+      render :index
+    end
   end
 
   def edit
   end
 
   private 
+    # Use callbacks to share common setup or constraints between actions.
+    def set_slipbox
+      @slipbox = Slipbox.find(params[:id])
+    end
+    
     # Only allow a trusted parameter "white list" through.
     def slipbox_params
       params.require(:slipbox).permit(:title, :description)

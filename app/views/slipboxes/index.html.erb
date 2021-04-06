@@ -49,9 +49,9 @@
          <!-- form to create a slipbox -->
          <section id="createSlipbox">
             <h2>Create a new Slipbox</h2>
-            <%= simple_form_for @slipbox do |f| %>
+            <%= simple_form_for Slipbox.new do |f| %>
             <%= f.input :title %>
-            <%= f.input :description %>
+            <%= f.input :description, hint: 'Max 20 words' %> <!-- implement max word count later on -->
             <%= f.button :submit %>
             <% end %>
             <hr class="solid"/>
