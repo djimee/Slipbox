@@ -73,7 +73,7 @@
 	border-radius: 8px;
 }
 
-#mySlipboxes {
+#slipboxes {
 	grid-column-start: 2;
 	grid-column-end: 4;
 	grid-row-start: 2;
@@ -135,6 +135,7 @@ hr.solid {
 	border-radius: 8px;
 	width: fit-content;
 	margin-right: 10px;
+    display: block;
 }
 
 .slipFlexContainer {
