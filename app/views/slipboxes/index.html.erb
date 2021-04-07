@@ -13,24 +13,24 @@
 		<div id="wrapper">
 			<%= render "partials/navbar" %>
 			<section id="welcome">
-				<!-- display username and email on the welcome bar -->
+				<%# display username and email on the welcome bar %>
 				<h2>Welcome <%= current_user.username %></h2>
 				<p>Signed in as: <%= current_user.email %></p>
-				<!-- check if there are any notes, if not don't display "last note worked on:" -->
-				<% if Slipbox.any? %>
-					<!-- show date and time in d/m/y-time - this is in UTC by default -->
+				<%# check if there are any notes, if not don't display "last note worked on:" %>
+				<% if Slipbox.any? %> <%# needs to be changed for note %>
+					<%# show date and time in d/m/y-time - this is in UTC by default - could use 'try' %>
 					<p>Last note worked on: <%= @recent_note.title %> - ADD ID HERE - <%= @recent_note.updated_at.strftime("%d/%m/%y-%I:%M%P") %></p>
 				<% else %>
 					<p>You're yet to write your first note!</p>
 				<% end %>
 			</section>
-			<!-- check if there are any slipboxes to display, if not, notify the user -->
+			<%# check if there are any slipboxes to display, if not, notify the user %>
 			<% if Slipbox.any? %>
 				<section id="slipboxes">
 				<h2>My Slipboxes</h2>
 				<hr class="solid"/>
 				<div class="slipFlexContainer">
-					<!-- render slipboxes in reverse to append most recently updated on the left -->
+					<%# render slipboxes in reverse to append most recently updated on the left %>
 					<%= render @slipboxes.reverse %>
 			<% else %>
 				<p>Create a slipbox below</p>
@@ -38,7 +38,7 @@
 				</div>
 				<hr class="solid"/>
 			</section>
-			<!-- form to create a slipbox -->
+			<%# form to create a slipbox %>
 			<section id="createSlipbox">
 				<h2>Create a new Slipbox</h2>
 				<%= render 'form' %>

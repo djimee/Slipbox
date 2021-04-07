@@ -2,14 +2,9 @@ Rails.application.routes.draw do
   mount EpiCas::Engine, at: "/"
   devise_for :users
 
-  resources :slipboxes
+  resources :slipboxes, :notes
 
   get :"signin", to: "signin#index"
-  get :"signup", to: "signup#index"
-
-  get :"slipboxes", to: "slipboxes#index"
-  get :"threads", to: "threads#index"
-  get :"notes", to: "notes#index"
   
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'

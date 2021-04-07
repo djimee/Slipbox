@@ -5,7 +5,7 @@
   </h1>
   <ul>
   <!-- navbar for when on the index/slipboxes page --> 
-  <% if current_page?(slipboxes_path) %>
+  <% if current_page?(root_path) || current_page?(slipboxes_path)%>
     <li class="navbar-item">
       <a href="/slipboxes">My Slipboxes</a>
     </li>
