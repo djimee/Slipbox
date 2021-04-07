@@ -3,8 +3,10 @@ class SlipboxesController < ApplicationController
 
   # GET /slipboxes  
   def index
-      @slipboxes = Slipbox.all
+      # sort the slipboxes by when they're created to append newer onto the left
+      @slipboxes = Slipbox.all.sort_by { |slipbox| [slipbox.created_at]}
       @slipbox = Slipbox.new
+      
       # gets most recently update note 
       @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
   end
