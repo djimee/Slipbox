@@ -10,7 +10,12 @@ class SlipboxesController < ApplicationController
       # gets most recently updated note 
       @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
   end
-        
+  
+  # GET /slipboxes/1/edit
+  def edit
+    render layout: false
+  end
+
   def create
     @slipbox = Slipbox.new(slipbox_params)
 
@@ -21,14 +26,10 @@ class SlipboxesController < ApplicationController
     end
   end
 
-  # GET /slipboxes/1
-  def show 
-    # NEED A SEPERATE VIEW ()
-  end
-
-  # GET /slipboxes/1/edit
-  def edit
-    render layout: false
+  # DELETE /slipboxes/1
+  def destroy
+    @slipbox.destroy
+    redirect_to slipboxes_url, notice: 'Slipbox was successfully destroyed.'
   end
     
   # PATCH/PUT /slipboxes/1
