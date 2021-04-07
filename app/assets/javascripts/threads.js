@@ -1,22 +1,55 @@
 "use strict"
 
+let currentRoot = "";
+let children = ["1:root"]
+
+
+children.push("1i:node");
+children.push("1ii:node");
+children.push("1iia:node");
+children.push("1iip:node");
+
+children.push("1iii:node");
+children.push("1iiia:node");
+children.push("1iiib:node");
+children.push("1iiic:node");
+children.push("1iiid:node");
+children.push("1iiie:node");
+children.push("1iiif:node");
+
+
+//if delete a node then remove all information,
+//draw id as a 'filler' id on the thread tree
+
+
 class Node {
 
     constructor(id, val) {
         this.id = id;
         this.name = val;
         this.children = [];
-        this.recursion = true;
     }
 
     getId() { return this.id; }
     getName() { return this.name; }
     getChildren() { return this.children; }
-
-    getRecursion() { return this.recursion; }
-
-    setRecursion(rec) { this.recursion = rec; }
     resetChildren() { this.children = []; }
+
+}
+
+class RecNode {
+
+    constructor(parentId) {
+        this.nodeLength = 0;
+    }
+
+    increment() {
+        this.nodeLength++;
+    }
+
+    getNodeLength() {
+        return this.nodeLength;
+    }
 
 }
 
@@ -24,25 +57,41 @@ class GenerateTree {
 
    constructor() {
        this.json = {};
-       this.NODE_REC_LIMIT = 10;
+       this.NODE_REC_LIMIT = 4 ;
    }
 
-    findRootNode(nodeList) {
-        let items = nodeList[0].split(":");
-        return new Node(items[0], items[1], null);
+    findRootNode(nodeList, root) {
+        let n =  null;
+        nodeList.forEach((e) => {
+           
+        if (e.split(":")[0] == root.split(":")[0]){
+            let items = e.split(":");
+            n = new Node(items[0], items[1]);
+        }}
+);      
+        currentRoot = n;
+        return n;
     }; 
 
-    searchChildNodes(childNodes, node) {
-        childNodes.foreach((n) => {if (n.getId() == node.getId()) {return n}});
-        return null;
+    containsRecNode(children) {
+        if (children[0] instanceof RecNode) {return true;}
+        return false;
     }
 
-    addNode(root, parent, node) {
-
+    addNode(root, parent, node) { 
         let parentId = parent.split(":")[0];
         if (root.getId() == parentId) {
-            let info = node.split(":");
-            root.getChildren().push(new Node(info[0], info[1]));
+            if (this.containsRecNode(root.getChildren())) {
+                root.getChildren()[0].increment();
+            } else {
+                let info = node.split(":");
+                root.getChildren().push(new Node(info[0], info[1]));
+            }
+            if (root.getChildren().length > this.NODE_REC_LIMIT && parent.split(":")[0] != currentRoot.getId()) {
+                root.resetChildren();  
+                root.getChildren().push(new RecNode(root.getId()));
+            }
+            
         } else {
 
             for (let i in root.getChildren()) {
@@ -56,12 +105,15 @@ class GenerateTree {
         return root;
     };
 
+    visitRecNode() {
 
-    generateTree(nodeList) {
-        let list = ["1:asd"];
-        let tree = this.findRootNode(list);
+    }
+
+
+    generateTree(nodeList, root) {
+        let tree = this.findRootNode(nodeList, root);
+        console.log(tree);
         //initial addition to JSON for d3 rendering
-        
         for (let n in nodeList) {
             let info = nodeList[n].split(":");
             let parent = info[0].substring(0, info[0].length - 1) + ":" + info[1]; 
@@ -93,8 +145,29 @@ class RenderTree {
 
     }
 
+    decideText(d) {
+        if (d.data.id == undefined) {
+            return "+" +  d.data.nodeLength.toString() + " nodes"
+        }
+        return d.data.id + "\n" + d.data.name;
+        
+    }
+
+    clickHandler(e, i) {
+        if (i.data.id == undefined) {           //instanceof RecNode
+            d3.select("svg").selectAll("path").remove();
+            d3.select("svg").selectAll("text").remove();
+            let newRoot = i.parent.data;
+            console.log(newRoot);
+            console.log(children);
+            let result = new GenerateTree().generateTree(children, newRoot.id + ":" + newRoot.name);
+            new RenderTree(result);
+        } else {
+            //TODO - redirect to note page
+        }
+    }
+
     drawTree(treeJSON) {
-        console.log(treeJSON);
       
         const svg = d3.select('svg');
 
@@ -122,43 +195,27 @@ class RenderTree {
         //control rendering of graph elements
         g.selectAll('path').data(links).enter().append('path')
             .attr('d', linkPathGenerator);
-        
-        
-
-        
-        
+    
         let tree = g.selectAll('text').data(root.descendants())
             .enter().append('text')
                 .attr('x', d => d.x * this.TREE_SCALE_X)
                 .attr('y', d => d.y * this.TREE_SCALE_Y)
                 .attr("class", "event-text")
                 .attr("text-anchor", "middle")
-                .text(d =>  d.data.id + "\n" + d.data.name)
+                .text(d => this.decideText(d))
 
-                .on("click", (e) => {console.log("ASD")})
-
-
-        
-        
-
-
+                .on("click", (e, i) => this.clickHandler(e, i))
     }
 }
 
-
-
 let tree = new GenerateTree();
-let children = []
-
-
-children.push("1i:node");
-children.push("1ii:node");
-children.push("1iia:node");
-
-children.push("1iii:node");
+let result = tree.generateTree(children, "1:root");
+new RenderTree(result); 
 
 
 
-let result = tree.generateTree(children);
-let render = new RenderTree(result);
+
+
+
+
 

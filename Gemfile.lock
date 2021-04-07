@@ -192,7 +192,6 @@ GEM
     erubis (2.7.0)
     eventmachine (1.2.7)
     execjs (2.7.0)
-    fabric-rails (1.2.1)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
@@ -430,7 +429,6 @@ DEPENDENCIES
   epi_deploy!
   epi_js
   eventmachine
-  fabric-rails
   factory_bot_rails
   font-awesome-sass
   haml-rails

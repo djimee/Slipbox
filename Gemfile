@@ -45,7 +45,6 @@ gem 'delayed-plugins-airbrake'
 gem 'daemons', '1.1.9'
 
 gem 'trix'
-gem 'fabric-rails'
 
 group :development, :test do
   gem 'rspec-rails'
