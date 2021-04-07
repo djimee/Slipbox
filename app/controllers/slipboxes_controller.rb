@@ -3,12 +3,12 @@ class SlipboxesController < ApplicationController
 
   # GET /slipboxes  
   def index
-      # sort slipboxes by when they're created to append newer onto the left
-      @slipboxes = Slipbox.all.sort_by { |slipbox| [slipbox.created_at] }
-      @slipbox = Slipbox.new
+    # sort slipboxes by date created to append newer to the left
+    @slipboxes = Slipbox.all.sort_by { |s| [s.created_at] }
+    @slipbox = Slipbox.new
       
-      # gets most recently updated note 
-      @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
+    # gets most recently updated note 
+    @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
   end
 
   # GET /slipboxes/1 - or just threads?
@@ -27,6 +27,8 @@ class SlipboxesController < ApplicationController
     if @slipbox.save
       redirect_to slipboxes_path, notice: 'Slipbox was created.'
     else
+      @recent_note = Slipbox.order("updated_at").last # delete this when the most recent note thingy is implemented
+      @slipboxes = Slipbox.all
       render :index
     end
   end
