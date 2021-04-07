@@ -7,7 +7,7 @@ class SlipboxesController < ApplicationController
       @slipboxes = Slipbox.all.sort_by { |slipbox| [slipbox.created_at]}
       @slipbox = Slipbox.new
       
-      # gets most recently update note 
+      # gets most recently updated note 
       @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
   end
         
