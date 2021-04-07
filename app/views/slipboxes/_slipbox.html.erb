@@ -7,4 +7,5 @@
   <!-- <p>No. of Collaborators: 3</p> uncomment once implemented -->
   <p>Last edited - <%= slipbox.updated_at %></p>
   <%= link_to 'Edit', edit_slipbox_path(slipbox), class: 'ajax-modal' %>
+  <%= link_to 'Destroy', slipbox, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
