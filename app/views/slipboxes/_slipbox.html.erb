@@ -1,0 +1,10 @@
+<div class="slipboxWrapper" id="slipbox-<%= slipbox.id %>">
+  <h3><%= link_to slipbox.title, { :actions => slipbox.id } %></h3>
+  <!-- check if slipbox has a description, if not don't display description -->
+  <% if !slipbox.description.empty? %>
+  <p>Description: <%= slipbox.description %></p>
+  <% end %>
+  <!-- <p>No. of Collaborators: 3</p> uncomment once implemented -->
+  <p>Last edited - <%= slipbox.updated_at %></p>
+  <%= link_to 'Edit', edit_slipbox_path(slipbox), class: 'ajax-modal' %>
+</div>
