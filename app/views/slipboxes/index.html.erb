@@ -25,26 +25,15 @@
 			</section>
 			<!-- check if there are any slipboxes to display, if not, notify the user -->
 			<% if Slipbox.any? %>
-			<section id="slipboxes">
+				<section id="slipboxes">
 				<h2>My Slipboxes</h2>
 				<hr class="solid"/>
 				<div class="slipFlexContainer">
-					<!-- loop through the slipboxes in reverse to append most recently updated on the left -->
-					<% @slipboxes.reverse.each do |slipbox| %>
-					<div class="slipboxWrapper">
-						<h3><%= link_to slipbox.title, { :actions => slipbox.id } %></h3>
-						<!-- check if slipbox has a description, if not don't display description -->
-						<% if !slipbox.description.empty? %>
-						<p>Description: <%= slipbox.description %></p>
-						<% end %>
-						<!-- <p>No. of Collaborators: 3</p> uncomment once implemented -->
-						<p>Last edited - <%= slipbox.updated_at %></p>
-						<%= link_to 'Edit', edit_slipbox_path(slipbox), class: 'ajax-modal' %>
-					</div>
-					<% end %>
-					<% else %>
-					<p>Create a slipbox below</p>
-					<% end %>  
+					<!-- render slipboxes in reverse to append most recently updated on the left -->
+					<%= render @slipboxes.reverse %>
+			<% else %>
+				<p>Create a slipbox below</p>
+			<% end %>
 				</div>
 				<hr class="solid"/>
 			</section>
