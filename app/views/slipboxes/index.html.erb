@@ -18,9 +18,10 @@
 				<p>Signed in as: <%= current_user.email %></p>
 				<!-- check if there are any notes, if not don't display "last note worked on:" -->
 				<% if Slipbox.any? %>
-				<p>Last note worked on: <%= @recent_note.title %> - ADD ID HERE - <%= @recent_note.updated_at %></p>
+					<!-- show date and time in d/m/y-time - this is in UTC by default -->
+					<p>Last note worked on: <%= @recent_note.title %> - ADD ID HERE - <%= @recent_note.updated_at.strftime("%d/%m/%y-%I:%M%P") %></p>
 				<% else %>
-				<p>You're yet to write your first note!</p>
+					<p>You're yet to write your first note!</p>
 				<% end %>
 			</section>
 			<!-- check if there are any slipboxes to display, if not, notify the user -->

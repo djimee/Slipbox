@@ -3,19 +3,24 @@ class SlipboxesController < ApplicationController
 
   # GET /slipboxes  
   def index
-      # sort the slipboxes by when they're created to append newer onto the left
-      @slipboxes = Slipbox.all.sort_by { |slipbox| [slipbox.created_at]}
+      # sort slipboxes by when they're created to append newer onto the left
+      @slipboxes = Slipbox.all.sort_by { |slipbox| [slipbox.created_at] }
       @slipbox = Slipbox.new
       
       # gets most recently updated note 
       @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
+  end
+
+  # GET /slipboxes/1 - or just threads?
+  def show
   end
   
   # GET /slipboxes/1/edit
   def edit
     render layout: false
   end
-
+  
+  # POST /slipboxes
   def create
     @slipbox = Slipbox.new(slipbox_params)
 
@@ -24,12 +29,6 @@ class SlipboxesController < ApplicationController
     else
       render :index
     end
-  end
-
-  # DELETE /slipboxes/1
-  def destroy
-    @slipbox.destroy
-    redirect_to slipboxes_url, notice: 'Slipbox was successfully destroyed.'
   end
     
   # PATCH/PUT /slipboxes/1
@@ -40,6 +39,12 @@ class SlipboxesController < ApplicationController
     else
       render 'update_failure'
     end
+  end
+
+  # DELETE /slipboxes/1
+  def destroy
+    @slipbox.destroy
+    redirect_to slipboxes_url, notice: 'Slipbox was successfully destroyed.'
   end
 
   private 

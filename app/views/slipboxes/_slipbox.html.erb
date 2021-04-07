@@ -1,11 +1,17 @@
 <div class="slipboxWrapper" id="slipbox-<%= slipbox.id %>">
   <h3><%= link_to slipbox.title, { :actions => slipbox.id } %></h3>
+
   <!-- check if slipbox has a description, if not don't display description -->
   <% if !slipbox.description.empty? %>
-  <p>Description: <%= slipbox.description %></p>
+    <p>Description: <%= slipbox.description %></p>
   <% end %>
+
   <!-- <p>No. of Collaborators: 3</p> uncomment once implemented -->
-  <p>Last edited - <%= slipbox.updated_at %></p>
+  
+  <!-- show date and time in d/m/y-time - this is in UTC by default -->
+  <p>Last edited - <%= slipbox.updated_at.strftime("%d/%m/%y-%I:%M%P") %></p>
+
+  <!-- links to edit and delete the slipbox -->
   <%= link_to 'Edit', edit_slipbox_path(slipbox), class: 'ajax-modal' %>
   <%= link_to 'Destroy', slipbox, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
