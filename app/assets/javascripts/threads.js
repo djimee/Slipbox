@@ -7,11 +7,15 @@ let unassigned = [];
 
 children.push("1i:node");
 children.push("1ii:node");
+
 children.push("1iia:node");
 children.push("1iip:node");
 
 //children.push("1iii:node");
-children.push("1iiia:node");
+children.push("1iiiia:node");
+children.push("1iiiib:node");
+
+//children.push("1iiib:node");
 
 
 
@@ -106,6 +110,20 @@ class GenerateTree {
         return a;
     }
 
+    checkDuplicates(array, nodeId) {
+        
+        let ch = false;
+        for (let c in array) {
+            
+            if (array[c].getId() == nodeId) {
+                
+                ch = true;
+                console.log(true);
+            }
+        }
+        return ch;
+    }   
+
 
     addNode(root, parent, node) { 
         let parentId = parent.split(":")[0];
@@ -114,9 +132,13 @@ class GenerateTree {
             if (this.containsRecNode(root.getChildren())) {
                 root.getChildren()[0].increment();
             } else {
+                //account for duplicates
                 let info = node.split(":");
-                console.log(info[0]);
-                root.getChildren().push(new Node(info[0], info[1]));
+
+                if (!this.checkDuplicates(root.getChildren(), info[0])) {
+                    console.log(info[0]);
+                    root.getChildren().push(new Node(info[0], info[1]));
+                } 
             }
             if (root.getChildren().length > NODE_REC_LIMIT && parent.split(":")[0] != currentRoot.getId()) {
                 root.resetChildren();  
@@ -176,12 +198,15 @@ class GenerateTree {
                 }
                 check++;
             }
-            for (let n in nodesToAdd) {
-                let parent = nodesToAdd[n].substring(0, nodesToAdd[n].length - 1); 
-                tree = this.addFalseNode(tree, parent, nodesToAdd[n]);
-            }
-            let parent = info[0].substring(0, info[0].length - 1) + ":" + info[1]; 
 
+            nodesToAdd = nodesToAdd.reverse();
+            for (let n in nodesToAdd) {
+
+                let parent = nodesToAdd[n].substring(0, nodesToAdd[n].length - 1) + ":"; 
+                tree = this.addNode(tree, parent, nodesToAdd[n] + ":");
+            }
+
+            let parent = info[0].substring(0, info[0].length - 1) + ":"; 
             tree = this.addNode(tree, parent, unassigned[a]);
         }
 
@@ -212,8 +237,12 @@ class RenderTree {
     }
 
     decideText(d) {
+        console.log(d);
         if (d.data.id == undefined) {
             return "+" +  ( NODE_REC_LIMIT + d.data.nodeLength).toString() + " nodes. Click to expand."
+        }
+        else if (d.data.name == "") {
+            return "•";
         }
         return d.data.id + " - " + d.data.name;
         
