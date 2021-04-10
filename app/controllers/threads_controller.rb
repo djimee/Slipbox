@@ -1,12 +1,8 @@
 class ThreadsController < ApplicationController
-<<<<<<< HEAD
-  def index
-  end
-end
-=======
 
-    def index
-    end
+  def index
+    @threads = Thread.all.sort_by { |t| [t.created_at] }
+  end
+
     
 end
->>>>>>> b8797560a068e09641f842f65e1b53687a48aaa1
