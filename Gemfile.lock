@@ -1,5 +1,5 @@
 GIT
-  remote: git@git.shefcompsci.org.uk:gems/rubycas-client.git
+  remote: https://git.shefcompsci.org.uk/gems/rubycas-client.git
   revision: f20eaa7ccaba35f2bf976bb7c0d1e7fcbf6be964
   specs:
     rubycas-client (2.3.11)
@@ -370,6 +370,8 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    trix (0.10.1)
+      rails
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
@@ -448,6 +450,7 @@ DEPENDENCIES
   simple_form
   simplecov
   sqlite3
+  trix
   uglifier
   web-console
   webdrivers
@@ -458,4 +461,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.11
+   2.2.14

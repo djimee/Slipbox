@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+<<<<<<< .merge_file_tXoLp5
 User.where(email:
 'mod@sheffield.ac.uk').first_or_create(password:
 'SheffieldMod1!', password_confirmation: 'SheffieldMod1!')
+=======
+User.where(email: 'mod@sheffield.ac.uk').first_or_create(password: 'SheffieldMod1!', password_confirmation: 'SheffieldMod1!')
+>>>>>>> .merge_file_PvXJv5
