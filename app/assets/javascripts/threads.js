@@ -1,5 +1,18 @@
 "use strict"
+
+//TODO
+/**
+ * 1) Sort nodes to correctly parse them
+ * 2) Draw tooltips underneath the graph
+ * 3) Create modal for each node
+ * 4) Fix many bugs
+ */
+
+
 const baseRoot = "1:root";
+const modal = document.getElementById("note-modal");
+const modalClose = document.getElementById("close-btn");
+
 let currentRoot = "";
 let children = ["1:root"];
 let ids = [];
@@ -14,6 +27,10 @@ children.push("1iip:node");
 //children.push("1iii:node");
 children.push("1iiiia:node");
 children.push("1iiiib:node");
+children.push("1iiiic:node");
+children.push("1iiiie:node");
+children.push("1iiiif:node");
+children.push("1iiiid:node");
 
 //children.push("1iiib:node");
 
@@ -82,6 +99,11 @@ class GenerateTree {
        this.NODE_REC_LIMIT = 4 ;
        this.loadIds();
    }
+
+   sortNodes() {
+       //TODO
+   }
+
    loadIds() {
      children.forEach((e) => { ids.push(e.split(":")[0]); });
    }
@@ -232,6 +254,13 @@ class RenderTree {
             .attr("height", this.CONTAINER_HEIGHT)
             .append('g')
                 .attr("transform", "translate(50, 50)");
+
+        //tooltips
+
+        // d3.select("thread-container").append('p')
+        //     .attr("x")
+
+    
         this.drawTree(treeJSON)
 
     }
@@ -268,15 +297,16 @@ class RenderTree {
                 .attr("y", 15)
                 .attr("class", "event-text")
                 .on("click", (e) => {
+
                     this.regenerateTree(new Node(baseRoot.split(":")[0], baseRoot.split(":")[1]))
                 });
         } else {
-            //TODO - redirect to note page
+            modal.style.display = "block"; 
         }
     }
 
     drawTree(treeJSON) {
-      
+        
         const svg = d3.select('svg');
 
         let treeLayout = d3.tree()
@@ -301,24 +331,37 @@ class RenderTree {
             .y(d => d.y * this.TREE_SCALE_Y);
         
         //control rendering of graph elements
-        g.selectAll('path').data(links).enter().append('path')
+
+        let graphElements = g.selectAll('path').data(links).enter();
+
+        graphElements.append('path')
             .attr('d', linkPathGenerator);
-    
+        
+        
+
         let tree = g.selectAll('text').data(root.descendants())
-            .enter().append('text')
+            .enter();
+        
+        tree.append('text')
                 .attr('x', d => d.x * this.TREE_SCALE_X)
                 .attr('y', d => d.y * this.TREE_SCALE_Y)
                 .attr("class", "event-text")
                 .attr("text-anchor", "middle")
                 .text(d => this.decideText(d))
-
                 .on("click", (e, i) => this.clickHandler(e, i))
+                
+        
     }
 }
 
 let tree = new GenerateTree();
 let result = tree.generateTree(children, "1:root");
 new RenderTree(result); 
+
+
+
+modalClose.onclick = function() {modal.style.display = "none"};
+window.onclick = (e) => {if (e.target == modal) {modal.style.display = "none"}};
 
 
 

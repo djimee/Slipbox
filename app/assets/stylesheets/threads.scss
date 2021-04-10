@@ -2,6 +2,9 @@
 /*      Media queries       */
 /****************************/
   
+
+
+
 /* Set default styling */
   * {
   
@@ -32,7 +35,6 @@
     border: 1px solid #c0c0c0;
     
   }
-
   
   #thread-container {
    height: 100%;
@@ -42,12 +44,9 @@
     height: 100%;
   }
 
-  p {
-    text-align: center;
-    background-color: #6688c7;
-   
+  p, h1, button{
+    color: black;
   }
-
   .center-container {
     display: block;
   }
@@ -81,6 +80,66 @@
     
   }
 
- 
 
+  /****************************/
+  /*      Modal background    */
+  /****************************/
+
+
+   /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  color: black;
+
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  width: 40%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} 
+.mbtn .mp .mh {
+
+  color: black;
+  font-family: Helvetica;
+
+
+}
+.mbtn {
+    padding: 0% 2%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    margin-left: 5px;
+}   
+
+.mbtn:hover {
+  background-color: #eee;
+  
+}
   
