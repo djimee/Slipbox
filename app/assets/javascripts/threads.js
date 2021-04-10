@@ -2,44 +2,32 @@
 
 //TODO
 /**
- * 1) Sort nodes to correctly parse them
- * 2) Draw tooltips underneath the graph
- * 3) Create modal for each node
- * 4) Fix many bugs
+ * 1) Draw tooltips underneath the graph
+ * 2) Fix many bugs
+ * 3) optimise recursion (tail)
  */
 
 
 const baseRoot = "1:root";
 const modal = document.getElementById("note-modal");
 const modalClose = document.getElementById("close-btn");
+const NODE_REC_LIMIT = 5;
 
 let currentRoot = "";
-let children = ["1:root"];
+let nodes = ["1:root"];
 let ids = [];
 let unassigned = [];
 
-children.push("1i:node");
-children.push("1ii:node");
-
-children.push("1iia:node");
-children.push("1iip:node");
-
-//children.push("1iii:node");
-children.push("1iiiia:node");
-children.push("1iiiib:node");
-children.push("1iiiic:node");
-children.push("1iiiie:node");
-children.push("1iiiif:node");
-children.push("1iiiid:node");
-
-//children.push("1iiib:node");
-
-
-
-//if delete a node then remove all information,
-//draw id as a 'filler' id on the thread tree
-
-const NODE_REC_LIMIT = 5;
+nodes.push("1ii:node");
+nodes.push("1iia:node");
+nodes.push("1iiiia:node");
+nodes.push("1iiiib:node");
+nodes.push("1iiiic:node");
+nodes.push("1iiiie:node");
+nodes.push("1iiiif:node");
+nodes.push("1iiiid:node");
+nodes.push("1iip:node");
+nodes.push("1i:node");
 
 
 class Node {
@@ -98,14 +86,20 @@ class GenerateTree {
        this.json = {};
        this.NODE_REC_LIMIT = 4 ;
        this.loadIds();
+       this.sortNodes(nodes);
    }
 
-   sortNodes() {
-       //TODO
+   sortNodes(ns) {
+        let  nodeObjects = [];
+        ns.forEach((n) => nodeObjects.push({id: n.split(":")[0], value: n.split(":")[1]}))
+        nodeObjects.sort((a, b) => {return a.id.length - b.id.length;});
+        nodes = [];
+        nodeObjects.forEach((n) => nodes.push(n.id + ":" + n.value));
+        console.log(nodes)
    }
 
    loadIds() {
-     children.forEach((e) => { ids.push(e.split(":")[0]); });
+     nodes.forEach((e) => { ids.push(e.split(":")[0]); });
    }
    findRootNode(nodeList, root) {
         let n =  null;
@@ -136,16 +130,12 @@ class GenerateTree {
         
         let ch = false;
         for (let c in array) {
-            
             if (array[c].getId() == nodeId) {
-                
                 ch = true;
-                console.log(true);
             }
         }
         return ch;
     }   
-
 
     addNode(root, parent, node) { 
         let parentId = parent.split(":")[0];
@@ -158,7 +148,6 @@ class GenerateTree {
                 let info = node.split(":");
 
                 if (!this.checkDuplicates(root.getChildren(), info[0])) {
-                    console.log(info[0]);
                     root.getChildren().push(new Node(info[0], info[1]));
                 } 
             }
@@ -255,18 +244,10 @@ class RenderTree {
             .append('g')
                 .attr("transform", "translate(50, 50)");
 
-        //tooltips
-
-        // d3.select("thread-container").append('p')
-        //     .attr("x")
-
-    
         this.drawTree(treeJSON)
-
     }
 
     decideText(d) {
-        console.log(d);
         if (d.data.id == undefined) {
             return "+" +  ( NODE_REC_LIMIT + d.data.nodeLength).toString() + " nodes. Click to expand."
         }
@@ -274,7 +255,6 @@ class RenderTree {
             return "•";
         }
         return d.data.id + " - " + d.data.name;
-        
     }
 
     regenerateTree(root) {
@@ -286,9 +266,9 @@ class RenderTree {
     }
 
     clickHandler(e, i) {
-        if (i.data.id == undefined) {                       //instanceof RecNode
-                this.regenerateTree(i.parent.data)
-                d3.select("svg")
+        if (i.data.id == undefined) {   //instance of RecNode                  
+            this.regenerateTree(i.parent.data)
+            d3.select("svg")
                 .append("text")
                 .text("<< Go back")
                 .attr("width", 100)
@@ -297,7 +277,6 @@ class RenderTree {
                 .attr("y", 15)
                 .attr("class", "event-text")
                 .on("click", (e) => {
-
                     this.regenerateTree(new Node(baseRoot.split(":")[0], baseRoot.split(":")[1]))
                 });
         } else {
@@ -323,7 +302,6 @@ class RenderTree {
             g.attr('transform', e.transform);
         }));
       
-
         const root = d3.hierarchy(treeJSON);
         const links = treeLayout(root).links();
         const linkPathGenerator = d3.linkVertical()
@@ -331,17 +309,12 @@ class RenderTree {
             .y(d => d.y * this.TREE_SCALE_Y);
         
         //control rendering of graph elements
-
         let graphElements = g.selectAll('path').data(links).enter();
 
         graphElements.append('path')
             .attr('d', linkPathGenerator);
-        
-        
-
         let tree = g.selectAll('text').data(root.descendants())
             .enter();
-        
         tree.append('text')
                 .attr('x', d => d.x * this.TREE_SCALE_X)
                 .attr('y', d => d.y * this.TREE_SCALE_Y)
@@ -349,24 +322,13 @@ class RenderTree {
                 .attr("text-anchor", "middle")
                 .text(d => this.decideText(d))
                 .on("click", (e, i) => this.clickHandler(e, i))
-                
-        
     }
 }
 
 let tree = new GenerateTree();
-let result = tree.generateTree(children, "1:root");
+let result = tree.generateTree(nodes, "1:root");
 new RenderTree(result); 
 
-
-
+//modal section
 modalClose.onclick = function() {modal.style.display = "none"};
 window.onclick = (e) => {if (e.target == modal) {modal.style.display = "none"}};
-
-
-
-
-
-
-
-
