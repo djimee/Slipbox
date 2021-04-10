@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
   get :"signin", to: "signin#index"
   get :"signup", to: "signup#index"
-  get :"threads", to: "threads#index"
+  get :"trees", to: "trees#index"
   get :"edit", to: "edit#index"
-  get :"mynotes", to: "mynotes#index"
+  get :"notes", to: "notes#index"
   get :"test", to: "test#index"
   get :ie_warning, to: 'errors#ie_warning'  
 
