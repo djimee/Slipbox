@@ -1,0 +1,15 @@
+.slipboxWrapper{id: "slipbox-#{slipbox.id}"}
+  %h3= link_to slipbox.title, { :actions => slipbox.id }
+  
+  -# check if slipbox has a description, if not don't display description
+  - if !slipbox.description.empty?
+    %p Description: #{slipbox.description}
+  
+  -# <p>No. of Collaborators: 3</p> uncomment once implemented
+  
+  -# show date and time in d/m/y-time - this is in UTC by default
+  %p Last edited - #{slipbox.updated_at.strftime("%d/%m/%y-%I:%M%P")}
+  
+  -# links to edit and delete the slipbox
+  = link_to 'Edit', edit_slipbox_path(slipbox), class: 'ajax-modal'
+  = link_to 'Delete', slipbox, method: :delete, data: { confirm: 'Are you sure?' }

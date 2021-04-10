@@ -1,0 +1,13 @@
+.modal-dialog
+  .modal-content
+    = simple_form_for @slipbox, remote: true do |f|
+      .modal-header
+        %h4.modal-title Editing slipbox
+        %button.close{ type: :button, data: { dismiss: :modal } }
+        %span &times;
+      .modal-body
+        = f.input :title
+        = f.input :description
+
+      .modal-footer
+      = f.button :submit, class: 'btn btn-outline-primary'
