@@ -6,6 +6,7 @@ class SlipboxesController < ApplicationController
     # sort slipboxes by date created to append newer to the left
     @slipboxes = Slipbox.all.sort_by { |s| [s.created_at] }
     @slipbox = Slipbox.new
+    @slipbox_id = 
       
     # gets most recently updated note 
     @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
@@ -13,6 +14,7 @@ class SlipboxesController < ApplicationController
 
   # GET /slipboxes/1 - or just threads?
   def show
+    redirect_to trees_path
   end
   
   # GET /slipboxes/1/edit
