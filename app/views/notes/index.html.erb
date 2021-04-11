@@ -48,7 +48,12 @@
         <p class="text" id ="edited"> Last Edited - 07/03/2021</p>
         
         <!-- FOR TEST PURPOSES -->
-        <%= link_to "Create a note", new_note_path, class: 'ajax-modal' %>
+        <%# link_to "Create a note", new_note_path(@note), class: 'ajax-modal' %>
+        <%# form to create a slipbox %>
+        <section id="createNote">
+          <h2>Create a new Note</h2>
+          <%= render 'form' %>
+        </section>
 
         <div id="notesWrapper">
             <div class="noteWrapper">
