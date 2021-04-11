@@ -1,6 +1,5 @@
 class SigninController < ApplicationController
   
-  $username = "Bob"
   def index
   end
 

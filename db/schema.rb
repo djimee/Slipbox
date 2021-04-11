@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_GuARd6
-ActiveRecord::Schema.define(version: 2021_03_30_183630) do
-=======
 ActiveRecord::Schema.define(version: 2021_03_24_081901) do
->>>>>>> .merge_file_ohnLm6
-=======
-ActiveRecord::Schema.define(version: 2021_04_07_125149) do
->>>>>>> b8797560a068e09641f842f65e1b53687a48aaa1
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,36 +61,6 @@ ActiveRecord::Schema.define(version: 2021_04_07_125149) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "notes", force: :cascade do |t|
-    t.string "title"
-    t.string "content", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "tree_id", null: false
-    t.string "unique_identifier", null: false
-  end
-
-  create_table "notes_references", id: false, force: :cascade do |t|
-    t.bigint "note_id", null: false
-    t.bigint "reference_id", null: false
-    t.index ["note_id", "reference_id"], name: "index_notes_references_on_note_id_and_reference_id"
-    t.index ["reference_id", "note_id"], name: "index_notes_references_on_reference_id_and_note_id"
-  end
-
-  create_table "references", force: :cascade do |t|
-    t.string "author", null: false
-    t.string "rest_of_reference"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "references_slipboxes", id: false, force: :cascade do |t|
-    t.bigint "slipbox_id", null: false
-    t.bigint "reference_id", null: false
-    t.index ["reference_id", "slipbox_id"], name: "index_references_slipboxes_on_reference_id_and_slipbox_id"
-    t.index ["slipbox_id", "reference_id"], name: "index_references_slipboxes_on_slipbox_id_and_reference_id"
-  end
-
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
@@ -108,65 +70,21 @@ ActiveRecord::Schema.define(version: 2021_04_07_125149) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-<<<<<<< .merge_file_GuARd6
-  create_table "slipbox_users", id: false, force: :cascade do |t|
-    t.boolean "admin", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "slipbox_id", null: false
-    t.bigint "user_id", null: false
-  end
-
-  create_table "slipboxes", force: :cascade do |t|
-    t.string "title", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "description"
-    t.integer "sort"
-  end
-
-  create_table "trees", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "slipbox_id", null: false
-  end
-
-=======
->>>>>>> .merge_file_ohnLm6
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
-<<<<<<< HEAD
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-<<<<<<< .merge_file_GuARd6
-=======
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
->>>>>>> .merge_file_ohnLm6
-=======
->>>>>>> b8797560a068e09641f842f65e1b53687a48aaa1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
-    t.string "uid"
-    t.string "mail"
-    t.string "ou"
-    t.string "dn"
-    t.string "sn"
-    t.string "givenname"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.index ["email"], name: "index_users_on_email"
-    t.index ["username"], name: "index_users_on_username"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
