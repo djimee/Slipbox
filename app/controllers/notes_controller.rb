@@ -5,16 +5,24 @@ class NotesController < ApplicationController
         # @note = Note.new
     end
 
-    def create
-        @note = Note.new(note_params)
+  
+    # def new
+    #     @note = Note.new(note_params)
     
-        if @note.save
-            redirect_to notes_path, notice: 'Note was created.'
-        else
-            @recent_note = Slipbox.order("unique_identifier").last 
-            @notes = Note.all
-            render :index
-        end
+    #     if @note.save
+    #         redirect_to notes_path, notice: 'Note was created.'
+    #     else
+    #         @recent_note = Note.order("unique_identifier").last 
+    #         @notes = Note.all
+    #         render :index
+    #     end
+    # end
+    def new
+        render layout: false
+    end
+
+    def note_params
+        params.permit(:title, :description, :unique_identifier)
     end
 
 end
