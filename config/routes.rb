@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   match "/422", to: "errors#error_422", via: :all
   match "/500", to: "errors#error_500", via: :all
 
-  resources :slipboxes, :notes
+  resources :slipboxes, :notes, :trees
 
   get :"signin", to: "signin#index"
   get :"signup", to: "signup#index"
