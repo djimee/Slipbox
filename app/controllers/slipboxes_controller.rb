@@ -12,9 +12,10 @@ class SlipboxesController < ApplicationController
     @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
   end
 
-  # GET /slipboxes/1 - or just threads?
+  # redirects to the general tree page currently
+  # through the show function in trees controller
   def show
-    redirect_to trees_path
+    redirect_to tree_path
   end
   
   # GET /slipboxes/1/edit

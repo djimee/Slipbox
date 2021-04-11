@@ -21,6 +21,7 @@ class NotesController < ApplicationController
     # def new
     #     render layout: false
     # end
+
     private 
     # Use callbacks to share common setup or constraints between actions.
         def set_note

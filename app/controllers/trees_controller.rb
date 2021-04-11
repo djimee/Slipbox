@@ -5,6 +5,11 @@ class TreesController < ApplicationController
         @tree = Tree.new
     end
 
+    # redirects to the general tree page currently
+    def show
+        redirect_to trees_path
+    end
+
     def create 
         @tree = Tree.new(tree_params)
 
