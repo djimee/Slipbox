@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @tree.title
+%p
+  %b Slipbox:
+  = @tree.slipbox.title
+
+= link_to 'Edit', edit_tree_path(@tree)
+\|
+= link_to 'Back', trees_path

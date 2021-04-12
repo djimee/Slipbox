@@ -1,0 +1,14 @@
+.modal-dialog
+  .modal-content
+    = simple_form_for @note, remote: true do |f|
+      .modal-header
+        %h4.modal-title Create a note
+        %button.close{ type: :button, data: { dismiss: :modal } }
+        %span &times;
+      .modal-body
+        = f.input :title
+        = f.input :content
+        = f.input :unique_identifier
+
+      .modal-footer
+      = f.button :submit, class: 'btn btn-outline-primary'

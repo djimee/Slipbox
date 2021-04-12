@@ -1,6 +1,6 @@
 .slipboxWrapper{id: "slipbox-#{slipbox.id}"}
-  %h3= link_to slipbox.title, { :actions => slipbox.id }
-  
+  %h3= link_to slipbox.title, slipbox_path(slipbox)
+
   -# check if slipbox has a description, if not don't display description
   - if !slipbox.description.empty?
     %p Description: #{slipbox.description}
