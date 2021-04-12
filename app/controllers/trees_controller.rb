@@ -21,6 +21,15 @@ class TreesController < ApplicationController
     def edit
     end
 
+    def update
+        if @tree.update(tree_params)
+            @trees = Tree.all
+            redirect_to tree_path, notice: "Tree was updated."
+        else
+            redirect_to tree_path, notice: "There was a problem updating tree."
+        end
+    end
+
     # POST /trees
     def create 
         @tree = Tree.new(tree_params)
