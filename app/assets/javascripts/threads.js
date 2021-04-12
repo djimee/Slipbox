@@ -23,6 +23,13 @@ children.push("1ii:node");
 
 children.push("1iia:node");
 children.push("1iip:node");
+children.push("1iiaa:node");
+children.push("1iiab:node");
+children.push("1iiac:node");
+children.push("1iiad:node");
+children.push("1iiae:node");
+children.push("1iiaf:node");
+
 
 //children.push("1iii:node");
 children.push("1iiiia:node");
@@ -59,7 +66,7 @@ class Node {
 
 class RecNode {
 
-    constructor(parentId) {
+    constructor() {
         this.nodeLength = 0;
     }
 
@@ -109,6 +116,11 @@ class GenerateTree {
    }
    findRootNode(nodeList, root) {
         let n =  null;
+        let tI = root.split(":");
+        if (tI[1] == "") {
+            currentRoot = new Node(tI[0], tI[1]);
+            return new Node(tI[0], tI[1]);
+        }
         nodeList.forEach((e) => {
            
         if (e.split(":")[0] == root.split(":")[0]){
@@ -140,7 +152,6 @@ class GenerateTree {
             if (array[c].getId() == nodeId) {
                 
                 ch = true;
-                console.log(true);
             }
         }
         return ch;
@@ -149,7 +160,6 @@ class GenerateTree {
 
     addNode(root, parent, node) { 
         let parentId = parent.split(":")[0];
-        
         if (root.getId() == parentId) {
             if (this.containsRecNode(root.getChildren())) {
                 root.getChildren()[0].increment();
@@ -158,22 +168,28 @@ class GenerateTree {
                 let info = node.split(":");
 
                 if (!this.checkDuplicates(root.getChildren(), info[0])) {
-                    console.log(info[0]);
                     root.getChildren().push(new Node(info[0], info[1]));
                 } 
             }
             if (root.getChildren().length > NODE_REC_LIMIT && parent.split(":")[0] != currentRoot.getId()) {
+                console.log(root)
                 root.resetChildren();  
-                root.getChildren().push(new RecNode(root.getId()));
+                root.getChildren().push(new RecNode());
             }
         } else {
+            
             for (let i in root.getChildren()) {
-                if (root.getChildren()[i].getId() == parentId) {
-                    this.addNode(root.getChildren()[i], parent, node);
+                if (!(root.getChildren()[i] instanceof RecNode)) {
+                    if (root.getChildren()[i].getId() == parentId) {
+                        this.addNode(root.getChildren()[i], parent, node);
+                    } else {
+                        this.addNode(root.getChildren()[i], parent, node);
+                    }
                 } else {
-                    this.addNode(root.getChildren()[i], parent, node);
+                    break;
                 }
             }
+            
         }
         return root;
     };
@@ -195,6 +211,7 @@ class GenerateTree {
 
     generateTree(nodeList, root) {
         let tree = this.findRootNode(nodeList, root);
+        console.log(tree);
         //initial addition to JSON for d3 rendering
         for (let n in nodeList) {
             let info = nodeList[n].split(":");
@@ -266,7 +283,6 @@ class RenderTree {
     }
 
     decideText(d) {
-        console.log(d);
         if (d.data.id == undefined) {
             return "+" +  ( NODE_REC_LIMIT + d.data.nodeLength).toString() + " nodes. Click to expand."
         }
@@ -281,8 +297,7 @@ class RenderTree {
         let newRoot = root;
         d3.select("svg").selectAll("path").remove();
         d3.select("svg").selectAll("text").remove();
-        let result = new GenerateTree().generateTree(children, newRoot.id + ":" + newRoot.name);
-        new RenderTree(result);
+        new RenderTree(new GenerateTree().generateTree(children, newRoot.id + ":" + newRoot.name));
     }
 
     clickHandler(e, i) {
@@ -297,7 +312,6 @@ class RenderTree {
                 .attr("y", 15)
                 .attr("class", "event-text")
                 .on("click", (e) => {
-
                     this.regenerateTree(new Node(baseRoot.split(":")[0], baseRoot.split(":")[1]))
                 });
         } else {
@@ -337,8 +351,6 @@ class RenderTree {
         graphElements.append('path')
             .attr('d', linkPathGenerator);
         
-        
-
         let tree = g.selectAll('text').data(root.descendants())
             .enter();
         

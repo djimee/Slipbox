@@ -66,13 +66,10 @@
   }   
 
   .event-text {
-    font-family: Comfortaa;
+    font-family: Helvetica;
     font-size: 1em;
     cursor: pointer;
   }
-
- 
-
 
   path {
     fill: none;
@@ -129,6 +126,19 @@
 
 
 }
+
+input[type="text"] {
+
+    color: black;
+    width: 30%;
+    height: 25px;
+    margin: 2% 2%;
+  
+
+
+
+}
+
 .mbtn {
     padding: 0% 2%;
     height: 40px;
