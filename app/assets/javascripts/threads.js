@@ -1,11 +1,53 @@
+/** How it works
+ * 
+ *  ===OVERVIEW===
+ *  The code takes in an array of note ids and names formatted 
+ *  in a string like this - "id:name" (haven't implemented date created)
+ *  and automatically generates the tree based on the array.
+ * 
+ *  For notes that have ids with parent notes whose ids don't exist (The note doesn't exist in the db), I had to draw dots 
+ *  representing those parent notes.
+ * 
+ * 
+ *
+ *   ====CLICKING ON A NODE====
+ *   Each node displays its id and name. If you click on it a modal appears
+ *   and you can visit the note, add a new one from the note you clicked on or deleting it.
+ * 
+ * 
+ * 
+ *   ===NODE LIMIT===
+ *   Due to the size of the tree, number of child nodes and issues with 
+ *   displaying nodes with long names, I had to create a node limit (currently 5).
+ * 
+ * 
+ * 
+ *  ===PROBLEMS(IMPORTANT)===
+ *  ROOT NODE -> (there may be a problem with finding the root node so it may not work
+ *   this'll be a bug fix
+ *   ) 
+ *   For now use "1:name" as the root node
+ * 
+ *  MULTIPLE TREES -> Also I don't think it can display multiple trees so we're gonna have to display a single thread
+ *  for each slipbox.
+ * 
+ *  ADDING NOTES -> Will the user add a note from a parent, or be able to do it manually (have any id they want ) ?
+ *  
+ *  DELETED NOTES -> For now the system draw dots for notes that lead to exisiting notes whose parents don't exist,
+ *  this goes back to question of how notes will be added. If they are added directly from the parent node then
+ *  we shouldn't have to use dots (they're also a lot slower to generate !)
+ * 
+ */
+
+
+
 "use strict"
 
 //TODO
 /**
- * 1) Sort nodes to correctly parse them
- * 2) Draw tooltips underneath the graph
- * 3) Create modal for each node
- * 4) Fix many bugs
+ * 1) Draw tooltips underneath the graph
+ * 2) Integration testing
+ * 3) Optimisation of recusrion
  */
 
 
