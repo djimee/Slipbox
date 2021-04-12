@@ -1,40 +1,45 @@
 #navbar {
-	grid-column-start: 1;
-	grid-column-end: 2;
-	grid-row-start: 1;
-	grid-row-end: 11;
-	background: linear-gradient(330deg, rgb(175, 222, 227) 10%, rgb(127, 162, 225) 37%, rgb(26, 68, 124) 97%);
-	color: white;
-	font-family: Comfortaa;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 11;
+  background: linear-gradient(
+    330deg,
+    rgb(175, 222, 227) 10%,
+    rgb(127, 162, 225) 37%,
+    rgb(26, 68, 124) 97%
+  );
+  color: white;
+  font-family: Comfortaa;
 }
 
 #main-title {
-	font-size: 1.3em;
-	font-family: Comfortaa;
-	padding: 5%;
-	text-decoration: underline;
+  font-size: 1.3em;
+  font-family: Comfortaa;
+  padding: 5%;
+  text-decoration: underline;
 }
 
 #navbar li a {
-	font-size: 1.2em;
-	text-decoration: none;
-	color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+  color: white;
 }
 
 #navbar li a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 #navbar ul {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 #navbar li {
-	padding: 20px;
+  padding: 20px;
 }
 
 .separator {
-	border: 1px solid #ffffff;
-	width: 90%;
-	margin: auto;
+  border: 1px solid #ffffff;
+  width: 90%;
+  margin: auto;
 }
