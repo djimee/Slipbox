@@ -134,10 +134,15 @@ class GenerateTree {
        this.json = {};
        this.NODE_REC_LIMIT = 4 ;
        this.loadIds();
+       this.sortNodes(nodes);
    }
 
-   sortNodes() {
-       //TODO
+   sortNodes(ns) {
+        let  nodeObjects = [];
+        ns.forEach((n) => nodeObjects.push({id: n.split(":")[0], value: n.split(":")[1]}))
+        nodeObjects.sort((a, b) => {return a.id.length - b.id.length;});
+        nodes = [];
+        nodeObjects.forEach((n) => nodes.push(n.id + ":" + n.value));
    }
 
    loadIds() {
