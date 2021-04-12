@@ -21,14 +21,7 @@ let unassigned = [];
 children.push("1i:node");
 children.push("1ii:node");
 
-children.push("1iia:node");
-children.push("1iip:node");
-children.push("1iiaa:node");
-children.push("1iiab:node");
-children.push("1iiac:node");
-children.push("1iiad:node");
-children.push("1iiae:node");
-children.push("1iiaf:node");
+
 
 
 //children.push("1iii:node");
@@ -172,7 +165,6 @@ class GenerateTree {
                 } 
             }
             if (root.getChildren().length > NODE_REC_LIMIT && parent.split(":")[0] != currentRoot.getId()) {
-                console.log(root)
                 root.resetChildren();  
                 root.getChildren().push(new RecNode());
             }
@@ -194,24 +186,10 @@ class GenerateTree {
         return root;
     };
 
-    addFalseNode(root, parentId, nodeId) {        
-        if (root.getId() == parentId) {
-            root.getChildren().push(new FalseNode(nodeId));    
-        } else {
-            for (let i in root.getChildren()) {
-                if (root.getChildren()[i].getId() == parentId) {
-                    this.addFalseNode(root.getChildren()[i], parentId, nodeId);
-                } else {
-                    this.addFalseNode(root.getChildren()[i], parentId, nodeId);
-                }
-            }
-        }
-        return root;
-    }
+   
 
     generateTree(nodeList, root) {
         let tree = this.findRootNode(nodeList, root);
-        console.log(tree);
         //initial addition to JSON for d3 rendering
         for (let n in nodeList) {
             let info = nodeList[n].split(":");
@@ -284,7 +262,7 @@ class RenderTree {
 
     decideText(d) {
         if (d.data.id == undefined) {
-            return "+" +  ( NODE_REC_LIMIT + d.data.nodeLength).toString() + " nodes. Click to expand."
+            return  "Click to expand."
         }
         else if (d.data.name == "") {
             return "•";

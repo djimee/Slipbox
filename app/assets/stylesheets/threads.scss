@@ -133,15 +133,16 @@ input[type="text"] {
     width: 30%;
     height: 25px;
     margin: 2% 2%;
-  
+    float: right;
 
 
 
 }
 
-.mbtn {
+button .mbtn {
     padding: 0% 2%;
     height: 40px;
+    width: 20%;
     border: none;
     border-radius: 5px;
     float: right;
@@ -151,5 +152,15 @@ input[type="text"] {
 .mbtn:hover {
   background-color: #eee;
   
+}
+
+fieldset {
+  border-radius: 10px;
+  border: solid 1px #aaa;
+  padding: 2% 2%;
+}
+
+legend {
+  color: black;
 }
   
