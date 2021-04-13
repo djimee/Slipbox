@@ -57,29 +57,25 @@ const modalClose = document.getElementById("close-btn");
 const NODE_REC_LIMIT = 5; //limits number of child nodes
 
 let currentRoot = "";
-let children = ["1:root"];
+let nodes = ["1:root"];
 let ids = [];
 let unassigned = [];
-children.push("1ii:node");
+nodes.push("1ii:node");
 
 
 //example nodes
-children.push("1i:node");
-<<<<<<< HEAD
+nodes.push("1i:node");
 
 
 
 
 //children.push("1iii:node");
-=======
-children.push("1ii:node");
->>>>>>> ae0e1763db05b622f8ae0b76de80dc50c5bc7d31
-children.push("1iiiia:node");
-children.push("1iiiib:node");
-children.push("1iiiic:node");
-children.push("1iiiie:node");
-children.push("1iiiif:node");
-children.push("1iiiid:node");
+nodes.push("1iiiia:node");
+nodes.push("1iiiib:node");
+nodes.push("1iiiic:node");
+nodes.push("1iiiie:node");
+nodes.push("1iiiif:node");
+nodes.push("1iiiid:node");
 
 
 //represents a node in the tree
@@ -155,7 +151,7 @@ class GenerateTree {
    }
 
    loadIds() {
-     children.forEach((e) => { ids.push(e.split(":")[0]); });
+     nodes.forEach((e) => { ids.push(e.split(":")[0]); });
    }
    findRootNode(nodeList, root) {
         let n =  null;
@@ -395,7 +391,7 @@ class RenderTree {
 }
 
 let tree = new GenerateTree();
-let result = tree.generateTree(children, "1:root");
+let result = tree.generateTree(nodes, "1:root");
 new RenderTree(result); 
 
 
