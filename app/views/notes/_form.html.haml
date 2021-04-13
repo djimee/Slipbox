@@ -4,7 +4,10 @@
 
   .form-inputs
     = f.input :title
+    = f.input :unique_identifier
     = f.input :content
+    = f.association :tree
+
     
   .form-actions
     = f.button :submit, class: 'btn btn-outline-primary'

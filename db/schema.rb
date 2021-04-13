@@ -139,7 +139,10 @@ ActiveRecord::Schema.define(version: 2021_04_12_091012) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+<<<<<<< HEAD
     t.string "remember_token"
+=======
+>>>>>>> create-note
     t.index ["email"], name: "index_users_on_email"
     t.index ["username"], name: "index_users_on_username"
   end

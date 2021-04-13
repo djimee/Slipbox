@@ -3,7 +3,25 @@ class NotesController < ApplicationController
     def index
         # @notes = Note.all.sort_by { |n| [n.unique_identifier] }
         @notes = Note.all
+    end
+
+    def new
         @note = Note.new
+    end
+
+    def show
+    end
+
+    def edit
+    end
+
+    def update
+        if @note.update(note_params)
+            @notes = Note.all
+            redirect_to note_path, notice: "Note was updated."
+        else
+            redirect_to note_path, notice: "There was a problem updating note."
+        end
     end
 
     def create
@@ -29,7 +47,7 @@ class NotesController < ApplicationController
         end
 
         def note_params
-            params.require(:note).permit(:title, :content, :unique_identifier)
+            params.require(:note).permit(:title, :content, :unique_identifier, :tree_id)
         end
 
 end
