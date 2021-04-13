@@ -1,0 +1,2 @@
+module EditNotesHelper
+end

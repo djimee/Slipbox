@@ -12,20 +12,38 @@
     <body>  
         <!-- The Modal -->
         <div id="note-modal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
 
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="close-btn" class="close">&times;</span>
-            <h1 class="mh">Title - Id</h1>
-            <p class="mp">Last Edited at 10/04/2021 : 03:10 <p>
-            <button class="mbtn">Add New Note</button>
-            <button class="mbtn">Delete Note</button>
-            <button class="mbtn">Visit Note</button>
+                <span id="close-btn" class="close">&times;</span>
+                <form>
+                    <fieldset>
+                        <legend> Note Info</legend>
+                        <input type="text" id="note-title" value="title" required="">
+                        <input type="text" id="note-id" value="id" required="">
+                        <p class="mp">Last Edited at 10/04/2021 : 03:10 <p>
+                        <button class="mbtn">Save changes</button>
+                    </fieldset>
+                    <fieldset>
+                        <legend> Add note</legend>
 
+                        <input type="text" id="add-id" value="title">
+                        <input type="text" id="add-name" value="id">
+                        <button class="mbtn">Submit </button>
+                    </fieldset>
+                    <fieldset>
 
+                        
+                        <button class="mbtn">Visit Note </button>
+                        <button class="mbtn">Delete Note </button>
 
-        </div>
+                    </fieldset>
 
+                </form>
+
+           
+              
+            </div>
         </div> 
 
 

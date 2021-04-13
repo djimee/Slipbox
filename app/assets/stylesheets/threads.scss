@@ -66,13 +66,10 @@
   }   
 
   .event-text {
-    font-family: Comfortaa;
+    font-family: Helvetica;
     font-size: 1em;
     cursor: pointer;
   }
-
- 
-
 
   path {
     fill: none;
@@ -129,9 +126,23 @@
 
 
 }
-.mbtn {
+
+input[type="text"] {
+
+    color: black;
+    width: 30%;
+    height: 25px;
+    margin: 2% 2%;
+    float: right;
+
+
+
+}
+
+button .mbtn {
     padding: 0% 2%;
     height: 40px;
+    width: 20%;
     border: none;
     border-radius: 5px;
     float: right;
@@ -141,5 +152,15 @@
 .mbtn:hover {
   background-color: #eee;
   
+}
+
+fieldset {
+  border-radius: 10px;
+  border: solid 1px #aaa;
+  padding: 2% 2%;
+}
+
+legend {
+  color: black;
 }
   
