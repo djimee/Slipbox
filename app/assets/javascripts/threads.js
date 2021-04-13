@@ -59,9 +59,9 @@ let currentRoot = "";
 let children = ["1:root"];
 let ids = [];
 let unassigned = [];
+children.push("1ii:node");
 
 children.push("1i:node");
-children.push("1ii:node");
 
 
 
