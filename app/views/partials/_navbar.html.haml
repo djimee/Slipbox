@@ -19,4 +19,4 @@
     %li.navbar-item
       %a{:href => "/settings"} Settings
     %li.navbar-item
-      %a{:href => ""} Logout
+      = link_to('Logout', destroy_user_session_path, method: :delete)
