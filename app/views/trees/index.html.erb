@@ -56,6 +56,16 @@
                     <h2> <%= link_to 'Create a new Tree', new_tree_path %></h2>
 			    </section>
 
+                <% if Tree.any? %>
+                    <section id="trees">
+                    <h2>Trees</h2>
+                    <hr class="solid"/>
+                    <div class="slipFlexContainer">
+                        <%= render @trees.reverse %>
+                <% else %>
+                    <p>Create a tree below</p>
+                <% end %>
+
                 <div id="thread-container">
                     <svg></svg>
                 </div>                
