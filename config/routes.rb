@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   match "/422", to: "errors#error_422", via: :all
   match "/500", to: "errors#error_500", via: :all
 
-  resources :slipboxes, :notes, :trees
+  resources :slipboxes, :notes, :trees, :help
 
   get :"signin", to: "signin#index"
   get :"signup", to: "signup#index"
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get :"notes", to: "notes#index"
   get :"test", to: "test#index"
   get :ie_warning, to: 'errors#ie_warning'  
+  get :"help", to: "help#index"
+  get :"settings", to: "settings#index"
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
