@@ -8,13 +8,12 @@ Rails.application.routes.draw do
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
   match "/500", to: "errors#error_500", via: :all
-  
+
   get :"signin", to: "signin#index"
   get :"signup", to: "signup#index"
   get :"trees", to: "trees#index"
   get :"edit", to: "edit#index"
   get :"notes", to: "notes#index"
-  get :"test", to: "test#index"
   get :ie_warning, to: 'errors#ie_warning'  
   get :"help", to: "help#index"
   get :"settings", to: "settings#index"
