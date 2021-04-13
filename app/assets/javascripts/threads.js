@@ -51,9 +51,10 @@
  */
 
 
-const baseRoot = "1:root";
+const baseRoot = "1:root"; //starting node shouldn't be hard-coded
 const modal = document.getElementById("note-modal");
 const modalClose = document.getElementById("close-btn");
+const NODE_REC_LIMIT = 5; //limits number of child nodes
 
 let currentRoot = "";
 let children = ["1:root"];
@@ -61,12 +62,18 @@ let ids = [];
 let unassigned = [];
 children.push("1ii:node");
 
+
+//example nodes
 children.push("1i:node");
+<<<<<<< HEAD
 
 
 
 
 //children.push("1iii:node");
+=======
+children.push("1ii:node");
+>>>>>>> ae0e1763db05b622f8ae0b76de80dc50c5bc7d31
 children.push("1iiiia:node");
 children.push("1iiiib:node");
 children.push("1iiiic:node");
@@ -74,16 +81,8 @@ children.push("1iiiie:node");
 children.push("1iiiif:node");
 children.push("1iiiid:node");
 
-//children.push("1iiib:node");
 
-
-
-//if delete a node then remove all information,
-//draw id as a 'filler' id on the thread tree
-
-const NODE_REC_LIMIT = 5;
-
-
+//represents a node in the tree
 class Node {
 
     constructor(id, val) {
@@ -99,6 +98,8 @@ class Node {
 
 }
 
+//this is a node representing child nodes of a node that have
+//too many children. 
 class RecNode {
 
     constructor() {
@@ -115,6 +116,8 @@ class RecNode {
 
 }
 
+// This represents a node that needs to be present for the thread
+//tree to parse nodes that aren't direct children of current nodes.
 class FalseNode {
 
     constructor(id) {
@@ -140,10 +143,15 @@ class GenerateTree {
        this.json = {};
        this.NODE_REC_LIMIT = 4 ;
        this.loadIds();
+       this.sortNodes(nodes);
    }
 
-   sortNodes() {
-       //TODO
+   sortNodes(ns) {
+        let  nodeObjects = [];
+        ns.forEach((n) => nodeObjects.push({id: n.split(":")[0], value: n.split(":")[1]}))
+        nodeObjects.sort((a, b) => {return a.id.length - b.id.length;});
+        nodes = [];
+        nodeObjects.forEach((n) => nodes.push(n.id + ":" + n.value));
    }
 
    loadIds() {
