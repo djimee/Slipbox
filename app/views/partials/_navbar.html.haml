@@ -6,7 +6,7 @@
     #main-title.title Slipbox
   %ul
     %li.navbar-item
-      %a{:href => "/myslipboxes"} Slipboxes
+      %a{:href => "/slipboxes"} Slipboxes
     %li.navbar-item
       %a{:href => "/threads"} Threads
     %li.navbar-item
@@ -15,12 +15,8 @@
       %a{:href => ""} References
     .separator
     %li.navbar-item
-      %a{:href => ""} Help
+      %a{:href => "/help"} Help
     %li.navbar-item
-      %a{:href => ""} Settings
+      %a{:href => "/settings"} Settings
     %li.navbar-item
-<<<<<<< .merge_file_rSeHK1
-      %a{:href => ""} Logout
-=======
-      %a{:href => ""} Logout
->>>>>>> .merge_file_5XiOF0
+      = link_to('Logout', destroy_user_session_path, method: :delete)

@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_04_13_140415) do
+=======
+ActiveRecord::Schema.define(version: 2021_04_12_091012) do
+>>>>>>> 849221be74565fb0a1e7d034d9bc6a0ccde7a48a
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,16 +65,34 @@ ActiveRecord::Schema.define(version: 2021_04_13_140415) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "edit_notes", force: :cascade do |t|
+  create_table "notes", force: :cascade do |t|
     t.string "title"
+    t.string "content", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tree_id", null: false
+    t.string "unique_identifier", null: false
+  end
+
+  create_table "notes_references", id: false, force: :cascade do |t|
+    t.bigint "note_id", null: false
+    t.bigint "reference_id", null: false
+    t.index ["note_id", "reference_id"], name: "index_notes_references_on_note_id_and_reference_id"
+    t.index ["reference_id", "note_id"], name: "index_notes_references_on_reference_id_and_note_id"
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.string "author", null: false
+    t.string "rest_of_reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "references_slipboxes", id: false, force: :cascade do |t|
+    t.bigint "slipbox_id", null: false
+    t.bigint "reference_id", null: false
+    t.index ["reference_id", "slipbox_id"], name: "index_references_slipboxes_on_reference_id_and_slipbox_id"
+    t.index ["slipbox_id", "reference_id"], name: "index_references_slipboxes_on_slipbox_id_and_reference_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -82,21 +104,47 @@ ActiveRecord::Schema.define(version: 2021_04_13_140415) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "slipbox_users", id: false, force: :cascade do |t|
+    t.boolean "admin", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "slipbox_id", null: false
+    t.bigint "user_id", null: false
+  end
+
+  create_table "slipboxes", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
+    t.integer "sort"
+  end
+
+  create_table "trees", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "slipbox_id", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
+    t.string "uid"
+    t.string "mail"
+    t.string "ou"
+    t.string "dn"
+    t.string "sn"
+    t.string "givenname"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["username"], name: "index_users_on_username"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
