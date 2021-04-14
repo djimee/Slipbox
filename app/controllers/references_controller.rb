@@ -4,10 +4,11 @@ class ReferencesController < ApplicationController
   # GET /references
   def index
     @references = Reference.all
+    @reference = Reference.new
   end
 
-  def associated_slipboxes
-  end
+  # def associated_slipboxes
+  # end
 
   # GET /references/1
   def show
