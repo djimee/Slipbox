@@ -1,0 +1,24 @@
+%h1 Listing references
+
+%table
+  %thead
+    %tr
+      %th Author
+      %th Rest
+      %th 
+      %th
+      %th
+
+  %tbody
+    - @references.each do |reference|
+      %tr
+        %td= reference.author
+        %td= reference.rest_of_reference
+        %td= link_to 'Associated slipboxes', associated_slipboxes_path(reference)
+        %td= link_to 'Show', reference
+        %td= link_to 'Edit', edit_reference_path(reference)
+        %td= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Reference', new_reference_path
