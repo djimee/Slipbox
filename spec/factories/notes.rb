@@ -2,6 +2,7 @@
 #
 # Table name: notes
 #
+#  id                :bigint           not null, primary key
 #  content           :string           not null
 #  title             :string
 #  unique_identifier :string           not null

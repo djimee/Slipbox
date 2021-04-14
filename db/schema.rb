@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_140415) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "notes", id: false, force: :cascade do |t|
+  create_table "notes", force: :cascade do |t|
     t.string "title"
     t.string "content", null: false
     t.datetime "created_at", precision: 6, null: false
