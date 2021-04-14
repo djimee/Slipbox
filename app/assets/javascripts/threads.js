@@ -1,24 +1,68 @@
+/** How it works
+ * 
+ *  ===OVERVIEW===
+ *  The code takes in an array of note ids and names formatted 
+ *  in a string like this - "id:name" (haven't implemented date created)
+ *  and automatically generates the tree based on the array.
+ * 
+ *  For notes that have ids with parent notes whose ids don't exist (The note doesn't exist in the db), I had to draw dots 
+ *  representing those parent notes.
+ * 
+ * 
+ *
+ *   ====CLICKING ON A NODE====
+ *   Each node displays its id and name. If you click on it a modal appears
+ *   and you can visit the note, add a new one from the note you clicked on or deleting it.
+ * 
+ * 
+ * 
+ *   ===NODE LIMIT===
+ *   Due to the size of the tree, number of child nodes and issues with 
+ *   displaying nodes with long names, I had to create a node limit (currently 5).
+ * 
+ * 
+ * 
+ *  ===PROBLEMS(IMPORTANT)===
+ *  ROOT NODE -> (there may be a problem with finding the root node so it may not work
+ *   this'll be a bug fix
+ *   ) 
+ *   For now use "1:name" as the root node
+ * 
+ *  MULTIPLE TREES -> Also I don't think it can display multiple trees so we're gonna have to display a single thread
+ *  for each slipbox.
+ * 
+ *  ADDING NOTES -> Will the user add a note from a parent, or be able to do it manually (have any id they want ) ?
+ *  
+ *  DELETED NOTES -> For now the system draw dots for notes that lead to exisiting notes whose parents don't exist,
+ *  this goes back to question of how notes will be added. If they are added directly from the parent node then
+ *  we shouldn't have to use dots (they're also a lot slower to generate !)
+ * 
+ */
+
+
+
 "use strict"
 
 //TODO
 /**
  * 1) Draw tooltips underneath the graph
- * 2) Fix many bugs
- * 3) optimise recursion (tail)
+ * 2) Integration testing
+ * 3) Optimisation of recusrion
  */
 
 
-const baseRoot = "1:root";
+const baseRoot = "1:root"; //starting node shouldn't be hard-coded
 const modal = document.getElementById("note-modal");
 const modalClose = document.getElementById("close-btn");
-const NODE_REC_LIMIT = 5;
+const NODE_REC_LIMIT = 5; //limits number of child nodes
 
 let currentRoot = "";
 let nodes = ["1:root"];
 let ids = [];
 let unassigned = [];
-
 nodes.push("1ii:node");
+
+
 nodes.push("1iia:node");
 nodes.push("1iiiia:node");
 nodes.push("1iiiib:node");
@@ -26,10 +70,9 @@ nodes.push("1iiiic:node");
 nodes.push("1iiiie:node");
 nodes.push("1iiiif:node");
 nodes.push("1iiiid:node");
-nodes.push("1iip:node");
-nodes.push("1i:node");
 
 
+//represents a node in the tree
 class Node {
 
     constructor(id, val) {
@@ -45,9 +88,11 @@ class Node {
 
 }
 
+//this is a node representing child nodes of a node that have
+//too many children. 
 class RecNode {
 
-    constructor(parentId) {
+    constructor() {
         this.nodeLength = 0;
     }
 
@@ -61,6 +106,8 @@ class RecNode {
 
 }
 
+// This represents a node that needs to be present for the thread
+//tree to parse nodes that aren't direct children of current nodes.
 class FalseNode {
 
     constructor(id) {
@@ -95,7 +142,6 @@ class GenerateTree {
         nodeObjects.sort((a, b) => {return a.id.length - b.id.length;});
         nodes = [];
         nodeObjects.forEach((n) => nodes.push(n.id + ":" + n.value));
-        console.log(nodes)
    }
 
    loadIds() {
@@ -103,6 +149,11 @@ class GenerateTree {
    }
    findRootNode(nodeList, root) {
         let n =  null;
+        let tI = root.split(":");
+        if (tI[1] == "") {
+            currentRoot = new Node(tI[0], tI[1]);
+            return new Node(tI[0], tI[1]);
+        }
         nodeList.forEach((e) => {
            
         if (e.split(":")[0] == root.split(":")[0]){
@@ -139,7 +190,6 @@ class GenerateTree {
 
     addNode(root, parent, node) { 
         let parentId = parent.split(":")[0];
-        
         if (root.getId() == parentId) {
             if (this.containsRecNode(root.getChildren())) {
                 root.getChildren()[0].increment();
@@ -153,34 +203,27 @@ class GenerateTree {
             }
             if (root.getChildren().length > NODE_REC_LIMIT && parent.split(":")[0] != currentRoot.getId()) {
                 root.resetChildren();  
-                root.getChildren().push(new RecNode(root.getId()));
+                root.getChildren().push(new RecNode());
             }
         } else {
+            
             for (let i in root.getChildren()) {
-                if (root.getChildren()[i].getId() == parentId) {
-                    this.addNode(root.getChildren()[i], parent, node);
+                if (!(root.getChildren()[i] instanceof RecNode)) {
+                    if (root.getChildren()[i].getId() == parentId) {
+                        this.addNode(root.getChildren()[i], parent, node);
+                    } else {
+                        this.addNode(root.getChildren()[i], parent, node);
+                    }
                 } else {
-                    this.addNode(root.getChildren()[i], parent, node);
+                    break;
                 }
             }
+            
         }
         return root;
     };
 
-    addFalseNode(root, parentId, nodeId) {        
-        if (root.getId() == parentId) {
-            root.getChildren().push(new FalseNode(nodeId));    
-        } else {
-            for (let i in root.getChildren()) {
-                if (root.getChildren()[i].getId() == parentId) {
-                    this.addFalseNode(root.getChildren()[i], parentId, nodeId);
-                } else {
-                    this.addFalseNode(root.getChildren()[i], parentId, nodeId);
-                }
-            }
-        }
-        return root;
-    }
+   
 
     generateTree(nodeList, root) {
         let tree = this.findRootNode(nodeList, root);
@@ -249,7 +292,7 @@ class RenderTree {
 
     decideText(d) {
         if (d.data.id == undefined) {
-            return "+" +  ( NODE_REC_LIMIT + d.data.nodeLength).toString() + " nodes. Click to expand."
+            return  "Click to expand."
         }
         else if (d.data.name == "") {
             return "•";
@@ -261,8 +304,7 @@ class RenderTree {
         let newRoot = root;
         d3.select("svg").selectAll("path").remove();
         d3.select("svg").selectAll("text").remove();
-        let result = new GenerateTree().generateTree(children, newRoot.id + ":" + newRoot.name);
-        new RenderTree(result);
+        new RenderTree(new GenerateTree().generateTree(children, newRoot.id + ":" + newRoot.name));
     }
 
     clickHandler(e, i) {

@@ -12,7 +12,6 @@
 #  last_sign_in_ip    :inet
 #  mail               :string
 #  ou                 :string
-#  remember_token     :string
 #  sign_in_count      :integer          default(0), not null
 #  sn                 :string
 #  uid                :string

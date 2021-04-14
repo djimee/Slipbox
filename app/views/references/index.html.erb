@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta description="References page for Slipbox">
+        <title>References</title>
+        
+        <%= stylesheet_link_tag "slipboxes" %>
+        <%= stylesheet_link_tag "references" %>
+
+    
+    </head>
+    <body>  
+        <div id="wrapper">
+            <%= render "partials/navbar" %>
+
+            <section id="top-navbar">
+                <ul id="note-n">
+                    <li class="note-ni"><button><%= image_tag("Save_Icon_1.png", :alt => "save") %><p class="tn-p">Save References</p></button></li> 
+                    <li class="note-ni"><button><%= image_tag("Group_Icon_1.png", :alt => "group settings") %><p class="tn-p">Group Settings</p></button></li>
+                    <li class="note-ni"><button><%= image_tag("Delete_Forever_Icon_1.png", :alt => "delete forever") %><p class="tn-p">Delete All References</p></button></li>
+                </ul>
+            </section>
+            <div id="mainContent">
+                <section id="referencesFormSection">
+                    <h2> Add/Edit References </h2>
+                    <%= render 'form' %>
+                </section>
+                <section id="references">
+                </section>
+                
+            </div>
+           
+        </div>
+    </body>
+</html>

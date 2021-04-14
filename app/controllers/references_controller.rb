@@ -1,4 +1,5 @@
 class ReferencesController < ApplicationController
+<<<<<<< HEAD
   before_action :set_reference, only: [:show, :edit, :update, :destroy]
 
   # GET /references
@@ -63,3 +64,8 @@ class ReferencesController < ApplicationController
       params.require(:reference).permit(:author, :rest_of_reference, slipbox_ids: [])
     end
 end
+=======
+    def index
+    end
+end
+>>>>>>> d8ffa78292f543bddb8b3ac3714e5f17a7836f85

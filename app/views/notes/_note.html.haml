@@ -1,0 +1,15 @@
+.noteWrapper{id: "note-#{note.id}"}
+  %h3= link_to note.title, notes_path(note)
+
+  -# check if note has a description, if not don't display description
+  - if !note.content.empty?
+    %p Content: #{note.content}
+  
+  -# <p>No. of Collaborators: 3</p> uncomment once implemented
+  
+  -# show date and time in d/m/y-time - this is in UTC by default
+  %p Last edited - #{note.updated_at.strftime("%d/%m/%y-%I:%M%P")}
+  
+  -# links to edit and delete the note
+-#   = link_to 'Edit', edit_note_path(note), class: 'ajax-modal'
+-#   = link_to 'Delete', note, method: :delete, data: { confirm: 'Are you sure?' }
