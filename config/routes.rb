@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get :ie_warning, to: 'errors#ie_warning'  
   get :"help", to: "help#index"
   get :"settings", to: "settings#index"
+  get :"references", to: "references#index"
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
