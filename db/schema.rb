@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 2021_04_14_150857) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "remember_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["username"], name: "index_users_on_username"
   end

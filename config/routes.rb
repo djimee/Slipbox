@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   mount EpiCas::Engine, at: "/"
   devise_for :users
   
-  resources :slipboxes, :notes, :trees, :help
+  resources :slipboxes, :notes, :trees, :references, :help, :settings
 
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get :ie_warning, to: 'errors#ie_warning'  
   get :"help", to: "help#index"
   get :"settings", to: "settings#index"
+  get :"references", to: "references#index"
+
+  get :"references/associated_slipboxes/:id", to: "references#associated_slipboxes", as: 'associated_slipboxes'
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
