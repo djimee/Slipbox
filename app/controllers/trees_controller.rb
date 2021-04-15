@@ -3,7 +3,8 @@ class TreesController < ApplicationController
 
     # GET /trees
     def index
-        @trees = Tree.all
+        @trees = Tree.order("updated_at")
+        @current_slipbox = Slipbox.new
     end
 
     # GET /trees/new
