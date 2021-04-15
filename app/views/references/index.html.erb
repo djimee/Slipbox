@@ -4,7 +4,6 @@
     <meta description="References page for Slipbox">
         <title>References</title>
         
-        <%= stylesheet_link_tag "slipboxes" %>
         <%= stylesheet_link_tag "references" %>
 
     
@@ -20,27 +19,34 @@
                     <li class="note-ni"><button><%= image_tag("Delete_Forever_Icon_1.png", :alt => "delete forever") %><p class="tn-p">Delete All References</p></button></li>
                 </ul>
             </section>
-            <div id="mainContent">
-                <section id="referencesFormSection">
+            <div id="main-content">
+                 <section id="ref-form">
                     <h2> Add/Edit References </h2>
-                    <!-- <%= render 'form' %> -->
+                     <!-- <%= render 'form' %> -->
                 </section>
-                <section id="references">
-                    <h2> Reference Name </h2>
-                    <div id="referencesWrapper">
-                        <div class="referenceWrapper">
-                            <h2 class="referenceTitle"> Reference Name </h2>
-                            <div class="referenceNotesWrapper">
-                                <p> Notes: </p>
-                                <p class="note"> note1 </p>
-                                <p class="note"> note2 </p>
-                            </div>
-                            <button class="deleteButton"><%= image_tag("Delete_Forever_Icon_1.png", :alt => "delete forever") %><p class="tn-p">Delete All References</p></button>
-                        </div>
+                <section id="ref-display">
+
+                    <h2> References </h2>
+                    <div id="references-wrapper">
+                        <table id="ref-table">
+    
+                            <tr>
+                                <th>Reference Name</th>
+                                <th>Notes</th>
+                                <th>Filler</th>
+                            </tr>
+                            <tr>
+                                <td>Example name</td>
+                                <td>
+                                    <p class="note"> note1 </p>
+                                    <p class="note"> note2 </p>
+                                </td>
+                                <td>Filler information</td>
+                            </tr>
+                        </table>
                     </div>
                 </section>
             </div>
-           
         </div>
     </body>
 </html>

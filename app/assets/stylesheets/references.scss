@@ -76,16 +76,36 @@
     margin: 0 10px 0 0;
   }
 
-  #referencesFormSection {
+  #main-content {
+    grid-column-start: 2;
+    grid-column-end: 8;
+    grid-row-start: 2;
+    grid-row-end:11;
+    padding: 5% 5%;
+  }
+
+
+  #ref-form {
       margin-top: 20px;
-      height: 100%;
   }
   
-  #references{
-    background-color: #000;
-    grid-column-start: 2;
-    grid-column-end: 11;
-    grid-row-start: 4;
-    grid-row-end: 7;
-    
-  }
+
+  /****************************/
+  /* Reference object styling */
+  /****************************/
+
+#ref-table {
+  width: 100%;
+  border: 1px solid #c0c0c0;
+  border-collapse: collapse;
+}
+.note {
+  display: inline-block;
+}
+
+td, th {
+  text-align: left
+}
+  
+  
+
