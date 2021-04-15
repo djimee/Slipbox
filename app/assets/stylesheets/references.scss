@@ -84,9 +84,17 @@
     padding: 5% 5%;
   }
 
+  #ref-display {
+    width: 80%;
+    overflow-y: scroll;
+  }
 
   #ref-form {
-      margin-top: 20px;
+      position: fixed;
+      top: 10%;
+      right: 0;
+      width: 350px;
+      padding: 2% 2%;
   }
   
 
@@ -98,7 +106,17 @@
   width: 100%;
   border: 1px solid #c0c0c0;
   border-collapse: collapse;
+  border-spacing: 5px;
 }
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff;
+}
+
 .note {
   display: inline-block;
 }
