@@ -28,9 +28,6 @@
  *   ) 
  *   For now use "1:name" as the root node
  * 
- *  MULTIPLE TREES -> Also I don't think it can display multiple trees so we're gonna have to display a single thread
- *  for each slipbox.
- * 
  *  ADDING NOTES -> Will the user add a note from a parent, or be able to do it manually (have any id they want ) ?
  *  
  *  DELETED NOTES -> For now the system draw dots for notes that lead to exisiting notes whose parents don't exist,
@@ -304,7 +301,7 @@ class RenderTree {
         let newRoot = root;
         d3.select("svg").selectAll("path").remove();
         d3.select("svg").selectAll("text").remove();
-        new RenderTree(new GenerateTree().generateTree(children, newRoot.id + ":" + newRoot.name));
+        new RenderTree(new GenerateTree().generateTree(nodes, newRoot.id + ":" + newRoot.name));
     }
 
     clickHandler(e, i) {
