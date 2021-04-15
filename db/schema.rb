@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 2021_04_14_150857) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
+    t.integer "sort"
   end
 
   create_table "trees", force: :cascade do |t|
