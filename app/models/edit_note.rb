@@ -8,8 +8,5 @@
 #  updated_at :datetime         not null
 #
 class EditNote < ApplicationRecord
-
     has_rich_text :body
-
-
 end

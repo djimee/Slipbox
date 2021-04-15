@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :edit_notes
   mount EpiCas::Engine, at: "/"
   devise_for :users
   
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   get :"signin", to: "signin#index"
   get :"signup", to: "signup#index"
   get :"trees", to: "trees#index"
-  get :"edit", to: "edit#index"
+  get :"edit", to: "edit_notes#index"
   get :"notes", to: "notes#index"
   get :ie_warning, to: 'errors#ie_warning'  
   get :"help", to: "help#index"

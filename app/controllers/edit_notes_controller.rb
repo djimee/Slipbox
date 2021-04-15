@@ -1,9 +1,12 @@
 class EditNotesController < ApplicationController
   before_action :set_edit_note, only: [:show, :edit, :update, :destroy]
+  @edit_notes = EditNote.all
+  @edit_note = EditNote.new
 
   # GET /edit_notes
   def index
     @edit_notes = EditNote.all
+    @edit_note = EditNote.new
   end
 
   # GET /edit_notes/1
@@ -12,7 +15,6 @@ class EditNotesController < ApplicationController
 
   # GET /edit_notes/new
   def new
-    @edit_note = EditNote.new
   end
 
   # GET /edit_notes/1/edit
@@ -53,6 +55,6 @@ class EditNotesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def edit_note_params
-      params.require(:edit_note).permit(:title)
+      params.require(:edit_note).permit(:title, :body)
     end
 end

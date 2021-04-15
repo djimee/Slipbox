@@ -1,21 +1,30 @@
-%h1 Listing edit_notes
-
-%table
-  %thead
-    %tr
-      %th Title
-      %th
-      %th
-      %th
-
-  %tbody
-    - @edit_notes.each do |edit_note|
-      %tr
-        %td= edit_note.title
-        %td= link_to 'Show', edit_note
-        %td= link_to 'Edit', edit_edit_note_path(edit_note)
-        %td= link_to 'Destroy', edit_note, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Edit note', new_edit_note_path
+!!!
+%html{lang: "en"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{description: "Threads page for Slipbox"}/
+    %title Threads
+    = stylesheet_link_tag "edit_notes"
+  %body
+    #wrapper
+      = render "partials/navbar"
+      %section#top-navbar
+        %ul#note-n
+          %li#note-ni-title.note-ni
+            %h1.subtitle Subtitle - Title - ID
+            %small Last Edited - 06/03/2021
+          %li.note-ni
+            %button
+              = image_tag("Save_Icon_1.png", :alt => "save")
+              %p.tn-p Save Note
+          %li.note-ni
+            %button
+              = image_tag("Group_Icon_1.png", :alt => "group settings")
+              %p.tn-p Group Settings
+          %li.note-ni
+            %button
+              = image_tag("Group_Icon_1.png", :alt => "delete forever")
+              %p.tn-p Delete Note
+      %section#edit-note
+        = render "form"
+        

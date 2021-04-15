@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_04_13_140415) do
-=======
-ActiveRecord::Schema.define(version: 2021_04_12_091012) do
->>>>>>> 849221be74565fb0a1e7d034d9bc6a0ccde7a48a
+ActiveRecord::Schema.define(version: 2021_04_14_150857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +59,12 @@ ActiveRecord::Schema.define(version: 2021_04_12_091012) do
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "edit_notes", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "notes", force: :cascade do |t|
@@ -117,7 +119,6 @@ ActiveRecord::Schema.define(version: 2021_04_12_091012) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
-    t.integer "sort"
   end
 
   create_table "trees", force: :cascade do |t|
