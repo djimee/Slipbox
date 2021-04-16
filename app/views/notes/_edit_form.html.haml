@@ -4,7 +4,9 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .form-inputs
     = f.input :title
-  .form-group
     = f.label :content
     = f.rich_text_area :content
-    %button Submit
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-outline-primary'
+    
