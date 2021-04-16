@@ -5,7 +5,8 @@
   .form-inputs
     = f.input :title
     = f.input :unique_identifier
-    = f.input :content
+    = f.label :content
+    = f.rich_text_area :content
     = f.association :tree
 
   .form-actions

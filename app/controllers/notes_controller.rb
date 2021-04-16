@@ -29,7 +29,7 @@ class NotesController < ApplicationController
         @note = Note.new(note_params)
     
         if @note.save
-            redirect_to @note, notice: 'Note was created.'
+            redirect_to :notes, notice: 'Note was created.'
         else
             @recent_note = Note.order("unique_identifier").last 
             @notes = Note.all
