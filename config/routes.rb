@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :edit_notes
   mount EpiCas::Engine, at: "/"
   devise_for :users
   
