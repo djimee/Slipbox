@@ -61,13 +61,7 @@ ActiveRecord::Schema.define(version: 2021_04_14_150857) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "edit_notes", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "notes", id: false, force: :cascade do |t|
+  create_table "notes", force: :cascade do |t|
     t.string "title"
     t.string "content", null: false
     t.datetime "created_at", precision: 6, null: false
