@@ -26,137 +26,18 @@
         %section#ref-display
           %h2 References
           #references-wrapper
+          - @references.each do |reference|
             %table#ref-table
               %tr
-                %th Reference Name
+                %th Author
                 %th Notes
-                %th Filler
+                %th Rest
               %tr
-                %td Example name
+                %td= reference.author
                 %td
                   %p.note note1
                   %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
-              %tr
-                %td Example name
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td Filler information
+                %td= reference.rest_of_reference
       %section#ref-form
         %h2 Create reference
         = render 'form'
