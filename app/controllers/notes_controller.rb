@@ -53,7 +53,7 @@ class NotesController < ApplicationController
         end
 
         def note_params
-            params.require(:note).permit(:title, :content, :unique_identifier, :tree_id)
+            params.require(:note).permit(:title, :content, :unique_identifier, :tree_id, reference_ids: [])
         end
 
 end
