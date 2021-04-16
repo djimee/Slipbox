@@ -1,15 +1,30 @@
 class NotesController < ApplicationController
     before_action :set_note, only: [:show, :edit, :update, :destroy]
     
+    # GET /notes
     def index
         # @notes = Note.all.sort_by { |n| [n.unique_identifier] }
         @notes = Note.all
     end
 
+    # GET /notes/1
+    # def show
+    # end
+
+    # GET /notes/new
     def new
         @note = Note.new
     end
 
+    # def new
+    #     render layout: false
+    # end
+
+    # GET /notes/1/edit
+    def edit
+    end
+
+    # POST /notes
     def create
         @note = Note.new(note_params)
     
@@ -22,12 +37,7 @@ class NotesController < ApplicationController
         end
     end
 
-    def show
-    end
-
-    def edit
-    end
-
+    # PATCH/PUT /notes/1
     def update
         if @note.update(note_params)
             redirect_to :notes, notice: "Note was updated."
@@ -35,10 +45,6 @@ class NotesController < ApplicationController
             render :edit, notice: "There was a problem updating note."
         end
     end
-
-    # def new
-    #     render layout: false
-    # end
 
     private 
     # Use callbacks to share common setup or constraints between actions.
