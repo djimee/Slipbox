@@ -6,8 +6,6 @@
     %p Unique ID: #{note.unique_identifier}
     %p Content: #{note.content}
   
-  -# <p>No. of Collaborators: 3</p> uncomment once implemented
-  
   -# show date and time in d/m/y-time - this is in UTC by default
   %p Last edited - #{note.updated_at.strftime("%d/%m/%y-%I:%M%P")}
   %p= link_to 'Edit', edit_note_path(note)

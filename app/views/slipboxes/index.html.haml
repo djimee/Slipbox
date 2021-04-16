@@ -1,0 +1,34 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{charset: "UTF-8"}/
+    %meta{author: "Team 19 COM3240 Sheffield Computer Science 2021"}/
+    %meta{description: "Sign in page for Slipbox"}/
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
+    = stylesheet_link_tag "slipboxes"
+    %title Slipbox - My Slipboxes
+  %body
+    #wrapper
+      = render "partials/navbar"
+      %section#welcome
+        %h2 Welcome #{current_user.username}
+        %p Signed in as: #{current_user.email}
+        -# check if there any notes created, if not, prompt the user to create one
+        - if Note.any?
+          %p Last note worked on: #{@recent_note.title} - #{@recent_note.unique_identifier} - #{@recent_note.updated_at.strftime("%d/%m/%y-%I:%M%P")}
+        - else
+          %p You're yet to write your first note!
+      -# check if there are any slipboxes created, display them if there are
+      - if Slipbox.any?
+        %section#slipboxes
+          %h2 My Slipboxes
+          %hr.solid/
+          .slipFlexContainer
+            = render @slipboxes.reverse
+      - else
+        %p Create a slipbox below
+        %hr.solid/
+      %section#createSlipbox
+        %h2 Create a new Slipbox
+        = render 'form'
