@@ -19,7 +19,7 @@
 				<%# check if there are any notes, if not don't display "last note worked on:" %>
 				<% if Slipbox.any? %> <%# needs to be changed for note %>
 					<%# show date and time in d/m/y-time - this is in UTC by default - could use 'try' %>
-					<p>Last note worked on: <%= @recent_note.title %> - ADD ID HERE - <%= @recent_note.updated_at.strftime("%d/%m/%y-%I:%M%P") %></p>
+					<p>Last note worked on: <%= @recent_note.title %> - <%= @recent_note.unique_identifier %> - <%= @recent_note.updated_at.strftime("%d/%m/%y-%I:%M%P") %></p>
 				<% else %>
 					<p>You're yet to write your first note!</p>
 				<% end %>
@@ -38,10 +38,6 @@
 				</div>
 				<hr class="solid"/>
 			</section>
-
-      <section>
-        <%= link_to "Notes (For testing)", "/notes" %> 
-      </section>
 
 			<%# form to create a slipbox %>
 			<section id="createSlipbox">

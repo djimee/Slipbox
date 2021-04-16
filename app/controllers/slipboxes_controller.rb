@@ -7,8 +7,8 @@ class SlipboxesController < ApplicationController
     @slipboxes = Slipbox.all.sort_by { |s| [s.created_at] }
     @slipbox = Slipbox.new
       
-    # gets most recently updated note 
-    @recent_note = Slipbox.order("updated_at").last # change this for note when implemented
+    # gets most recently updated note
+    @recent_note = Note.order("updated_at").last # change this for note when implemented
   end
 
   # redirects to the general tree page currently
