@@ -1,0 +1,162 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{description: "References page for Slipbox"}/
+    %title References
+    = stylesheet_link_tag "references"
+  %body
+    #wrapper
+      = render "partials/navbar"
+      %section#top-navbar
+        %ul#note-n
+          %li.note-ni
+            %button
+              = image_tag("Save_Icon_1.png", :alt => "save")
+              %p.tn-p Save References
+          %li.note-ni
+            %button
+              = image_tag("Group_Icon_1.png", :alt => "group settings")
+              %p.tn-p Group Settings
+          %li.note-ni
+            %button
+              = image_tag("Delete_Forever_Icon_1.png", :alt => "delete forever")
+              %p.tn-p Delete All References
+      %section#main-content
+        %section#ref-display
+          %h2 References
+          #references-wrapper
+            %table#ref-table
+              %tr
+                %th Reference Name
+                %th Notes
+                %th Filler
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+              %tr
+                %td Example name
+                %td
+                  %p.note note1
+                  %p.note note2
+                %td Filler information
+      %section#ref-form
+        %h2 Create reference
+        = render 'form'
