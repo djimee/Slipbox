@@ -34,7 +34,7 @@ class ReferencesController < ApplicationController
     if @reference.save
       redirect_to references_path, notice: 'Reference was successfully created.'
     else
-      render :new
+      render :index
     end
   end
 

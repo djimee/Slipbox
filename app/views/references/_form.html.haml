@@ -1,14 +1,9 @@
 -# frozen_string_literal: true
 = simple_form_for(@reference) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
   .form-inputs
     = f.input :author
     = f.input :rest_of_reference
     = f.association :slipboxes, input_html: { class: 'select2' }
 
   .form-actions
-    = f.button :submit
-
-
+    = f.button :submit, class: 'btn btn-outline-primary'
