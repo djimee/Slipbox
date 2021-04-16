@@ -13,4 +13,6 @@
 class Note < ApplicationRecord
     belongs_to :tree
     has_and_belongs_to_many :references
+
+    has_rich_text :content
 end

@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+    before_action :set_note, only: [:show, :edit, :update, :destroy]
     
     def index
         # @notes = Note.all.sort_by { |n| [n.unique_identifier] }
@@ -9,6 +10,18 @@ class NotesController < ApplicationController
         @note = Note.new
     end
 
+    def create
+        @note = Note.new(note_params)
+    
+        if @note.save
+            redirect_to @note, notice: 'Note was created.'
+        else
+            @recent_note = Note.order("unique_identifier").last 
+            @notes = Note.all
+            render :new
+        end
+    end
+
     def show
     end
 
@@ -17,22 +30,9 @@ class NotesController < ApplicationController
 
     def update
         if @note.update(note_params)
-            @notes = Note.all
-            redirect_to note_path, notice: "Note was updated."
+            redirect_to :notes, notice: "Note was updated."
         else
-            redirect_to note_path, notice: "There was a problem updating note."
-        end
-    end
-
-    def create
-        @note = Note.new(note_params)
-    
-        if @note.save
-            redirect_to notes_path, notice: 'Note was created.'
-        else
-            @recent_note = Note.order("unique_identifier").last 
-            @notes = Note.all
-            render :index
+            render :edit, notice: "There was a problem updating note."
         end
     end
 
@@ -43,7 +43,7 @@ class NotesController < ApplicationController
     private 
     # Use callbacks to share common setup or constraints between actions.
         def set_note
-            @note = Note.find(params[:unique_identifier])
+            @note = Note.find(params[:id]) #unique_identifier
         end
 
         def note_params
