@@ -29,7 +29,7 @@ class SlipboxesController < ApplicationController
     if @slipbox.save
       redirect_to slipboxes_path, notice: 'Slipbox was created.'
     else
-      @recent_note = Slipbox.order("updated_at").last # delete this when the most recent note thingy is implemented
+      @recent_note = Note.order("updated_at").last # delete this when the most recent note thingy is implemented
       @slipboxes = Slipbox.all
       render :index
     end
