@@ -1,9 +1,9 @@
 %table
   %thead
     %tr
-      %th Unique identifier
-      %th Title
-      %th Title
+      %th Author
+      %th Rest of reference
+      %th 
       %th
       %th
       %th
@@ -12,6 +12,7 @@
     - @references.each do |reference|
       %tr
         %td= reference.author
+        -# %td= add associated notes here
         %td= reference.rest_of_reference
         %td= link_to 'Show', reference
         %td= link_to 'Edit', edit_reference_path(reference)
