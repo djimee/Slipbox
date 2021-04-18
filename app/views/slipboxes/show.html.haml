@@ -6,9 +6,9 @@
     = stylesheet_link_tag "trees"
     = javascript_include_tag "https://d3js.org/d3.v6.min.js"
   %body
-    / The Modal
+    -# The Modal
     #note-modal.modal
-      / Modal content
+      -# Modal content
       .modal-content
         %span#close-btn.close ×
         %form
@@ -43,7 +43,6 @@
                 = link_to tree.title, tree_path(tree)
         #thread-container
 
-        
         %svg
         %section
   / <haml_loud> javascript_include_tag "threads" </haml_loud>
