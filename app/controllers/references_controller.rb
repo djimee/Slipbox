@@ -7,8 +7,8 @@ class ReferencesController < ApplicationController
     @reference = Reference.new
   end
 
-  # def associated_slipboxes
-  # end
+  def associated_slipboxes
+  end
 
   # GET /references/1
   def show
