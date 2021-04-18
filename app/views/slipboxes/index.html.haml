@@ -7,6 +7,8 @@
     %meta{description: "Sign in page for Slipbox"}/
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
     = stylesheet_link_tag "slipboxes"
+    = stylesheet_link_tag "navbar"
+
     %title Slipbox - My Slipboxes
   %body
     #wrapper
@@ -23,12 +25,11 @@
       - if Slipbox.any?
         %section#slipboxes
           %h2 My Slipboxes
+          = render 'form'
           %hr.solid/
           .slipFlexContainer
             = render @slipboxes.reverse
       - else
         %p Create a slipbox below
         %hr.solid/
-      %section#createSlipbox
-        %h2 Create a new Slipbox
-        = render 'form'
+     

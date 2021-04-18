@@ -17,7 +17,6 @@
 
 /* Set default styling */
 * {
-  color: #000000;
   padding: 0;
   margin: 0;
   font-size: 1em;
@@ -40,20 +39,7 @@
   height: 100vh;
 }
 
-#navbar {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 6;
-  background: linear-gradient(330deg, #afdee3 10%, #7fa2e1 57%, #1a447c 97%);
-  /*
-      position: fixed;
-      left: 0px;
-      width: 250px;
-      height: 100%;
-      top: 0;
-      */
-}
+
 
 #welcome {
   margin-top: 10px;
@@ -64,6 +50,7 @@
   background: rgb(127, 162, 225);
   padding: 20px;
   border-radius: 8px;
+  box-shadow: 3px 3px 3px 3px #A0A0A0;
 }
 
 #slipboxes {
@@ -73,7 +60,7 @@
   grid-row-end: 3;
 }
 
-#createSlipbox {
+#create-slipbox {
   grid-column-start: 2;
   grid-column-end: 4;
   grid-row-start: 3;
@@ -89,17 +76,7 @@
   grid-row-end: 5;
 }
 
-#navbar ul {
-  list-style-type: none;
-}
 
-#navbar li {
-  padding: 20px;
-}
-
-.navbar-item li {
-  font-family: Comfortaa;
-}
 
 #main-title {
   font-size: 3em;
@@ -108,11 +85,7 @@
   margin-top: 5px;
 }
 
-#navbar li a {
-  font-size: 1.5em;
-  text-decoration: none;
-  transition: 0.3s;
-}
+
 
 ul li:hover a {
   padding-left: 30px;
@@ -183,4 +156,12 @@ hr.solid {
 
 .blackTitle {
   color: #000;
+}
+#new_slipbox {
+  display: inline-block;
+  width: 100%;
+}
+
+div .form-group, .form-actions {
+  width: 20%;
 }
