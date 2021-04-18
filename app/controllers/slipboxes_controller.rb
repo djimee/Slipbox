@@ -14,9 +14,9 @@ class SlipboxesController < ApplicationController
   # redirects to the general tree page currently
   # through the show function in trees controller
   def show
-    redirect_to tree_path
   end
-  
+
+
   # GET /slipboxes/1/edit
   def edit
     render layout: false
