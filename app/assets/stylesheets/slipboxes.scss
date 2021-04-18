@@ -83,6 +83,7 @@
   font-family: Comfortaa;
   padding: 20px;
   margin-top: 5px;
+  color: #fff;
 }
 
 
@@ -102,6 +103,10 @@ hr.solid {
   width: fit-content;
   margin-right: 10px;
   display: block;
+}
+
+.slipboxWrapper p{
+  color:#fff;
 }
 
 .slipFlexContainer {
@@ -164,4 +169,8 @@ hr.solid {
 
 div .form-group, .form-actions {
   width: 20%;
+}
+
+#myslipboxesh2{
+  margin-top: 10px;
 }
