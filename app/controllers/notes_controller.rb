@@ -33,7 +33,6 @@ class NotesController < ApplicationController
     # POST /notes
     def create
         @note = Note.new(note_params)
-    
         if @note.save
             redirect_to :notes, notice: 'Note was created.'
         else
