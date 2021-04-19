@@ -24,6 +24,12 @@ class NotesController < ApplicationController
     def edit
     end
 
+    # DELETE /notes/1
+    def destroy
+        @note.destroy
+        redirect_to notes_url, notice: 'Note was successfully destroyed.'
+    end
+
     # POST /notes
     def create
         @note = Note.new(note_params)

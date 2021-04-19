@@ -26,18 +26,7 @@
         %section#ref-display
           %h2 References
           #references-wrapper
-          - @references.each do |reference|
-            %table#ref-table
-              %tr
-                %th Author
-                %th Notes
-                %th Rest
-              %tr
-                %td= reference.author
-                %td
-                  %p.note note1
-                  %p.note note2
-                %td= reference.rest_of_reference
+          = render 'table'
       %section#ref-form
         %h2 Create reference
         = render 'form'

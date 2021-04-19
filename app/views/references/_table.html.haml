@@ -1,18 +1,16 @@
 %table
   %thead
     %tr
-      %th Unique identifier
-      %th Title
-      %th Title
-      %th
-      %th
-      %th
+      %th Author
+      %th Rest of reference
+      %th Associated notes
 
   %tbody
     - @references.each do |reference|
       %tr
         %td= reference.author
+        - @associated_notes.each do |note|
+          %td= link_to(note)
         %td= reference.rest_of_reference
-        %td= link_to 'Show', reference
         %td= link_to 'Edit', edit_reference_path(reference)
-        %td= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure?' }
