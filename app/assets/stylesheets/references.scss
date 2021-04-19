@@ -1,106 +1,102 @@
 * {
-    padding: 0;
-    margin: 0;
-    font-size: 1em;
-    font-family: Comfortaa;
-    overflow: hidden;
-  }
-  
-  button {
-    background-color: #ffffff;
-    border: none;
-    outline: none;
-    padding: 1% 1%;
-  }
-  
-  button:hover {
-    cursor: pointer;
-  }
-  
-  .tn-p {
-    font-size: 0.9em;
-  }
-  
-  .subtitle {
-    font-size: 20pt;
-    text-decoration: none;
-  }
-  
-  #note-ni-title {
-    padding: 1% 2%;
-  }
-  /****************************/
-  /* Element grid positioning */
-  /****************************/
-  
-  #wrapper {
-    display: grid;
-    grid-template-columns: 210px 7fr;
-    grid-template-rows: repeat(10, 1fr);
-    grid-auto-rows: minmax(250px, auto);
-    width: 100vw;
-    height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #000;
-  }
-  
-  ul {
-    list-style-type: none;
-  }
-  
-  #top-navbar,
-  #edit-note,
-  #note-tools {
-    color: black;
-  }
-  
-  #top-navbar {
-    grid-column-start: 2;
-    grid-column-end: 11;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    border-bottom: 1px solid #c0c0c0;
-    font-family: Helvetica;
-  }
-  
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+  font-family: Comfortaa;
+  overflow: hidden;
+}
 
-  #note-n {
-    display: flex;
-    align-content: left;
-  }
-  
-  
-  
-  .note-ni {
-    padding: 5px 5px;
-    margin: 0 10px 0 0;
-  }
+button {
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+  padding: 1% 1%;
+}
 
-  #main-content {
-    grid-column-start: 2;
-    grid-column-end: 8;
-    grid-row-start: 2;
-    grid-row-end:11;
-    padding: 5% 5%;
-  }
+button:hover {
+  cursor: pointer;
+}
 
-  #ref-display {
-    width: 80%;
-    overflow-y: scroll;
-  }
+.tn-p {
+  font-size: 0.9em;
+}
 
-  #ref-form {
-      position: fixed;
-      top: 10%;
-      right: 0;
-      width: 350px;
-      padding: 2% 2%;
-  }
-  
+.subtitle {
+  font-size: 20pt;
+  text-decoration: none;
+}
 
-  /****************************/
-  /* Reference object styling */
-  /****************************/
+#note-ni-title {
+  padding: 1% 2%;
+}
+/****************************/
+/* Element grid positioning */
+/****************************/
+
+#wrapper {
+  display: grid;
+  grid-template-columns: 210px 7fr;
+  grid-template-rows: repeat(10, 1fr);
+  grid-auto-rows: minmax(250px, auto);
+  width: 100vw;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#top-navbar,
+#edit-note,
+#note-tools {
+  color: black;
+}
+
+#top-navbar {
+  grid-column-start: 2;
+  grid-column-end: 11;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  border-bottom: 1px solid #c0c0c0;
+  font-family: Helvetica;
+}
+
+#note-n {
+  display: flex;
+  align-content: left;
+}
+
+.note-ni {
+  padding: 5px 5px;
+  margin: 0 10px 0 0;
+}
+
+#main-content {
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 11;
+  padding: 5% 5%;
+}
+
+#ref-display {
+  width: 80%;
+  overflow-y: scroll;
+}
+
+#ref-form {
+  position: fixed;
+  top: 10%;
+  right: 0;
+  width: 350px;
+  padding: 2% 2%;
+}
+
+/****************************/
+/* Reference object styling */
+/****************************/
 
 #ref-table {
   width: 100%;
@@ -121,9 +117,7 @@ tr:nth-child(odd) {
   display: inline-block;
 }
 
-td, th {
-  text-align: left
+td,
+th {
+  text-align: left;
 }
-  
-  
-

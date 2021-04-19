@@ -1,0 +1,18 @@
+%table
+  %thead
+    %tr
+      %th Unique identifier
+      %th Title
+      %th Title
+      %th
+      %th
+      %th
+
+  %tbody
+    - @references.each do |reference|
+      %tr
+        %td= reference.author
+        %td= reference.rest_of_reference
+        %td= link_to 'Show', reference
+        %td= link_to 'Edit', edit_reference_path(reference)
+        %td= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' }
