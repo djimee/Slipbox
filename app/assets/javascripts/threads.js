@@ -20,6 +20,8 @@
  *   Due to the size of the tree, number of child nodes and issues with 
  *   displaying nodes with long names, I had to create a node limit (currently 5).
  * 
+ *   ===NODE SEARCH===
+ *   
  * 
  * 
  *  ===PROBLEMS(IMPORTANT)===
@@ -269,6 +271,23 @@ class GenerateTree {
     };
 }
 
+class TreeHelper {
+
+    
+    searchNode(nodes, n) {
+        let info = n.split(":")
+        let found = [];
+        nodes.forEach((e) => {if (n[0] == e.getId() || n[1] == e.getName()) {
+            found.push(e);
+        }});
+        return found;
+    }
+
+
+
+}
+
+
 class RenderTree {
 
     constructor(treeJSON) {
@@ -365,9 +384,12 @@ class RenderTree {
 }
 
 let tree = new GenerateTree();
+let helper = new TreeHelper();
 let result = tree.generateTree(nodes, "1:root");
 new RenderTree(result); 
 
 //modal section
 modalClose.onclick = function() {modal.style.display = "none"};
 window.onclick = (e) => {if (e.target == modal) {modal.style.display = "none"}};
+
+

@@ -36,11 +36,7 @@
                         <button class="mbtn">Delete Note </button>
 
                     </fieldset>
-
                 </form>
-
-           
-              
             </div>
         </div> 
 
@@ -48,11 +44,18 @@
         <div id="wrapper">
             <%= render "partials/navbar" %>
 
+            <section id="navbar-top">
+                <div class="tnc">
+                   <button>
+                        <%= image_tag("Account_Tree_Icon_1.png", :alt => "save") %>
+                        <%= link_to 'Create a new Tree', new_tree_path %>
+                   </button> 
+                </div>
+            </section>
+
             <section id="thread-tree">
 
-                <section id="createTree">
-                    <h2> <%= link_to 'Create a new Tree', new_tree_path %></h2>
-			    </section>
+               
 
                 <% if Tree.any? %>
                     <section id="trees">
@@ -68,11 +71,10 @@
                     <svg></svg>
                 </div>                
             </section>
-            <section>
         </div>
     </body>
     
-    <!-- <%= javascript_include_tag "threads" %>  -->
+     <%= javascript_include_tag "threads" %> 
 
 </html>
 
