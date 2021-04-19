@@ -4,6 +4,8 @@
     <meta description="Threads page for Slipbox">
     <title>Threads</title>
     <%= stylesheet_link_tag "trees" %>
+    <%= stylesheet_link_tag "navbar" %>
+
     <%= javascript_include_tag "https://d3js.org/d3.v6.min.js" %>
   
     </head>
@@ -46,9 +48,9 @@
 
             <section id="navbar-top">
                 <div class="tnc">
-                   <button>
-                        <%= image_tag("Account_Tree_Icon_1.png", :alt => "save") %>
-                        <%= link_to 'Create a new Tree', new_tree_path %>
+                   <button id="navbar-top-first">
+                        <%= image_tag("Account_Tree_Icon_2.png", :alt => "save") %>
+                        <br/><%= link_to 'New Tree', new_tree_path %>
                    </button> 
                 </div>
             </section>
@@ -64,17 +66,18 @@
                     <div class="slipFlexContainer">
                         <%= render @trees.reverse %>
                 <% else %>
-                    <p>Create a tree below</p>
+                    <p>Load tree below</p>
                 <% end %>
 
                 <div id="thread-container">
                     <svg></svg>
                 </div>                
             </section>
+            
         </div>
     </body>
     
-     <%= javascript_include_tag "threads" %> 
+     <!-- <%= javascript_include_tag "threads" %> -->
 
 </html>
 
