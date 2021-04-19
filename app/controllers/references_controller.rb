@@ -27,6 +27,10 @@ class ReferencesController < ApplicationController
   def associated_slipbox
   end
 
+  def associated_notes
+    @associated_notes = Note.joins(:reference).where("reference_id = ?", @reference).each do |note|
+  end
+
   # POST /references
   def create
     @reference = Reference.new(reference_params)
@@ -63,4 +67,5 @@ class ReferencesController < ApplicationController
     def reference_params
       params.require(:reference).permit(:author, :rest_of_reference, slipbox_ids: [])
     end
+  end
 end
