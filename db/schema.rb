@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(version: 2021_04_16_100805) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
-    t.integer "sort"
   end
 
   create_table "trees", force: :cascade do |t|
@@ -138,7 +137,6 @@ ActiveRecord::Schema.define(version: 2021_04_16_100805) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "remember_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["username"], name: "index_users_on_username"
   end

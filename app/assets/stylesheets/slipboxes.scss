@@ -41,7 +41,7 @@
 
 #welcome {
   margin-top: 10px;
-  grid-column-start: 3;
+  grid-column-start: 2;
   grid-column-end: 11;
   grid-row-start: 1;
   grid-row-end: 2;
@@ -74,10 +74,6 @@
   grid-row-end: 5;
 }
 
-
-
-
-
 hr.solid {
   border-top: 1px solid #000;
 }
@@ -91,7 +87,7 @@ hr.solid {
   display: block;
 }
 
-.slipboxWrapper p{
+.slipboxWrapper p {
   color:#fff;
 }
 
