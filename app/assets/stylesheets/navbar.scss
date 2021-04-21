@@ -1,6 +1,6 @@
 #navbar {
   grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-end: 3 ;
   grid-row-start: 1;
   grid-row-end: 11;
   background: linear-gradient(
@@ -14,13 +14,11 @@
 }
 
 #main-title {
-  font-size: 1.3em;
+  font-size: 1em;
   font-family: Comfortaa;
   padding: 5%;
   text-decoration: underline;
 }
-
-
 
 #navbar li a {
   font-size: 1.2em;
