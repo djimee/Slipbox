@@ -25,6 +25,7 @@
       - if Slipbox.any?
         %section#slipboxes
           %h2 My Slipboxes
+          = render 'form'
           %hr.solid/
           .slipFlexContainer
             = render @slipboxes.reverse
