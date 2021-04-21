@@ -5,9 +5,7 @@ class ReferencesController < ApplicationController
   def index
     @references = Reference.all
     @reference = Reference.new
-  end
-
-  def associated_slipboxes
+    @associated_notes = Note.joins(:references).where("reference_id = ?")
   end
 
   # GET /references/1
@@ -23,12 +21,10 @@ class ReferencesController < ApplicationController
   def edit
   end
 
-  # GET /references/1/associated_slipboxes
-  def associated_slipbox
-  end
-
-  def associated_notes
-    @associated_notes = Note.joins(:reference).where("reference_id = ?", @reference).each do |note|
+  # DELETE /references/1
+  def destroy
+    @reference.destroy
+    redirect_to references_url, notice: 'Reference was successfully destroyed.'
   end
 
   # POST /references
@@ -51,12 +47,6 @@ class ReferencesController < ApplicationController
     end
   end
 
-  # DELETE /references/1
-  def destroy
-    @reference.destroy
-    redirect_to references_url, notice: 'Reference was successfully destroyed.'
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reference
@@ -67,5 +57,5 @@ class ReferencesController < ApplicationController
     def reference_params
       params.require(:reference).permit(:author, :rest_of_reference, slipbox_ids: [])
     end
-  end
+  
 end
