@@ -38,7 +38,7 @@
             %h2 Trees
             %hr.solid/
             .slipFlexContainer
-              - Tree.joins(:slipbox).where("slipbox_id = ?", @slipbox).each do |tree|
+              - @slipbox.trees.each do |tree|
                 %p Title:
                 = link_to tree.title, tree_path(tree)
         #thread-container
