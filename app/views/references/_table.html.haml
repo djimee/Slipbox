@@ -10,7 +10,6 @@
       %tr
         %td= reference.author
         %td= reference.rest_of_reference
-        - @associated_notes.each do |note|
-          %td= note.title
+        %td= "hi"
         %td= link_to 'Edit', edit_reference_path(reference)
         %td= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure?' }
