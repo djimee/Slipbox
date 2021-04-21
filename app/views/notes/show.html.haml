@@ -30,26 +30,10 @@
     #wrapper
       = render "partials/navbar"
 
-      %section#thread-tree
+      %section#note
+        
+        -# is currently white
+        %p
+        = @note.title 
 
-        %p#goback
-          = link_to '< Back to slipboxes page', slipboxes_path
-
-        %section#createTree
-          %h2
-            = link_to 'Create a new Tree', new_tree_path
-
-
-        - if Tree.joins(:slipbox).where("slipbox_id = ?", @slipbox).any?
-          %section#trees
-            %h2 Trees
-            %hr.solid/
-            .slipFlexContainer
-              - @slipbox.trees.each do |tree|
-                %p Title:
-                = link_to tree.title, tree_path(tree)
-        - else
-          %p There are currently no trees that belong to this slipbox. Create a tree above.
-        %svg
-        %section
-  / <haml_loud> javascript_include_tag "threads" </haml_loud>
+        -# rest of the note details

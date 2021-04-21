@@ -11,8 +11,6 @@ class SlipboxesController < ApplicationController
     @recent_note = Note.order("updated_at").last # change this for note when implemented
   end
 
-  # redirects to the general tree page currently
-  # through the show function in trees controller
   def show
   end
 
