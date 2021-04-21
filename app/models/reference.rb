@@ -8,11 +8,12 @@
 #  updated_at :datetime         not null
 #
 class Reference < ApplicationRecord
-    has_and_belongs_to_many :notes
-    has_and_belongs_to_many :slipboxes
+  has_and_belongs_to_many :notes
+  has_and_belongs_to_many :slipboxes
 
-    validates :author, presence: true
+  validates :author, presence: true
     
-    # add a rich text field to note using Action Text
-    has_rich_text :content
+  # add a rich text field to note using Action Text
+  has_rich_text :content
+
 end

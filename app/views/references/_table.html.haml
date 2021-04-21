@@ -10,7 +10,5 @@
       %tr
         %td= reference.author
         %td= reference.content
-        - @reference.notes.each do |note|
-        %td= note.title
         %td= link_to 'Edit', edit_reference_path(reference)
         %td= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure?' }
