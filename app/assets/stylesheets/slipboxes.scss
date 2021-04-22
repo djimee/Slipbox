@@ -39,8 +39,6 @@
   height: 100vh;
 }
 
-
-
 #welcome {
   margin-top: 10px;
   grid-column-start: 2;
@@ -50,7 +48,7 @@
   background: rgb(127, 162, 225);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 3px 3px 3px 3px #A0A0A0;
+  box-shadow: 3px 3px 3px 3px #a0a0a0;
 }
 
 #slipboxes {
@@ -76,8 +74,6 @@
   grid-row-end: 5;
 }
 
-
-
 #main-title {
   font-size: 3em;
   font-family: Comfortaa;
@@ -85,10 +81,6 @@
   margin-top: 5px;
   color: #fff;
 }
-
-
-
-
 
 hr.solid {
   border-top: 1px solid #000;
@@ -103,8 +95,8 @@ hr.solid {
   display: block;
 }
 
-.slipboxWrapper p{
-  color:#fff;
+.slipboxWrapper p {
+  color: #fff;
 }
 
 .slipFlexContainer {
@@ -165,10 +157,11 @@ hr.solid {
   width: 100%;
 }
 
-div .form-group, .form-actions {
+div .form-group,
+.form-actions {
   width: 20%;
 }
 
-#slipboxes h2{
+#slipboxes h2 {
   margin-top: 20px;
 }
