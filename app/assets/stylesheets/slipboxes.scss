@@ -28,8 +28,6 @@
 
 /****************************/
 
-
-
 #container {
   position: fixed;
   left: 200px;
@@ -100,7 +98,7 @@ hr.solid {
 }
 
 .slipFlexContainer {
-  overflow-x:scroll;
+  overflow-x: scroll;
   white-space: nowrap;
   padding: 10px;
   width: 85%;
@@ -161,11 +159,11 @@ hr.solid {
 
 div .form-group,
 .form-actions {
-  width: 20%;
+  width: 30%;
 }
 
 #slipbox_title {
-  float:left;
+  float: left;
 }
 #slipboxes h2 {
   margin-top: 20px;

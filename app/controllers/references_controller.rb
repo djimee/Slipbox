@@ -5,7 +5,6 @@ class ReferencesController < ApplicationController
   def index
     @references = Reference.all
     @reference = Reference.new
-    @associated_notes = Note.joins(:references).where("reference_id = ?")
   end
 
   # GET /references/1
