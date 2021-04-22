@@ -19,6 +19,7 @@ class ReferencesController < ApplicationController
 
   # GET /references/1/edit
   def edit
+    render layout: false
   end
 
   # DELETE /references/1
@@ -41,9 +42,10 @@ class ReferencesController < ApplicationController
   # PATCH/PUT /references/1
   def update
     if @reference.update(reference_params)
-      redirect_to references_path, notice: 'Reference was successfully updated.'
+      @references = Reference.all
+      render 'update_success'
     else
-      render :edit
+      render 'update_failure'
     end
   end
 
@@ -55,7 +57,7 @@ class ReferencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def reference_params
-      params.require(:reference).permit(:author, :rest_of_reference, slipbox_ids: [])
+      params.require(:reference).permit(:author, :content, slipbox_ids: [])
     end
   
 end

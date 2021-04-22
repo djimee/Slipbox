@@ -13,9 +13,7 @@ class TreesController < ApplicationController
     end
 
     # GET /trees/new
-    # redirects to the general tree page currently
     def show
-        # redirect_to trees_path
     end
 
     # GET /trees/1/edit
