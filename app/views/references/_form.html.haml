@@ -2,8 +2,7 @@
 = simple_form_for(@reference) do |f|
   .form-inputs
     = f.input :author
-    = f.label :content
-    = f.rich_text_area :content
+    = f.input :content
     = f.association :slipboxes, input_html: { class: 'select2' }
 
   .form-actions
