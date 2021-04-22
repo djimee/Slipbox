@@ -6,6 +6,17 @@
     = stylesheet_link_tag "trees"
     = javascript_include_tag "https://d3js.org/d3.v6.min.js"
   %body
+    #wrapper
+      = render "partials/navbar"
+
+      %section#note
+        
+        -# is currently white
+        %p
+        = @note.title 
+
+        -# rest of the note details
+
     -# -# The Modal
     -# #note-modal.modal
     -#   -# Modal content
@@ -27,13 +38,3 @@
     -#       %fieldset
     -#         %button.mbtn Visit Note
     -#         %button.mbtn Delete Note
-    #wrapper
-      = render "partials/navbar"
-
-      %section#note
-        
-        -# is currently white
-        %p
-        = @note.title 
-
-        -# rest of the note details

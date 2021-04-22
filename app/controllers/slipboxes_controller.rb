@@ -11,9 +11,13 @@ class SlipboxesController < ApplicationController
     @recent_note = Note.order("updated_at").last # change this for note when implemented
   end
 
+  # GET /slipboxes/1
   def show
+    if @slipbox.trees.empty?
+      redirect_to new_tree_path
+      # flash[:notice] = "slipbox titled: was empty, create a new tree below!"
+    end
   end
-
 
   # GET /slipboxes/1/edit
   def edit

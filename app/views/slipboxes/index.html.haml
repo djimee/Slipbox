@@ -24,15 +24,17 @@
       -# check if there are any slipboxes created, display them if there are
       - if Slipbox.any?
         %section#slipboxes
-          %h2 My Slipboxes
+          %h2 Create a Slipbox
           = render 'form'
           %hr.solid/
+          %h2 My Slipboxes
           .slipFlexContainer
-            = render @slipboxes.reverse
+          = render @slipboxes.reverse
       - else
-        %p  You're yet to create your first slipbox! 
-        = render 'form'
-        %hr.solid/
+        %section#slipboxes
+          %h2 Create a Slipbox
+          = render 'form'
+          %hr.solid/
 
         
 

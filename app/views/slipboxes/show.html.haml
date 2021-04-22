@@ -6,27 +6,6 @@
     = stylesheet_link_tag "trees"
     = javascript_include_tag "https://d3js.org/d3.v6.min.js"
   %body
-    -# -# The Modal
-    -# #note-modal.modal
-    -#   -# Modal content
-    -#   .modal-content
-    -#     %span#close-btn.close ×
-    -#     %form
-    -#       %fieldset
-    -#         %legend Note Info
-    -#         %input#note-title{:required => "", :type => "text", :value => "title"}/
-    -#         %input#note-id{:required => "", :type => "text", :value => "id"}/
-    -#         %p.mp Last Edited at 10/04/2021 : 03:10
-    -#         %p
-    -#           %button.mbtn Save changes
-    -#       %fieldset
-    -#         %legend Add note
-    -#         %input#add-id{:type => "text", :value => "title"}/
-    -#         %input#add-name{:type => "text", :value => "id"}/
-    -#         %button.mbtn Submit
-    -#       %fieldset
-    -#         %button.mbtn Visit Note
-    -#         %button.mbtn Delete Note
     #wrapper
       = render "partials/navbar"
 
@@ -39,8 +18,8 @@
           %h2
             = link_to 'Create a new Tree', new_tree_path
 
-
-        - if Tree.joins(:slipbox).where("slipbox_id = ?", @slipbox).any?
+        -# check if the slipbox has any trees, if it does, display them
+        - if !@slipbox.trees.empty?
           %section#trees
             %h2 Trees
             %hr.solid/
@@ -49,7 +28,8 @@
                 %p Title:
                 = link_to tree.title, tree_path(tree)
         - else
-          %p There are currently no trees that belong to this slipbox. Create a tree above.
+          %p There are currently no trees that belong to this slipbox. Create a tree 
         %svg
         %section
   / <haml_loud> javascript_include_tag "threads" </haml_loud>
+
