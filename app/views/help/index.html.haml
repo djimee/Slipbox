@@ -8,8 +8,66 @@
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
     = stylesheet_link_tag "navbar"
     = stylesheet_link_tag "slipboxes"
+    = stylesheet_link_tag "help"
 
     %title Slipbox - My Slipboxes
   %body
     #wrapper
       = render "partials/navbar"
+      #contentWrapper
+        %section#background
+          %h2 Background
+          %p Our method of taking notes is based off of and named after the Luhmann slip box method. The Luhmann slip box method is where ideas are written down in full sentences on connected cards. Each card only contains a single idea and related ideas are connected to each other through threads. These threads can be shown by the indexing system where “1” and “2” will be separate threads with “1a” and “1b” being part of the same thread as “1”. These indexes alternate letters and numbers and are potentially endless. The result of this is a method to store a massive amount of notes but having a very easy way to find related notes and to add new ones.
+          %hr.solid/
+        %section#createASlipbox
+          %h2 Creating a Slipbox
+          %p In order to create a slipbox you need to simply type a title into the box and click on the “create slipbox” button. Adding a description is completely optional.
+          =image_tag "createslipboxesimg.png"
+          %br
+          %p We would recommend keeping the number of slipboxes you have to a minimum, as having many slipboxes can result in your notes being less organised. 
+          %hr.solid/
+        %section#editingSlipbox
+          %h2 Editing/Deleting a Slipbox
+          %p Once you have created a slipbox you can still edit the title and description by clicking on “edit”. This should make a box pop up on your screen where you can enter new text for both fields.
+          #imgContainer
+            =image_tag "slipboxeditbutton.png"
+            =image_tag "editingslipbox.png"
+          %p You can also delete a slipbox by clicking on “delete” which should show a pop-up where you can click “yes” to confirm the deletion of the slipbox.
+          =image_tag "deleteSlipbox.png"
+          =image_tag "deletepopup.png"
+          %hr.solid/
+        %section#viewingThreads
+          %h2 Viewing Threads
+          %p In order to view the threads for a slipbox you can simply click on the title of that slipbox on the slipbox page and it should then display the threads for that slipbox. 
+          %p This is what the thread page should look like 
+          %hr.solid/
+        %section#addingNotes
+          %h2 Adding Notes
+          %p To add a note to the thread you need to click on the create note button which should take you to the create note page. 
+          %p Here you have to enter the title, unique identifier and content. The unique identifier needs to be in the form 1a1a1a… with alternating letters and numbers to keep to the thread.
+          %p You also have the option of adding references to the note so you can cite a reference from one of your saved references.
+          %hr.solid/
+        %section#viewingNotes
+          %h2 Viewing notes
+          %p To view a note you can navigate to the threads page and click on one of the notes.
+          %p Or you can search for a note using the search function and click on the note title.
+          %hr.solid/
+        %section#editingANote
+          %h2 Editing a Note
+          %p In order to edit a note you can navigate to the threads page and click on “edit note”. (if this is a thing)
+          %p While viewing a note you can also click the edit note button which should also take you to the edit note page.
+          %hr.solid/
+        %section#referencesPage
+          %h2 Reference page
+          %p On the program, you have access to a reference list where you can add your own references which can then be added to any note you want.
+          %p To access the main references page you have to click on “references” on the sidebar.
+          =image_tag "referencessidebar.png"
+          %p You can add a new reference to the reference list by clicking on the “add reference” button on this page.
+          %p You can add whatever information you feel is necessary to the reference, however you need to include the author.
+          %hr.solid/
+        %section#editingReferences
+          %h2 Editing/Deleting a Reference
+          %p To edit an existing reference you can click “edit” on that reference and a box should pop up where you can edit the information of that reference. 
+          %p To delete a reference you simply have to click “delete” where a pop up will appear to confirm the deletion and selecting “yes” will delete the reference from the list.
+          
+
