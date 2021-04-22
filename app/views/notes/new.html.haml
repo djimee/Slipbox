@@ -6,16 +6,28 @@
     %meta{author: "Team 19 COM3240 Sheffield Computer Science 2021"}/
     %meta{description: "Create a new note page"}/
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
-    = stylesheet_link_tag "new_note"
-    = stylesheet_link_tag "navbar"
+    = stylesheet_link_tag "notes"
 
-    %body
+  %body
     #wrapper
       = render "partials/navbar"
-
-      %h1 New note
-
-      -# render form to create a new note
-      = render 'new_form'
-
-      = link_to '< Back to index page', notes_path 
+      %section#top-navbar
+        %ul#note-n
+          %li#note-ni-title.note-ni
+            %h1.subtitle Create a new note
+          %li.note-ni
+            %button
+              = image_tag("Save_Icon_1.png", :alt => "save")
+              %p.tn-p Save Note
+          %li.note-ni
+            %button
+              = image_tag("Group_Icon_1.png", :alt => "group settings")
+              %p.tn-p Group Settings
+          %li.note-ni
+            %button
+              = image_tag("Group_Icon_1.png", :alt => "delete forever")
+              %p.tn-p Delete Note
+      %section#edit-note
+        -# render form to edit an existing note
+        = render "new_form"
+        

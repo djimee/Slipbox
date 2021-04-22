@@ -2,17 +2,20 @@
 %html{lang: "en"}
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{description: "Threads page for Slipbox"}/
-    %title Threads
-    = stylesheet_link_tag "edit_notes"
+    %meta{charset: "UTF-8"}/
+    %meta{author: "Team 19 COM3240 Sheffield Computer Science 2021"}/
+    %meta{description: "Edit an existing note page"}/
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
+    = stylesheet_link_tag "notes"
+
   %body
     #wrapper
       = render "partials/navbar"
       %section#top-navbar
         %ul#note-n
           %li#note-ni-title.note-ni
-            %h1.subtitle Subtitle - Title - ID
-            %small Last Edited - 06/03/2021
+            %h1.subtitle Editing note: #{@note.unique_identifier}
+            %small Last Edited - #{@note.updated_at.strftime("%d/%m/%y-%I:%M%P")}
           %li.note-ni
             %button
               = image_tag("Save_Icon_1.png", :alt => "save")
