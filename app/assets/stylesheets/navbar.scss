@@ -45,3 +45,7 @@
   width: 90%;
   margin: auto;
 }
+ul li:hover a {
+  padding-left: 30px;
+  transition: 0.5s;
+}
