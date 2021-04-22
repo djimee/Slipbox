@@ -2,13 +2,13 @@
   %thead
     %tr
       %th Author
-      %th Rest of reference
-      %th Associated notes
+      %th Content
+      // %th Associated notes
 
   %tbody
     - @references.each do |reference|
       %tr
         %td= reference.author
         %td= reference.content
-        %td= link_to 'Edit', edit_reference_path(reference)
+        %td= link_to 'Edit', edit_reference_path(reference), class: 'ajax-modal'
         %td= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure?' }

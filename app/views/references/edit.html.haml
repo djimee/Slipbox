@@ -1,7 +1,13 @@
-%h1 Editing reference
+.modal-dialog
+  .modal-content
+    = simple_form_for @reference, remote: true do |f|
+      .modal-header
+        %h4.modal-title Editing reference
+        %button.close{ type: :button, data: { dismiss: :modal } }
+        %span &times;
+      .modal-body
+        = f.input :author
+        = f.input :content
 
-= render 'form'
-
-= link_to 'Show', @reference
-\|
-= link_to 'Back', references_path
+      .modal-footer
+      = f.button :submit, class: 'btn btn-outline-primary'
