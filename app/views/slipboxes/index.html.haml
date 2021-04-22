@@ -29,12 +29,13 @@
           %hr.solid/
           %h2 My Slipboxes
           .slipFlexContainer
-          = render @slipboxes.reverse
+            = render @slipboxes.reverse
       - else
         %section#slipboxes
           %h2 Create a Slipbox
           = render 'form'
           %hr.solid/
+          = render 'noslipboxes'
 
         
 

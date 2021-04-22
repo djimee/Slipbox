@@ -50,7 +50,7 @@
 }
 
 #slipboxes {
-  grid-column-start: 3;
+  grid-column-start: 2;
   grid-column-end: 11;
   grid-row-start: 2;
   grid-row-end: 3;
@@ -90,7 +90,7 @@ hr.solid {
   border-radius: 8px;
   width: fit-content;
   margin-right: 10px;
-  display: block;
+  display: inline-block;
 }
 
 .slipboxWrapper p {
@@ -98,7 +98,8 @@ hr.solid {
 }
 
 .slipFlexContainer {
-  display: flex;
+  overflow: auto;
+  white-space: nowrap;
   padding: 10px;
 }
 
