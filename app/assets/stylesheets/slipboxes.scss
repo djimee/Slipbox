@@ -28,19 +28,21 @@
 
 /****************************/
 
-#wrapper {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-  grid-column-gap: 2%;
-  width: 100vw;
-  height: 100vh;
+
+
+#container {
+  position: fixed;
+  left: 200px;
+  top: 0px;
+  padding: 0% 20% 0% 1%;
+  height: 100%;
+  width: 100%;
 }
 
 #welcome {
   margin-top: 10px;
-  grid-column-start: 2;
-  grid-column-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 10;
   grid-row-start: 1;
   grid-row-end: 2;
   background: rgb(127, 162, 225);
@@ -50,15 +52,15 @@
 }
 
 #slipboxes {
-  grid-column-start: 2;
-  grid-column-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 10;
   grid-row-start: 2;
   grid-row-end: 3;
 }
 
 #create-slipbox {
-  grid-column-start: 3;
-  grid-column-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 10;
   grid-row-start: 3;
   grid-row-end: 4;
   padding-bottom: 10px;
@@ -66,8 +68,8 @@
 }
 
 #editSlipbox {
-  grid-column-start: 3;
-  grid-column-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 10;
   grid-row-start: 4;
   grid-row-end: 5;
 }
@@ -98,9 +100,10 @@ hr.solid {
 }
 
 .slipFlexContainer {
-  overflow: auto;
+  overflow-x:scroll;
   white-space: nowrap;
   padding: 10px;
+  width: 85%;
 }
 
 .form-inline {
@@ -161,6 +164,9 @@ div .form-group,
   width: 20%;
 }
 
+#slipbox_title {
+  float:left;
+}
 #slipboxes h2 {
   margin-top: 20px;
 }
