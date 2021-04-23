@@ -31,17 +31,27 @@
       = render "partials/navbar"
       %section#titleSection
 
-        %section#createNote
-        %h2
-          = link_to 'Create a new Note', new_note_path
+        -# %section#createNote
+        -# %h2
+        -#   = link_to 'Create a new Note', new_note_path
+
+        -# %p#goback
+        -#   = link_to '< Back to tree page', trees_path
+
+        -# %h2 Title
+        -# %p.text Last Edited - 07/03/2021
+      
+      %section#notes
 
         %p#goback
           = link_to '< Back to tree page', trees_path
 
+        %section#createNote
+        %h2
+          = link_to 'Create a new Note', new_note_path
+
         %h2 Title
         %p.text Last Edited - 07/03/2021
-      
-      %section#notes
 
         #notesWrapper
           .noteWrapper
