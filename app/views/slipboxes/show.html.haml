@@ -8,26 +8,26 @@
   %body
     #wrapper
       = render "partials/navbar"
+      #content-wrapper
+        %section#thread-tree
 
-      %section#thread-tree
+          %p#goback
+            = link_to '< Back to slipboxes page', slipboxes_path
 
-        %p#goback
-          = link_to '< Back to slipboxes page', slipboxes_path
+          %section#createTree
+            %h2
+              = link_to 'Create a new Tree', new_tree_path
 
-        %section#createTree
-          %h2
-            = link_to 'Create a new Tree', new_tree_path
-
-        -# check if the slipbox has any trees, if it does, display them
-        - if !@slipbox.trees.empty?
-          %section#trees
-            %h2 Trees
-            %hr.solid/
-            .slipFlexContainer
-              - @slipbox.trees.each do |tree|
-                %p Title:
-                = link_to tree.title, tree_path(tree) 
-        %svg
-        %section
-  / <haml_loud> javascript_include_tag "threads" </haml_loud>
+          -# check if the slipbox has any trees, if it does, display them
+          - if !@slipbox.trees.empty?
+            %section#trees
+              %h2 Trees
+              %hr.solid/
+              .slipFlexContainer
+                - @slipbox.trees.each do |tree|
+                  %p Title:
+                  = link_to tree.title, tree_path(tree) 
+          %svg
+          %section
+    / <haml_loud> javascript_include_tag "threads" </haml_loud>
 
