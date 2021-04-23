@@ -13,8 +13,6 @@
       %a{href: "/references"} References
     .separator
     %li.navbar-item
-      %a Help
-    %li.navbar-item
-      %a Settings
+      %a{href: "/help"} Help
     %li.navbar-item
       = link_to('Logout', destroy_user_session_path, method: :delete)

@@ -14,6 +14,10 @@ class TreesController < ApplicationController
 
   # GET /trees/new
   def show
+    if @tree.notes.empty?
+      redirect_to new_note_path
+      # flash[:notice] = "slipbox titled: was empty, create a new tree below!"
+    end
   end
 
   # GET /trees/1/edit
