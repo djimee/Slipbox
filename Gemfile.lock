@@ -1,5 +1,5 @@
 GIT
-  remote: https://git.shefcompsci.org.uk/gems/epi_cas.git
+  remote: git@git.shefcompsci.org.uk:gems/epi_cas.git
   revision: 58ada923d3ae30915fb52fb0a6961e5b4c093c17
   specs:
     epi_cas (1.3.21)
@@ -11,7 +11,7 @@ GIT
       sheffield_ldap_lookup (>= 0.0.4)
 
 GIT
-  remote: https://git.shefcompsci.org.uk/gems/rubycas-client.git
+  remote: git@git.shefcompsci.org.uk:gems/rubycas-client.git
   revision: f20eaa7ccaba35f2bf976bb7c0d1e7fcbf6be964
   specs:
     rubycas-client (2.3.11)
