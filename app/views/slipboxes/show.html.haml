@@ -7,9 +7,7 @@
     = javascript_include_tag "https://d3js.org/d3.v6.min.js"
   %body
     #wrapper
-      = render "partials/navbar"
-      #content-wrapper
-        %section#thread-tree
+      -# = render "partials/navbar"
 
           %p#goback
             = link_to '< Back to slipboxes page', slipboxes_path
@@ -18,16 +16,30 @@
             %h2
               = link_to 'Create a new Tree', new_tree_path
 
-          -# check if the slipbox has any trees, if it does, display them
-          - if !@slipbox.trees.empty?
-            %section#trees
-              %h2 Trees
-              %hr.solid/
-              .slipFlexContainer
-                - @slipbox.trees.each do |tree|
-                  %p Title:
-                  = link_to tree.title, tree_path(tree) 
-          %svg
-          %section
-    / <haml_loud> javascript_include_tag "threads" </haml_loud>
+        %section#createTree
+          %h2
+            = link_to 'Create a new Tree', new_tree_path
+        
+        -# check if the slipbox has any references, if it does, display them
+        - if !@slipbox.references.empty?
+          %section#showReferences
+            %h2 References
+            %hr.solid/
+            .slipFlexContainer
+              - @slipbox.references.each do |ref|
+                %p Title:
+                = link_to ref.content, reference_path(ref) 
+
+        -# check if the slipbox has any trees, if it does, display them
+        - if !@slipbox.trees.empty?
+          %section#trees
+            %h2 Trees
+            %hr.solid/
+            .slipFlexContainer
+              - @slipbox.trees.each do |tree|
+                %p Title:
+                = link_to tree.title, tree_path(tree) 
+        %svg
+        %section
+  / <haml_loud> javascript_include_tag "threads" </haml_loud>
 
