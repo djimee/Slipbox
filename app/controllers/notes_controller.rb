@@ -27,14 +27,14 @@ class NotesController < ApplicationController
     # DELETE /notes/1
     def destroy
       @note.destroy
-      redirect_to notes_url, notice: 'Note was successfully destroyed.'
+      redirect_to notes_url
     end
 
     # POST /notes
     def create
       @note = Note.new(note_params)
       if @note.save
-          redirect_to tree_path(@note.tree_id), notice: 'Note was created.'
+          redirect_to tree_path(@note.tree_id)
       else
           @recent_note = Note.order("unique_identifier").last 
           @notes = Note.all
@@ -45,9 +45,9 @@ class NotesController < ApplicationController
     # PATCH/PUT /notes/1
     def update
       if @note.update(note_params)
-          redirect_to :notes, notice: "Note was updated."
+          redirect_to :notes
       else
-          render :edit, notice: "There was a problem updating note."
+          render :edit
       end
     end
 

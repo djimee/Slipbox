@@ -29,7 +29,7 @@ class SlipboxesController < ApplicationController
     @slipbox = Slipbox.new(slipbox_params)
 
     if @slipbox.save
-      redirect_to slipboxes_path, notice: 'Slipbox was created.'
+      redirect_to slipboxes_path
     else
       @recent_note = Note.order("updated_at").last # delete this when the most recent note thingy is implemented
       @slipboxes = Slipbox.all
@@ -50,7 +50,7 @@ class SlipboxesController < ApplicationController
   # DELETE /slipboxes/1
   def destroy
     @slipbox.destroy
-    redirect_to slipboxes_url, notice: 'Slipbox was successfully destroyed.'
+    redirect_to slipboxes_url
   end
 
   private 

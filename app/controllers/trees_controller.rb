@@ -29,9 +29,9 @@ class TreesController < ApplicationController
   def update
     if @tree.update(tree_params)
         @trees = Tree.all
-        redirect_to tree_path, notice: "Tree was updated."
+        redirect_to tree_path
     else
-        redirect_to tree_path, notice: "There was a problem updating tree."
+        redirect_to tree_path
     end
   end
 
@@ -40,7 +40,7 @@ class TreesController < ApplicationController
     @tree = Tree.new(tree_params)
 
     if @tree.save
-        redirect_to @tree, notice: 'Tree was successfully created.'
+        redirect_to @tree
     else
         render :new
     end

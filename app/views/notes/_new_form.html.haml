@@ -6,7 +6,7 @@
     = f.label :content
     = f.rich_text_area :content
     = f.association :tree
-    = f.association :reference
+    = f.association :reference, label_method: :content
 
   .form-actions
     = f.button :submit, class: 'btn btn-outline-primary'

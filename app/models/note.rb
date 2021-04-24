@@ -11,8 +11,9 @@
 #  tree_id           :bigint           not null
 #
 class Note < ApplicationRecord
+    belongs_to :reference, optional: true
     belongs_to :tree
-    belongs_to :reference
+    
     # add a rich text field to note using Action Text
     has_rich_text :content
 

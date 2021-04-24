@@ -6,6 +6,7 @@
       %th Edit Reference
       %th Delete Reference
       // %th Associated notes
+      // %th Associated slipboxes
 
   %tbody
     - @references.each do |reference|
@@ -13,4 +14,4 @@
         %td= reference.author
         %td= reference.content
         %td= link_to 'Edit', edit_reference_path(reference), class: 'ajax-modal'
-        %td= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure you would like to delete this reference?' }

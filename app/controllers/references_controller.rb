@@ -24,7 +24,7 @@ class ReferencesController < ApplicationController
   # DELETE /references/1
   def destroy
     @reference.destroy
-    redirect_to references_url, notice: 'Reference was successfully destroyed.'
+    redirect_to references_url
   end
 
   # POST /references
@@ -32,7 +32,7 @@ class ReferencesController < ApplicationController
     @reference = Reference.new(reference_params)
 
     if @reference.save
-      redirect_to references_path, notice: 'Reference was successfully created.'
+      redirect_to references_path
     else
       render :index
     end
