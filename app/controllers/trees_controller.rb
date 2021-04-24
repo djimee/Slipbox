@@ -1,6 +1,14 @@
 class TreesController < ApplicationController
     before_action :set_tree, only: [:show, :edit, :update, :destroy]
 
+    results = ActiveRecord::Base.connection.execute("select * from notes")
+    puts "\n\n\nhere results\n\n"
+    results.each do |row|
+      puts row.class
+    end
+    puts "\nthere results\n\n\n"
+
+
     # GET /trees
     def index
         @trees = Tree.order("updated_at")
@@ -32,7 +40,7 @@ class TreesController < ApplicationController
     end
 
     # POST /trees
-    def create 
+    def create
         @tree = Tree.new(tree_params)
 
         if @tree.save
