@@ -8,8 +8,8 @@ class NotesController < ApplicationController
     end
 
     # GET /notes/1
-    # def show
-    # end
+    def show
+    end
 
     # GET /notes/new
     def new
@@ -34,7 +34,7 @@ class NotesController < ApplicationController
     def create
       @note = Note.new(note_params)
       if @note.save
-          redirect_to @note, notice: 'Note was created.'
+          redirect_to tree_path(@note.tree_id), notice: 'Note was created.'
       else
           @recent_note = Note.order("unique_identifier").last 
           @notes = Note.all

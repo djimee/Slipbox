@@ -7,15 +7,13 @@
     = javascript_include_tag "https://d3js.org/d3.v6.min.js"
   %body
     #wrapper
-      -# = render "partials/navbar"
+      = render "partials/navbar"
+      #content-wrapper
+        %section#thread-tree
 
           %p#goback
             = link_to '< Back to slipboxes page', slipboxes_path
-
-          %section#createTree
-            %h2
-              = link_to 'Create a new Tree', new_tree_path
-
+          
         %section#createTree
           %h2
             = link_to 'Create a new Tree', new_tree_path
