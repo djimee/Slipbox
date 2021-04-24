@@ -1,5 +1,33 @@
-%h1 New tree
+!!!
+%html{lang: "en"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{charset: "UTF-8"}/
+    %meta{author: "Team 19 COM3240 Sheffield Computer Science 2021"}/
+    %meta{description: "Create a new note page"}/
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
+    = stylesheet_link_tag "notes"
 
-= render 'form'
-
-= link_to 'Back', trees_path
+  %body
+    #wrapper
+      = render "partials/navbar"
+      %section#top-navbar
+        %ul#note-n
+          %li#note-ni-title.note-ni
+            %h1.subtitle= flash[:notice]
+          %li.note-ni
+            %button
+              = image_tag("Save_Icon_1.png", :alt => "save")
+              %p.tn-p Save Note
+          %li.note-ni
+            %button
+              = image_tag("Group_Icon_1.png", :alt => "group settings")
+              %p.tn-p Group Settings
+          %li.note-ni
+            %button
+              = image_tag("Group_Icon_1.png", :alt => "delete forever")
+              %p.tn-p Delete Note
+      %section#edit-note
+        -# render form to edit an existing note
+        = render "form"
+        

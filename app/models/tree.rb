@@ -11,4 +11,6 @@
 class Tree < ApplicationRecord
     belongs_to :slipbox
     has_many :notes
+
+    validates :title, presence: true, uniqueness: { case_sensitive: false }
 end

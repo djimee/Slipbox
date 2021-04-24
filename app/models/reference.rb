@@ -9,7 +9,6 @@
 #  updated_at :datetime         not null
 #
 class Reference < ApplicationRecord
-  has_and_belongs_to_many :notes
   has_and_belongs_to_many :slipboxes
 
   validates :author, presence: true

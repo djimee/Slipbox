@@ -7,12 +7,12 @@
 #  unique_identifier :string           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  reference_id      :bigint
 #  tree_id           :bigint           not null
 #
 class Note < ApplicationRecord
     belongs_to :tree
-    has_and_belongs_to_many :references
-
+    belongs_to :reference
     # add a rich text field to note using Action Text
     has_rich_text :content
 
