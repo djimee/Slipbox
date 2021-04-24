@@ -17,6 +17,8 @@ class TreesController < ApplicationController
     if @tree.notes.empty?
       redirect_to new_note_path
       # flash[:notice] = "slipbox titled: was empty, create a new tree below!"
+    else 
+      # @notes_of_tree = @tree.notes
     end
   end
 
