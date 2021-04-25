@@ -7,27 +7,27 @@
   %body
     #wrapper
       = render "partials/navbar"
-      
-      %section#top-navbar
-        %ul#note-n
-          %li.note-ni
-            %button
-              = image_tag("Save_Icon_1.png", :alt => "save")
-              %p.tn-p Save References
-          %li.note-ni
-            %button
-              = image_tag("Group_Icon_1.png", :alt => "group settings")
-              %p.tn-p Group Settings
-          %li.note-ni
-            %button
-              = image_tag("Delete_Forever_Icon_1.png", :alt => "delete forever")
-              %p.tn-p Delete All References
-      %section#main-content
-        %section#ref-display
-          %h2 References
-          #references-wrapper
-            %table
-              = render 'table'
-              %section#ref-form
-                %h2 Create reference
-                = render 'form'
+      #content-wrapper
+        %section#top-navbar
+          %ul#note-n
+            %li.note-ni
+              %button
+                = image_tag("Save_Icon_1.png", :alt => "save")
+                %p.tn-p Save References
+            %li.note-ni
+              %button
+                = image_tag("Group_Icon_1.png", :alt => "group settings")
+                %p.tn-p Group Settings
+            %li.note-ni
+              %button
+                = image_tag("Delete_Forever_Icon_1.png", :alt => "delete forever")
+                %p.tn-p Delete All References
+        %section#main-content
+          %section#ref-display
+            %h2 References
+            #references-wrapper
+              %table
+                = render 'table'
+                %section#ref-form
+                  %h2 Create reference
+                  = render 'form'

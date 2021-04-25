@@ -11,24 +11,25 @@
   %body
     #wrapper
       = render "partials/navbar"
-      %section#top-navbar
-        %ul#note-n
-          %li#note-ni-title.note-ni
-            %h1.subtitle Editing note: #{@note.unique_identifier}
-            %small Last Edited - #{@note.updated_at.strftime("%d/%m/%y-%I:%M%P")}
-          %li.note-ni
-            %button
-              = image_tag("Save_Icon_1.png", :alt => "save")
-              %p.tn-p Save Note
-          %li.note-ni
-            %button
-              = image_tag("Group_Icon_1.png", :alt => "group settings")
-              %p.tn-p Group Settings
-          %li.note-ni
-            %button
-              = image_tag("Group_Icon_1.png", :alt => "delete forever")
-              %p.tn-p Delete Note
-      %section#edit-note
-        -# render form to edit an existing note
-        = render "edit_form"
+      #content-wrapper
+        %section#top-navbar
+          %ul#note-n
+            %li#note-ni-title.note-ni
+              %h1.subtitle Editing note: #{@note.unique_identifier}
+              %small Last Edited - #{@note.updated_at.strftime("%d/%m/%y-%I:%M%P")}
+            %li.note-ni
+              %button
+                = image_tag("Save_Icon_1.png", :alt => "save")
+                %p.tn-p Save Note
+            %li.note-ni
+              %button
+                = image_tag("Group_Icon_1.png", :alt => "group settings")
+                %p.tn-p Group Settings
+            %li.note-ni
+              %button
+                = image_tag("Group_Icon_1.png", :alt => "delete forever")
+                %p.tn-p Delete Note
+        %section#edit-note
+          -# render form to edit an existing note
+          = render "edit_form"
         
