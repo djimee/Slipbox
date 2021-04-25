@@ -2,11 +2,11 @@
 #
 # Table name: references
 #
-#  id                :bigint           not null, primary key
-#  author            :string           not null
-#  rest_of_reference :string
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
+#  id         :bigint           not null, primary key
+#  author     :string           not null
+#  content    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 FactoryBot.define do
   factory :reference do

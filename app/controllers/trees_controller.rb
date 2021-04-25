@@ -74,11 +74,11 @@ class TreesController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_tree
-        @tree = Tree.find(params[:id])
+      @tree = Tree.find(params[:id])
     end
 
     def tree_params
-        params.require(:tree).permit(:title, :slipbox_id)
+      params.require(:tree).permit(:title, :slipbox_id)
     end
 
 end

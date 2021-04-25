@@ -1,13 +1,13 @@
 !!!
-%html{lang: "en"}
+%html{:lang => "en"}
   %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{description: "References page for Slipbox"}/
+    %meta{:description => "References page for Slipbox"}/
     %title References
     = stylesheet_link_tag "references"
   %body
     #wrapper
       = render "partials/navbar"
+      
       %section#top-navbar
         %ul#note-n
           %li.note-ni
@@ -26,7 +26,8 @@
         %section#ref-display
           %h2 References
           #references-wrapper
-          = render 'table'
-      %section#ref-form
-        %h2 Create reference
-        = render 'form'
+            %table
+              = render 'table'
+              %section#ref-form
+                %h2 Create reference
+                = render 'form'

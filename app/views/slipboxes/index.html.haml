@@ -13,23 +13,32 @@
   %body
     #wrapper
       = render "partials/navbar"
-      %section#welcome
-        %h2 Welcome #{current_user.username}
-        %p Signed in as: #{current_user.email}
-        -# check if there any notes created, if not, prompt the user to create one
-        - if Note.any?
-          %p Last note worked on: #{@recent_note.title} - #{@recent_note.unique_identifier} - #{@recent_note.updated_at.strftime("%d/%m/%y-%I:%M%P")}
+      %div#container
+        %section#welcome
+          %h2 Welcome #{current_user.username}
+          %p Signed in as: #{current_user.email}
+          -# check if there any notes created, if not, prompt the user to create one
+          - if Note.any?
+            %p Last note worked on: #{@recent_note.title} - #{@recent_note.unique_identifier} - #{@recent_note.updated_at.strftime("%d/%m/%y-%I:%M%P")}
+          - else
+            %p You're yet to write your first note!
+        -# check if there are any slipboxes created, display them if there are
+        - if Slipbox.any?
+          %section#slipboxes
+            %h2 Create a Slipbox
+            = render 'form'
+            %hr.solid/
+            %h2 My Slipboxes
+            .slipFlexContainer
+              = render @slipboxes.reverse
         - else
-          %p You're yet to write your first note!
-      -# check if there are any slipboxes created, display them if there are
-      - if Slipbox.any?
-        %section#slipboxes
-          %h2 My Slipboxes
-          %hr.solid/
-          .slipFlexContainer
-            = render @slipboxes.reverse
-      - else
-        %p  You're yet to create your first slipbox! 
-        = render 'form'
-        %hr.solid/
+          %section#slipboxes
+            %h2 Create a Slipbox
+            = render 'form'
+            %hr.solid/
+            %p You have no slipboxes yet - create one using the form above!
+
+        
+
+
      

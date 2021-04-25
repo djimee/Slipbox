@@ -1,3 +1,20 @@
 // Place all the styles related to the Help controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+#background {
+    margin-top: 20px;
+    
+}
+
+#contentWrapper{
+    position: relative;
+    margin-left: 200px;
+    padding: 1% 1%;
+    width: auto;
+}
+
+img {
+    border :solid 1px;
+    margin-bottom: 10px;
+}

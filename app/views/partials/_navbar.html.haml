@@ -1,21 +1,18 @@
 = stylesheet_link_tag "navbar"
-
 %section#navbar
   %h1
     #main-title.title Slipbox
   %ul
+    -# navbar for when on the index/slipboxes page
+      -# navbar for when on the threads page
+      -# navbar for when on notes
+    -# links that will be shown on the navbar regardless of current page
     %li.navbar-item
-      %a{:href => "/slipboxes"} Slipboxes
+      %a{href: "/slipboxes"} Slipboxes
     %li.navbar-item
-      %a{:href => "/trees"} Threads
-    %li.navbar-item
-      %a{:href => "/notes"} Notes
-    %li.navbar-item
-      %a{:href => "/references"} References
+      %a{href: "/references"} References
     .separator
     %li.navbar-item
-      %a{:href => "/help"} Help
-    %li.navbar-item
-      %a{:href => "/settings"} Settings
+      %a{href: "/help"} Help
     %li.navbar-item
       = link_to('Logout', destroy_user_session_path, method: :delete)

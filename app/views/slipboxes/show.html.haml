@@ -1,48 +1,42 @@
 !!!
 %html{:lang => "en"}
   %head
-    %meta{:description => "Threads page for Slipbox"}/
+    %meta{:description => "Tree page for Slipbox"}/
     %title Threads
     = stylesheet_link_tag "trees"
     = javascript_include_tag "https://d3js.org/d3.v6.min.js"
   %body
-    -# The Modal
-    #note-modal.modal
-      -# Modal content
-      .modal-content
-        %span#close-btn.close ×
-        %form
-          %fieldset
-            %legend Note Info
-            %input#note-title{:required => "", :type => "text", :value => "title"}/
-            %input#note-id{:required => "", :type => "text", :value => "id"}/
-            %p.mp Last Edited at 10/04/2021 : 03:10
-            %p
-              %button.mbtn Save changes
-          %fieldset
-            %legend Add note
-            %input#add-id{:type => "text", :value => "title"}/
-            %input#add-name{:type => "text", :value => "id"}/
-            %button.mbtn Submit
-          %fieldset
-            %button.mbtn Visit Note
-            %button.mbtn Delete Note
     #wrapper
       = render "partials/navbar"
-      %section#thread-tree
+      #content-wrapper
+        %section#thread-tree
+
+          %p#goback
+            = link_to '< Back to slipboxes page', slipboxes_path
+          
         %section#createTree
           %h2
             = link_to 'Create a new Tree', new_tree_path
-        - if Tree.any?
+        
+        -# check if the slipbox has any references, if it does, display them
+        - if !@slipbox.references.empty?
+          %section#showReferences
+            %h2 References
+            %hr.solid/
+            .slipFlexContainer
+              - @slipbox.references.each do |ref|
+                %p Title:
+                = link_to ref.content, reference_path(ref) 
+
+        -# check if the slipbox has any trees, if it does, display them
+        - if !@slipbox.trees.empty?
           %section#trees
             %h2 Trees
             %hr.solid/
-            .slipFlexContainer
-              - Tree.joins(:slipbox).where("slipbox_id = ?", @slipbox).each do |tree|
-                %p Title:
-                = link_to tree.title, tree_path(tree)
-        #thread-container
-
+            - @slipbox.trees.each do |tree|
+              %p Title:
+              = link_to tree.title, tree_path(tree) 
         %svg
         %section
   / <haml_loud> javascript_include_tag "threads" </haml_loud>
+

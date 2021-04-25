@@ -38,7 +38,6 @@
                     </fieldset>
                     <fieldset>
 
-
                         <button class="mbtn">Visit Note </button>
                         <button class="mbtn">Delete Note </button>
 
@@ -53,9 +52,9 @@
             <section id="navbar-top">
                 <div class="tnc">
                    <button id="navbar-top-first">
-                        <%= image_tag("Account_Tree_Icon_2.png", :alt => "save") %>
-                        <br/><%= link_to 'New Tree', new_tree_path %>
-                   </button>
+                        <%= link_to image_tag("Account_Tree_Icon_2.png", :alt => "save"), new_tree_path %>
+                        <br/><%= link_to 'New Tree', new_tree_path %><p>
+                   </button> 
                 </div>
             </section>
 
@@ -90,7 +89,7 @@
         <%= content_tag :div, class: "temp_information", data: {temp: @temp} do %>
         <% end %>
     </body>
-
-     <!-- <%= javascript_include_tag "threads" %> -->
+    
+      <%= javascript_include_tag "threads" %> 
 
 </html>

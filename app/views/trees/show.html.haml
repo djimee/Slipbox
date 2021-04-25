@@ -1,15 +1,99 @@
-%p#notice= notice
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:description => "Tree page for Slipbox"}/
+    %title Notes
+    = stylesheet_link_tag "trees"
+    = javascript_include_tag "https://d3js.org/d3.v6.min.js"
 
-%p
-  %b Title:
-  = @tree.title
-%p
-  %b Slipbox:
-  = @tree.slipbox.title
+    #wrapper
+      = render "partials/navbar"
+      #content-wrapper
+        %section#titleSection
 
-= link_to 'Edit', edit_tree_path(@tree)
-\|
-= link_to 'Back', trees_path
+          %section#createNote
+          %h2
+            = link_to 'Create a new Note', new_note_path
 
-= javascript_include_tag "threads"
+          %p#goback
+            = link_to '< Back to tree page', slipbox_path(@current_slipbox_id)
 
+          %h2 Title
+          %p.text Last Edited - 07/03/2021 (Placeholder)
+      
+      %section#notes
+
+        #notesWrapper
+          .noteWrapper
+            - if !@tree.notes.empty?
+              %section#notes
+                %h2 Notes
+                %hr.solid/
+                .slipFlexContainer
+                  - @tree.notes.each do |note|
+   
+                    %p Title:
+                    = link_to note.title, note_path(note)
+                    %d 
+                    = link_to 'Edit', edit_note_path(note)
+            - else
+              %p There are currently no notes that belong to this tree. Create a note above.
+        %svg
+        %section
+  / <haml_loud> javascript_include_tag "threads" </haml_loud>
+
+
+
+
+
+
+-# !!!
+-# %html{:lang => "en"}
+-#   %head
+-#     %meta{:author => "Team 19 COM3240 Sheffield Computer Science 2021"}/
+-#     %meta{:description => "Notes page for Tree"}/
+-#     = stylesheet_link_tag "notes"
+-#     %title My Notes
+-#   %body
+-#     #wrapper
+-#       = render "partials/navbar"
+-#       %section#titleSection
+-#         %p#goback
+-#         %h2 Title
+-#         %p.text Last Edited - 07/03/2021
+-#       %section#notes
+-#         %h2 Subtitle - Title - ID
+-#         %p#edited.text Last Edited - 07/03/2021
+-#         / FOR TEST PURPOSES
+-#         %section#createNote
+-#           %h2= link_to 'Create a new Note', new_note_path
+
+-#         #notesWrapper
+-#           .noteWrapper
+-#             - if Note.any?
+-#               %section#notes
+-#                 %h2 My Notes
+-#                 %hr.solid/
+-#                 .slipFlexContainer
+-#                   = render @notes
+-#                   -# - Note.joins(:tree).where("tree_id = ?", @tree).each do |note|
+-#                   -# %p Title:
+-#                   -# = link_to note.title, note_path(note)
+-#             - else
+-#               %p Create a note above
+
+
+-# %p#notice= notice
+
+-# %p
+-#   %b Title:
+-#   = @tree.title
+-# %p
+-#   %b Slipbox:
+-#   = @tree.slipbox.title
+
+-# = link_to 'Edit', edit_tree_path(@tree)
+-# \|
+-# = link_to 'Back', trees_path
+
+-# = javascript_include_tag "threads"

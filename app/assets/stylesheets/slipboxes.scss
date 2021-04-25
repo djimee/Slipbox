@@ -20,7 +20,6 @@
   padding: 0;
   margin: 0;
   font-size: 1em;
-  font-family: Helvetica neue, sans-serif;
 }
 
 /****************************/
@@ -29,40 +28,35 @@
 
 /****************************/
 
-#wrapper {
-  display: grid;
-  grid-template-columns: 210px 7fr;
-  grid-template-rows: repeat(5, 1fr);
-  grid-auto-rows: minmax(250px, auto);
-  grid-column-gap: 2%;
-  width: 100vw;
-  height: 100vh;
+#container {
+  position: relative;
+  margin-left: 200px;
+  padding: 1% 1%;
+  width: auto;
 }
-
-
 
 #welcome {
   margin-top: 10px;
-  grid-column-start: 2;
-  grid-column-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 10;
   grid-row-start: 1;
   grid-row-end: 2;
   background: rgb(127, 162, 225);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 3px 3px 3px 3px #A0A0A0;
+  box-shadow: 3px 3px 3px 3px #a0a0a0;
 }
 
 #slipboxes {
-  grid-column-start: 2;
-  grid-column-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 10;
   grid-row-start: 2;
   grid-row-end: 3;
 }
 
 #create-slipbox {
-  grid-column-start: 2;
-  grid-column-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 10;
   grid-row-start: 3;
   grid-row-end: 4;
   padding-bottom: 10px;
@@ -70,13 +64,11 @@
 }
 
 #editSlipbox {
-  grid-column-start: 2;
-  grid-column-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 10;
   grid-row-start: 4;
   grid-row-end: 5;
 }
-
-
 
 #main-title {
   font-size: 3em;
@@ -84,12 +76,6 @@
   padding: 20px;
   margin-top: 5px;
   color: #fff;
-}
-
-
-
-ul li:hover a {
-  padding-left: 30px;
 }
 
 hr.solid {
@@ -102,16 +88,18 @@ hr.solid {
   border-radius: 8px;
   width: fit-content;
   margin-right: 10px;
-  display: block;
+  display: inline-block;
 }
 
-.slipboxWrapper p{
-  color:#fff;
+.slipboxWrapper p {
+  color: #fff;
 }
 
 .slipFlexContainer {
-  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
   padding: 10px;
+  width: 85%;
 }
 
 .form-inline {
@@ -167,10 +155,14 @@ hr.solid {
   width: 100%;
 }
 
-div .form-group, .form-actions {
-  width: 20%;
+div .form-group,
+.form-actions {
+  width: 30%;
 }
 
-#myslipboxesh2{
-  margin-top: 10px;
+#slipbox_title {
+  float: left;
+}
+#slipboxes h2 {
+  margin-top: 20px;
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_100805) do
+ActiveRecord::Schema.define(version: 2021_04_22_102941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 2021_04_16_100805) do
 
   create_table "references", force: :cascade do |t|
     t.string "author", null: false
-    t.string "rest_of_reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "content"
   end
 
   create_table "references_slipboxes", id: false, force: :cascade do |t|

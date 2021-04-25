@@ -26,6 +26,7 @@
               .card-body
                 = f.input :username, autofocus: true, required: true
                 = f.input :password, required: true
+                %p= flash[:alert]
               .card-footer
                 = submit_button 'Log in'
                 .mt-3= render "devise/shared/links"

@@ -1,8 +1,8 @@
 #navbar {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 11;
+  position:fixed;
+  top: 0;
+  height: 100%;
+  width: 200px;
   background: linear-gradient(
     330deg,
     rgb(175, 222, 227) 10%,
@@ -14,13 +14,11 @@
 }
 
 #main-title {
-  font-size: 1.3em;
+  font-size: 1em;
   font-family: Comfortaa;
   padding: 5%;
   text-decoration: underline;
 }
-
-
 
 #navbar li a {
   font-size: 1.2em;
@@ -44,4 +42,8 @@
   border: 1px solid #ffffff;
   width: 90%;
   margin: auto;
+}
+ul li:hover a {
+  padding-left: 30px;
+  transition: 0.5s;
 }

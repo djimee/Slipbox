@@ -7,9 +7,6 @@ class ReferencesController < ApplicationController
     @reference = Reference.new
   end
 
-  def associated_slipboxes
-  end
-
   # GET /references/1
   def show
   end
@@ -21,14 +18,13 @@ class ReferencesController < ApplicationController
 
   # GET /references/1/edit
   def edit
+    render layout: false
   end
 
-  # GET /references/1/associated_slipboxes
-  def associated_slipbox
-  end
-
-  def associated_notes
-    @associated_notes = Note.joins(:reference).where("reference_id = ?", @reference).each do |note|
+  # DELETE /references/1
+  def destroy
+    @reference.destroy
+    redirect_to references_url
   end
 
   # POST /references
@@ -36,7 +32,7 @@ class ReferencesController < ApplicationController
     @reference = Reference.new(reference_params)
 
     if @reference.save
-      redirect_to references_path, notice: 'Reference was successfully created.'
+      redirect_to references_path
     else
       render :index
     end
@@ -45,16 +41,11 @@ class ReferencesController < ApplicationController
   # PATCH/PUT /references/1
   def update
     if @reference.update(reference_params)
-      redirect_to references_path, notice: 'Reference was successfully updated.'
+      @references = Reference.all
+      render 'update_success'
     else
-      render :edit
+      render 'update_failure'
     end
-  end
-
-  # DELETE /references/1
-  def destroy
-    @reference.destroy
-    redirect_to references_url, notice: 'Reference was successfully destroyed.'
   end
 
   private
@@ -65,7 +56,7 @@ class ReferencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def reference_params
-      params.require(:reference).permit(:author, :rest_of_reference, slipbox_ids: [])
+      params.require(:reference).permit(:author, :content, slipbox_ids: [])
     end
-  end
+  
 end

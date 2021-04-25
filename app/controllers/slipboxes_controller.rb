@@ -11,11 +11,13 @@ class SlipboxesController < ApplicationController
     @recent_note = Note.order("updated_at").last # change this for note when implemented
   end
 
-  # redirects to the general tree page currently
-  # through the show function in trees controller
+  # GET /slipboxes/1
   def show
+    if @slipbox.trees.empty?
+      flash[:notice] = "There are currently no trees in the slipbox - '#{@slipbox.title}', create one below."
+      redirect_to new_tree_path
+    end
   end
-
 
   # GET /slipboxes/1/edit
   def edit
@@ -27,7 +29,7 @@ class SlipboxesController < ApplicationController
     @slipbox = Slipbox.new(slipbox_params)
 
     if @slipbox.save
-      redirect_to slipboxes_path, notice: 'Slipbox was created.'
+      redirect_to slipboxes_path
     else
       @recent_note = Note.order("updated_at").last # delete this when the most recent note thingy is implemented
       @slipboxes = Slipbox.all
@@ -48,7 +50,7 @@ class SlipboxesController < ApplicationController
   # DELETE /slipboxes/1
   def destroy
     @slipbox.destroy
-    redirect_to slipboxes_url, notice: 'Slipbox was successfully destroyed.'
+    redirect_to slipboxes_url
   end
 
   private 

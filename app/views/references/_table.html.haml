@@ -1,16 +1,17 @@
-%table
+%table#ref-table
   %thead
     %tr
       %th Author
-      %th Rest of reference
-      %th Associated notes
+      %th Content
+      %th Edit Reference
+      %th Delete Reference
+      // %th Associated notes
+      // %th Associated slipboxes
 
   %tbody
     - @references.each do |reference|
       %tr
         %td= reference.author
-        - @associated_notes.each do |note|
-          %td= link_to(note)
-        %td= reference.rest_of_reference
-        %td= link_to 'Edit', edit_reference_path(reference)
-        %td= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= reference.content
+        %td= link_to 'Edit', edit_reference_path(reference), class: 'ajax-modal'
+        %td= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure you would like to delete this reference?' }
