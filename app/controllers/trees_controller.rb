@@ -16,7 +16,8 @@ class TreesController < ApplicationController
     # GET /trees/new
     # redirects to the general tree page currently
     def show
-        # redirect_to trees_path
+      @current_slipbox_id = slipbox_url.split("/slipboxes/").last
+      # redirect_to trees_path
     end
 
     # GET /trees/1/edit
@@ -61,11 +62,12 @@ class TreesController < ApplicationController
       results.each do |row|
         i += 1
 
-        #save the title and uniqueID in a hash to be used in the JS script
+        # save the title and uniqueID in a hash to be used in the JS script
         uniqID = row['unique_identifier']
         title = row['title']
         noteData[i] = [uniqID, title]
       end
+
       # puts noteData
       return noteData
     end

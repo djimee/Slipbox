@@ -13,6 +13,7 @@ class SlipboxesController < ApplicationController
 
   # GET /slipboxes/1
   def show
+    @slipbox_id = Slipbox.find_by_id(params[:id])
     if @slipbox.trees.empty?
       flash[:notice] = "There are currently no trees in the slipbox - '#{@slipbox.title}', create one below."
       redirect_to new_tree_path
