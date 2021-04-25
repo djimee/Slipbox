@@ -33,9 +33,10 @@
           %section#trees
             %h2 Trees
             %hr.solid/
+            %p Title:
             - @slipbox.trees.each do |tree|
-              %p Title:
               = link_to tree.title, tree_path(tree)
+              %br
         %svg
         %section
   / <haml_loud> javascript_include_tag "threads" </haml_loud>
