@@ -4,7 +4,6 @@ class TreesController < ApplicationController
   # GET /trees
   def index
     @trees = Tree.order("updated_at")
-    # @current_slipbox = @slipbox.id
   end
 
   # GET /trees/new
@@ -14,7 +13,7 @@ class TreesController < ApplicationController
 
   # GET /trees/new
   def show
-    @current_slipbox = slipbox_url.split("/slipboxes/").last
+    @current_slipbox_id = slipbox_url.split("/slipboxes/").last
     if @tree.notes.empty?
       flash[:notice] = "There are currently no notes in the tree - '#{@tree.title}', create one below."
       redirect_to new_note_path
