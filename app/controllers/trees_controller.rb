@@ -1,20 +1,9 @@
 class TreesController < ApplicationController
     before_action :set_tree, only: [:show, :edit, :update, :destroy]
 
-    results = ActiveRecord::Base.connection.execute("select * from notes")
-    puts "\n\n\nhere results\n\n"
-    results.each do |row|
-      uniqID = row['unique_identifier']
-      title = row['title']
-
-      puts uniqID
-      puts title
-    end
-    puts "\nthere results\n\n\n"
-
-
     # GET /trees
     def index
+        @temp = getNoteData
         @trees = Tree.order("updated_at")
         @current_slipbox = Slipbox.new
     end
@@ -63,6 +52,24 @@ class TreesController < ApplicationController
       JSON.parse jsonNote
     end
 
+    #retrieve note data (uniqueID and title) from DB
+    def getNoteData
+      results = ActiveRecord::Base.connection.execute("select * from notes")
+      i = 0
+      noteData = {}
+
+      results.each do |row|
+        i += 1
+
+        #save the title and uniqueID in a hash to be used in the JS script
+        uniqID = row['unique_identifier']
+        title = row['title']
+        noteData[i] = [uniqID, title]
+      end
+      # puts noteData
+      return noteData
+    end
+    
     private
 
     # Use callbacks to share common setup or constraints between actions.

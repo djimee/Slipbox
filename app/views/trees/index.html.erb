@@ -5,11 +5,12 @@
     <title>Threads</title>
     <%= stylesheet_link_tag "trees" %>
     <%= stylesheet_link_tag "navbar" %>
-
     <%= javascript_include_tag "https://d3js.org/d3.v6.min.js" %>
-  
     </head>
-    <body>  
+
+    <body>
+      <%= content_tag :div, class: "temp_information", data: {temp: @temp} do %>
+      <% end %>
         <!-- The Modal -->
         <div id="note-modal" class="modal">
             <!-- Modal content -->
@@ -33,15 +34,14 @@
                     </fieldset>
                     <fieldset>
 
-                        
+
                         <button class="mbtn">Visit Note </button>
                         <button class="mbtn">Delete Note </button>
 
                     </fieldset>
                 </form>
             </div>
-        </div> 
-
+        </div>
 
         <div id="wrapper">
             <%= render "partials/navbar" %>
@@ -51,13 +51,13 @@
                    <button id="navbar-top-first">
                         <%= image_tag("Account_Tree_Icon_2.png", :alt => "save") %>
                         <br/><%= link_to 'New Tree', new_tree_path %>
-                   </button> 
+                   </button>
                 </div>
             </section>
 
             <section id="thread-tree">
 
-               
+
 
                 <% if Tree.any? %>
                     <section id="trees">
@@ -71,15 +71,12 @@
 
                 <div id="thread-container">
                     <svg></svg>
-                </div>                
+                </div>
             </section>
-            
+
         </div>
     </body>
-    
+
      <!-- <%= javascript_include_tag "threads" %> -->
 
 </html>
-
-
-

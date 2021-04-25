@@ -33,8 +33,8 @@ class NotesController < ApplicationController
     # POST /notes
     def create
         @note = Note.new(note_params)
-        puts noteToJson note_params
-        puts jsonToNote noteToJson note_params
+        # puts noteToJson note_params
+        # puts jsonToNote noteToJson note_params
         if @note.save
             redirect_to :notes, notice: 'Note was created.'
         else
@@ -44,13 +44,13 @@ class NotesController < ApplicationController
         end
     end
 
-    def noteToJson note
-      note.to_json
-    end
-
-    def jsonToNote json
-      JSON.parse json
-    end
+    # def noteToJson note
+    #   note.to_json
+    # end
+    #
+    # def jsonToNote json
+    #   JSON.parse json
+    # end
 
     # PATCH/PUT /notes/1
     def update
