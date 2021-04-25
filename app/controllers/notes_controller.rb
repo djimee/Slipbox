@@ -23,7 +23,7 @@ class NotesController < ApplicationController
     # DELETE /notes/1
     def destroy
       @note.destroy
-      redirect_to notes_url
+      redirect_to tree_path
     end
 
     # POST /notes

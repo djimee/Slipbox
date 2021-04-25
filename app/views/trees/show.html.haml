@@ -28,12 +28,7 @@
                   %h2 Notes
                   %hr.solid/
                   .slipFlexContainer
-                    - @tree.notes.each do |note|
-                      %p Title:
-                      = link_to note.title, note_path(note)
-                      %d 
-                      = link_to 'Edit', edit_note_path(note)
-
+                    = render @tree.notes.reverse
           %svg
           %section
   / <haml_loud> javascript_include_tag "threads" </haml_loud>
