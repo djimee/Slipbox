@@ -4,7 +4,11 @@ class TreesController < ApplicationController
     results = ActiveRecord::Base.connection.execute("select * from notes")
     puts "\n\n\nhere results\n\n"
     results.each do |row|
-      puts row.class
+      uniqID = row['unique_identifier']
+      title = row['title']
+
+      puts uniqID
+      puts title
     end
     puts "\nthere results\n\n\n"
 
@@ -49,6 +53,14 @@ class TreesController < ApplicationController
             render :new
         end
 
+    end
+
+    def self.noteToJson note
+      note.to_json
+    end
+
+    def self.jsonToNote jsonNote
+      JSON.parse jsonNote
     end
 
     private
