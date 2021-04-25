@@ -34,7 +34,7 @@ function makeRootNode(id, t, linkToNote = null) {
   return node;
 }
 
-notesData = $('.temp_information').data('temp');
+// notesData = $('.temp_information').data('temp');
 
 //all child Nodes have a parent
 function makeChildNode(id, t, linkToNote = null) {
