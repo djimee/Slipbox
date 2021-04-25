@@ -17,9 +17,6 @@
 
           %p#goback
             = link_to '< Back to tree page', :back
-
-          %h2 Title
-          %p.text Last Edited - 07/03/2021 (Placeholder)
       
       %section#notes
 
@@ -31,13 +28,11 @@
                 %hr.solid/
                 .slipFlexContainer
                   - @tree.notes.each do |note|
-   
                     %p Title:
                     = link_to note.title, note_path(note)
                     %d 
                     = link_to 'Edit', edit_note_path(note)
-            - else
-              %p There are currently no notes that belong to this tree. Create a note above.
+
         %svg
         %section
   / <haml_loud> javascript_include_tag "threads" </haml_loud>

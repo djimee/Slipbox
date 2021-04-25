@@ -16,10 +16,6 @@ class NotesController < ApplicationController
         @note = Note.new
     end
 
-    # def new
-    #     render layout: false
-    # end
-
     # GET /notes/1/edit
     def edit
     end
