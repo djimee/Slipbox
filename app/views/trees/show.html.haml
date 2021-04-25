@@ -9,6 +9,7 @@
     #wrapper
       = render "partials/navbar"
       #content-wrapper
+
         %section#titleSection
 
           %section#createNote
@@ -18,23 +19,23 @@
           %p#goback
             = link_to '< Back to tree page', :back
       
-      %section#notes
+        %section#notes
 
-        #notesWrapper
-          .noteWrapper
-            - if !@tree.notes.empty?
-              %section#notes
-                %h2 Notes
-                %hr.solid/
-                .slipFlexContainer
-                  - @tree.notes.each do |note|
-                    %p Title:
-                    = link_to note.title, note_path(note)
-                    %d 
-                    = link_to 'Edit', edit_note_path(note)
+          #notesWrapper
+            .noteWrapper
+              - if !@tree.notes.empty?
+                %section#notes
+                  %h2 Notes
+                  %hr.solid/
+                  .slipFlexContainer
+                    - @tree.notes.each do |note|
+                      %p Title:
+                      = link_to note.title, note_path(note)
+                      %d 
+                      = link_to 'Edit', edit_note_path(note)
 
-        %svg
-        %section
+          %svg
+          %section
   / <haml_loud> javascript_include_tag "threads" </haml_loud>
 
 
