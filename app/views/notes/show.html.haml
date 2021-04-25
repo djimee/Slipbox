@@ -8,14 +8,14 @@
   %body
     #wrapper
       = render "partials/navbar"
-
-      %section#note
+      #content-wrapper
         
-        -# is currently white
-        %p Note Title:
-        = @note.title 
+          
+          -# is currently white
+          %p Note Title:
+          = @note.title 
 
-        -# rest of the note details
+          -# rest of the note details
 
     -# -# The Modal
     -# #note-modal.modal
