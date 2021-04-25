@@ -21,6 +21,7 @@ class TreesController < ApplicationController
     def edit
     end
 
+    # PATCH/PUT /trees/1
     def update
         if @tree.update(tree_params)
             @trees = Tree.all

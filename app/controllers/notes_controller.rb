@@ -23,13 +23,15 @@ class NotesController < ApplicationController
     # DELETE /notes/1
     def destroy
       @note.destroy
-      redirect_to tree_path
+      # redirect to the tree that the note belonged to after deleting
+      redirect_to tree_path(@note.tree_id)
     end
 
     # POST /notes
     def create
       @note = Note.new(note_params)
       if @note.save
+        # redirect to the tree that the note belonged to after creating
           redirect_to tree_path(@note.tree_id)
       else
           @recent_note = Note.order("unique_identifier").last 
