@@ -1,52 +1,77 @@
 class TreesController < ApplicationController
-  before_action :set_tree, only: [:show, :edit, :update, :destroy]
+    before_action :set_tree, only: [:show, :edit, :update, :destroy]
 
-  # GET /trees
-  def index
-    @trees = Tree.order("updated_at")
-  end
-
-  # GET /trees/new
-  def new
-    @tree = Tree.new
-  end
-
-  # GET /trees/new
-  def show
-    @current_slipbox_id = slipbox_url.split("/slipboxes/").last
-    if @tree.notes.empty?
-      flash[:notice] = "There are currently no notes in the tree - '#{@tree.title}', create one below."
-      redirect_to new_note_path
-    else 
-      # @notes_of_tree = @tree.notes
+    # GET /trees
+    def index
+        @temp = getNoteData
+        @trees = Tree.order("updated_at")
+        @current_slipbox = Slipbox.new
     end
-  end
 
-  # GET /trees/1/edit
-  def edit
-  end
-
-  def update
-    if @tree.update(tree_params)
-        @trees = Tree.all
-        redirect_to tree_path
-    else
-        redirect_to tree_path
+    # GET /trees/new
+    def new
+        @tree = Tree.new
     end
-  end
 
-  # POST /trees
-  def create 
-    @tree = Tree.new(tree_params)
-
-    if @tree.save
-        redirect_to @tree
-    else
-        render :new
+    # GET /trees/new
+    # redirects to the general tree page currently
+    def show
+        # redirect_to trees_path
     end
-  end
 
-  private
+    # GET /trees/1/edit
+    def edit
+    end
+
+    def update
+        if @tree.update(tree_params)
+            @trees = Tree.all
+            redirect_to tree_path, notice: "Tree was updated."
+        else
+            redirect_to tree_path, notice: "There was a problem updating tree."
+        end
+    end
+
+    # POST /trees
+    def create
+        @tree = Tree.new(tree_params)
+
+        if @tree.save
+            redirect_to @tree, notice: 'Tree was successfully created.'
+        else
+            render :new
+        end
+
+    end
+
+    def self.noteToJson note
+      note.to_json
+    end
+
+    def self.jsonToNote jsonNote
+      JSON.parse jsonNote
+    end
+
+    #retrieve note data (uniqueID and title) from DB
+    def getNoteData
+      results = ActiveRecord::Base.connection.execute("select * from notes")
+      i = 0
+      noteData = {}
+
+      results.each do |row|
+        i += 1
+
+        #save the title and uniqueID in a hash to be used in the JS script
+        uniqID = row['unique_identifier']
+        title = row['title']
+        noteData[i] = [uniqID, title]
+      end
+      # puts noteData
+      return noteData
+    end
+    
+    private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_tree
       @tree = Tree.find(params[:id])
