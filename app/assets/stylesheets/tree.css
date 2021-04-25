@@ -1,0 +1,46 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:20; }
+table { border-collapse:collapse; border-spacing:0; }
+fieldset,img { border:0; }
+address,caption,cite,code,dfn,em,strong,th,var { font-style:normal; font-weight:normal; }
+caption,th { text-align:left; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; }
+q:before,q:after { content:''; }
+abbr,acronym { border:0; }
+
+body { background: #fff; }
+/* optional Container STYLES */
+.chart { height: 600px; margin: 200px; width: 1250px;}
+.Treant > .node { }
+.Treant > p { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: bold; font-size: 12px; padding: 100px; }
+
+.nodeExample1 {
+    padding: 4px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    font-family: Tahoma;
+    font-size: 8px;
+    width: 100px;
+    word-break: break-word;
+}
+
+.nodeExample1:hover {
+  -ms-transform: scale(2.5); /* IE 9 */
+  -webkit-transform: scale(2.5); /* Safari 3-8 */
+  transform: scale(2.5);
+  /* position: relative; */
+  z-index: 1;
+}
+
+.node-uniqueId {
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+  /* display: flex; */
+}
+
+.node-title {
+  font-style: italic;
+}
