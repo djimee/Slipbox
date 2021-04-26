@@ -34,6 +34,7 @@ class ReferencesController < ApplicationController
     if @reference.save
       redirect_to references_path
     else
+      @references = Reference.all
       render :index
     end
   end
