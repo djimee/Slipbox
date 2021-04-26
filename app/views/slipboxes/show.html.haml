@@ -24,9 +24,11 @@
             %h2 References
             %hr.solid/
             .slipFlexContainer
-              - @slipbox.references.each do |ref|
-                %p Title:
-                = link_to ref.content, reference_path(ref) 
+            %p Title:
+            - @slipbox.references.each do |ref|
+              = link_to ref.content, reference_path(ref)
+              %br
+              %br
 
         -# check if the slipbox has any trees, if it does, display them
         - if !@slipbox.trees.empty?
