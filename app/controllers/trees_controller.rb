@@ -15,10 +15,6 @@ class TreesController < ApplicationController
 
     # GET /trees/new
     def show
-      if @tree.notes.empty?
-        flash[:notice] = "There are currently no notes in the tree - '#{@tree.title}', create one below."
-        redirect_to new_note_path
-      end
     end
 
     # GET /trees/1/edit

@@ -13,10 +13,11 @@
 
           %p#goback
             = link_to '< Back to slipboxes page', slipboxes_path
-          
+        
+        -# link to create a new tree, with the current slipboxes title passed as a parameter
         %section#createTree
           %h2
-            = link_to 'Create a new Tree', new_tree_path
+            = link_to 'Create a new Tree', new_tree_path(slipbox_title: @slipbox.title)
         
         -# check if the slipbox has any references, if it does, display them
         - if !@slipbox.references.empty?
