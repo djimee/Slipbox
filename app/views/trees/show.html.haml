@@ -14,7 +14,7 @@
 
           %section#createNote
           %h2
-            = link_to 'Create a new Note', new_note_path(:tree_title, @tree.title)
+            = link_to 'Create a new Note', new_note_path(tree_title: @tree.title)
 
           %p#goback
             = link_to '< Back to tree page', :back

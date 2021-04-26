@@ -3,8 +3,8 @@ class NotesController < ApplicationController
 
     # GET /notes
     def index
-        # @notes = Note.all.sort_by { |n| [n.unique_identifier] }
         @notes = Note.all
+        # @notes = Note.all.sort_by { |n| [n.unique_identifier] }
     end
 
     # GET /notes/1
@@ -14,6 +14,8 @@ class NotesController < ApplicationController
     # GET /notes/new
     def new
         @note = Note.new
+        # get title of tree the note belongs to
+        @tree_title = params[:tree_title]
     end
 
     # GET /notes/1/edit

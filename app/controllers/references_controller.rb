@@ -57,7 +57,7 @@ class ReferencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def reference_params
-      params.require(:reference).permit(:author, :content, slipbox_ids: [])
+      params.require(:reference).permit(:author, :publication_year, :content, slipbox_ids: [])
     end
   
 end

@@ -11,6 +11,8 @@ class TreesController < ApplicationController
     # GET /trees/new
     def new
         @tree = Tree.new
+        # get title of tree the note belongs to
+        @slipbox_title = params[:slipbox_title]
     end
 
     # GET /trees/new
@@ -72,14 +74,13 @@ class TreesController < ApplicationController
     end
     
     private
+      # Use callbacks to share common setup or constraints between actions.
+      def set_tree
+        @tree = Tree.find(params[:id])
+      end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tree
-      @tree = Tree.find(params[:id])
-    end
-
-    def tree_params
-      params.require(:tree).permit(:title, :slipbox_id)
-    end
+      def tree_params
+        params.require(:tree).permit(:title, :slipbox_id)
+      end
 
 end

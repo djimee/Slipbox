@@ -8,7 +8,7 @@ class SlipboxesController < ApplicationController
     @slipbox = Slipbox.new
       
     # gets most recently updated note
-    @recent_note = Note.order("updated_at").last # change this for note when implemented
+    @recent_note = Note.order("updated_at").last
   end
 
   # GET /slipboxes/1
