@@ -26,6 +26,7 @@
 #  index_users_on_username  (username)
 #
 class User < ApplicationRecord
+  # define associations
   include EpiCas::DeviseHelper
   has_many :slipbox_users
   has_many :slipboxes, :through => :slipbox_users
