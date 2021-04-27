@@ -1,20 +1,26 @@
-%table#ref-table
-  %thead
-    %tr
-      %th Author
-      %th Year
-      %th Content
-      %th Edit Reference
-      %th Delete Reference
-      // %th Associated notes
-      // %th Associated slipboxes
-
-  -# show table of references
-  %tbody
-    - @references.each do |reference|
+= form_tag destroy_multiple_references_path, method: :delete do
+  %table#ref-table.footable.table.table-bordered.toggle-arrow-tiny{"data-filter": "#filter", "data-page-size": "31"}
+    %thead
       %tr
-        %td= reference.author
-        %td= reference.publication_year
-        %td= reference.content
-        %td= link_to 'Edit', edit_reference_path(reference), class: 'ajax-modal'
-        %td= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure you would like to delete this reference?' }
+        %th Author
+        %th Year
+        %th Content
+        %th Actions
+        -# table column for checkboxes to allow deleting multiple at once
+        %th{"data-sort-ignore": "true"}
+          %input#selectAll{type: "checkbox"}/
+
+    -# show table of references
+    %tbody
+      - @references.each do |reference|
+        %tr
+          %td= reference.author
+          %td= reference.publication_year
+          %td= reference.content
+          %td 
+            %p= link_to 'Edit', edit_reference_path(reference), class: 'ajax-modal btn btn-outline-primary btn-sm' 
+            %p= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure you would like to delete this reference?' },  class: 'btn btn-outline-danger btn-sm'
+          %td= check_box_tag "reference_ids[]", reference.id, false, class: 'selectable'
+  
+  -# submit button to delete all selected references
+  = submit_tag "Delete selected", class: 'btn btn-outline-primary', data: { confirm: 'Are you sure you would like to delete the selected references?' }

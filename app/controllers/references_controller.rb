@@ -48,6 +48,12 @@ class ReferencesController < ApplicationController
       render 'update_failure'
     end
   end
+  
+  # method to destroy multiple references at once
+  def destroy_multiple
+    Reference.destroy(params[:reference_ids])
+    redirect_to references_path
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
