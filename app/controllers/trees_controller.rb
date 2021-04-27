@@ -42,8 +42,7 @@ class TreesController < ApplicationController
         else
             render :new
         end
-
-    end
+    end 
 
     def self.noteToJson note
       note.to_json

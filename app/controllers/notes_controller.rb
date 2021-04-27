@@ -29,6 +29,12 @@ class NotesController < ApplicationController
       redirect_to tree_path(@note.tree_id)
     end
 
+    # POST /notes/search
+    def search
+      @notes = Note.where(title: params[:search][:title])
+      render :index
+    end
+
     # POST /notes
     def create
       @note = Note.new(note_params)
