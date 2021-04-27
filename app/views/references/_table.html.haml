@@ -2,16 +2,19 @@
   %thead
     %tr
       %th Author
+      %th Year
       %th Content
       %th Edit Reference
       %th Delete Reference
       // %th Associated notes
       // %th Associated slipboxes
 
+  -# show table of references
   %tbody
     - @references.each do |reference|
       %tr
         %td= reference.author
+        %td= reference.publication_year
         %td= reference.content
         %td= link_to 'Edit', edit_reference_path(reference), class: 'ajax-modal'
         %td= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure you would like to delete this reference?' }

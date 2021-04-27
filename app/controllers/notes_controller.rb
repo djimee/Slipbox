@@ -3,8 +3,8 @@ class NotesController < ApplicationController
 
     # GET /notes
     def index
-        # @notes = Note.all.sort_by { |n| [n.unique_identifier] }
         @notes = Note.all
+        # @notes = Note.all.sort_by { |n| [n.unique_identifier] }
     end
 
     # GET /notes/1
@@ -14,6 +14,8 @@ class NotesController < ApplicationController
     # GET /notes/new
     def new
         @note = Note.new
+        # get title of tree the note belongs to
+        @tree_title = params[:tree_title]
     end
 
     # GET /notes/1/edit
@@ -23,13 +25,15 @@ class NotesController < ApplicationController
     # DELETE /notes/1
     def destroy
       @note.destroy
-      redirect_to notes_url
+      # redirect to the tree that the note belonged to after deleting
+      redirect_to tree_path(@note.tree_id)
     end
 
     # POST /notes
     def create
       @note = Note.new(note_params)
       if @note.save
+        # redirect to the tree that the note belonged to after creating
           redirect_to tree_path(@note.tree_id)
       else
           @recent_note = Note.order("unique_identifier").last 

@@ -11,10 +11,11 @@
       #content-wrapper
 
         %section#titleSection
-
+          %p Currently viewing your Tree - "#{@tree.title}"
+          -# NOTE NOTE NOTE NOTE can we make the tree title bold by any chance?
           %section#createNote
           %h2
-            = link_to 'Create a new Note', new_note_path
+            = link_to 'Create a new Note', new_note_path(tree_title: @tree.title)
 
           %p#goback
             = link_to '< Back to tree page', :back
@@ -28,68 +29,7 @@
                   %h2 Notes
                   %hr.solid/
                   .slipFlexContainer
-                    - @tree.notes.each do |note|
-                      %p Title:
-                      = link_to note.title, note_path(note)
-                      %d 
-                      = link_to 'Edit', edit_note_path(note)
-
+                    = render @tree.notes.reverse
           %svg
           %section
   / <haml_loud> javascript_include_tag "threads" </haml_loud>
-
-
-
-
-
-
--# !!!
--# %html{:lang => "en"}
--#   %head
--#     %meta{:author => "Team 19 COM3240 Sheffield Computer Science 2021"}/
--#     %meta{:description => "Notes page for Tree"}/
--#     = stylesheet_link_tag "notes"
--#     %title My Notes
--#   %body
--#     #wrapper
--#       = render "partials/navbar"
--#       %section#titleSection
--#         %p#goback
--#         %h2 Title
--#         %p.text Last Edited - 07/03/2021
--#       %section#notes
--#         %h2 Subtitle - Title - ID
--#         %p#edited.text Last Edited - 07/03/2021
--#         / FOR TEST PURPOSES
--#         %section#createNote
--#           %h2= link_to 'Create a new Note', new_note_path
-
--#         #notesWrapper
--#           .noteWrapper
--#             - if Note.any?
--#               %section#notes
--#                 %h2 My Notes
--#                 %hr.solid/
--#                 .slipFlexContainer
--#                   = render @notes
--#                   -# - Note.joins(:tree).where("tree_id = ?", @tree).each do |note|
--#                   -# %p Title:
--#                   -# = link_to note.title, note_path(note)
--#             - else
--#               %p Create a note above
-
-
--# %p#notice= notice
-
--# %p
--#   %b Title:
--#   = @tree.title
--# %p
--#   %b Slipbox:
--#   = @tree.slipbox.title
-
--# = link_to 'Edit', edit_tree_path(@tree)
--# \|
--# = link_to 'Back', trees_path
-
--# = javascript_include_tag "threads"

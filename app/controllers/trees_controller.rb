@@ -11,6 +11,8 @@ class TreesController < ApplicationController
     # GET /trees/new
     def new
         @tree = Tree.new
+        # get title of tree the note belongs to
+        @slipbox_title = params[:slipbox_title]
     end
 
     # GET /trees/new
@@ -21,6 +23,7 @@ class TreesController < ApplicationController
     def edit
     end
 
+    # PATCH/PUT /trees/1
     def update
         if @tree.update(tree_params)
             @trees = Tree.all
@@ -35,7 +38,8 @@ class TreesController < ApplicationController
         @tree = Tree.new(tree_params)
 
         if @tree.save
-            redirect_to @tree
+            redirect_to new_note_path
+            flash[:notice] = "Create the first note for your new tree - #{@tree.title} below!"
         else
             render :new
         end
@@ -70,14 +74,13 @@ class TreesController < ApplicationController
     end
     
     private
+      # Use callbacks to share common setup or constraints between actions.
+      def set_tree
+        @tree = Tree.find(params[:id])
+      end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tree
-      @tree = Tree.find(params[:id])
-    end
-
-    def tree_params
-      params.require(:tree).permit(:title, :slipbox_id)
-    end
+      def tree_params
+        params.require(:tree).permit(:title, :slipbox_id)
+      end
 
 end

@@ -5,7 +5,7 @@
     = f.input :unique_identifier
     = f.label :content
     = f.rich_text_area :content
-    = f.association :tree
+    = f.association :tree, selected: :tree_title
     -# = f.association :reference, label_method: :content
 
   .form-actions

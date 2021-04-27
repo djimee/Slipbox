@@ -8,16 +8,11 @@ class SlipboxesController < ApplicationController
     @slipbox = Slipbox.new
       
     # gets most recently updated note
-    @recent_note = Note.order("updated_at").last # change this for note when implemented
+    @recent_note = Note.order("updated_at").last
   end
 
   # GET /slipboxes/1
   def show
-    @slipbox_id = Slipbox.find_by_id(params[:id])
-    if @slipbox.trees.empty?
-      flash[:notice] = "There are currently no trees in the slipbox - '#{@slipbox.title}', create one below."
-      redirect_to new_tree_path
-    end
   end
 
   # GET /slipboxes/1/edit
