@@ -21,6 +21,6 @@
             %p= link_to 'Edit', edit_reference_path(reference), class: 'ajax-modal btn btn-outline-primary btn-sm' 
             %p= link_to 'Delete', reference, method: :delete, data: { confirm: 'Are you sure you would like to delete this reference?' },  class: 'btn btn-outline-danger btn-sm'
           %td= check_box_tag "reference_ids[]", reference.id, false, class: 'selectable'
-  
+
   -# submit button to delete all selected references
   = submit_tag "Delete selected", class: 'btn btn-outline-primary', data: { confirm: 'Are you sure you would like to delete the selected references?' }

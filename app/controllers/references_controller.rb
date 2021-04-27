@@ -3,7 +3,7 @@ class ReferencesController < ApplicationController
 
   # GET /references
   def index
-    @references = Reference.all
+    @references = Reference.page(params[:page])
     @reference = Reference.new
   end
 
