@@ -10,7 +10,7 @@
 #
 class Tree < ApplicationRecord
     belongs_to :slipbox
-    has_many :notes
+    has_many :notes, :dependent => :destroy
 
     validates :title, presence: true, uniqueness: { case_sensitive: false }
 end

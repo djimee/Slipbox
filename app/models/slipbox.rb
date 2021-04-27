@@ -10,7 +10,7 @@
 #  updated_at  :datetime         not null
 #
 class Slipbox < ApplicationRecord
-    has_many :trees
+    has_many :trees, :dependent => :destroy
     has_many :slipbox_users
     has_many :users, :through => :slipbox_users
     has_and_belongs_to_many :references

@@ -38,8 +38,7 @@ class TreesController < ApplicationController
         @tree = Tree.new(tree_params)
 
         if @tree.save
-            redirect_to new_note_path
-            flash[:notice] = "Create the first note for your new tree - #{@tree.title} below!"
+            redirect_to tree_path(@tree.id)
         else
             render :new
         end

@@ -14,24 +14,25 @@
       #content-wrapper
         %section#top-navbar
           %p Creating a new Note for the Tree - "#{@tree_title}"
-          -# %ul#note-n
-          -#   %li#note-ni-title.note-ni
-          -#     %h1.subtitle=flash[:notice]
-          -#   %li.note-ni
-          -#     %button
-          -#       = image_tag("Save_Icon_1.png", :alt => "save")
-          -#       %p.tn-p Save Note
-          -#   %li.note-ni
-          -#     %button
-          -#       = image_tag("Group_Icon_1.png", :alt => "group settings")
-          -#       %p.tn-p Group Settings
-          -#   %li.note-ni
-          -#     %button
-          -#       = image_tag("Group_Icon_1.png", :alt => "delete forever")
-          -#       %p.tn-p Delete Note
         %section#new-note
           -# render form to edit an existing note
           = render "new_form"
         %p#go-back
           = link_to "< Back to " "\"#{@tree_title}\"" " Tree", :back
+
+-# %ul#note-n
+-#   %li#note-ni-title.note-ni
+-#     %h1.subtitle=flash[:notice]
+-#   %li.note-ni
+-#     %button
+-#       = image_tag("Save_Icon_1.png", :alt => "save")
+-#       %p.tn-p Save Note
+-#   %li.note-ni
+-#     %button
+-#       = image_tag("Group_Icon_1.png", :alt => "group settings")
+-#       %p.tn-p Group Settings
+-#   %li.note-ni
+-#     %button
+-#       = image_tag("Group_Icon_1.png", :alt => "delete forever")
+-#       %p.tn-p Delete Note
         
