@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module ApplicationHelper
   def nav_link_to(current_identifier, *args, &block)
     arg_id = block_given? ? 1 : 2
@@ -26,3 +27,7 @@ module ApplicationHelper
   end
 
 end
+=======
+module ApplicationHelper
+end
+>>>>>>> 81addd21f75db013ff8f1b10092a5e69aa83f045
