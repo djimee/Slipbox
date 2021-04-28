@@ -59,7 +59,11 @@ class ReferencesController < ApplicationController
   
   # method to destroy multiple references at once
   def destroy_multiple
-    Reference.destroy(params[:reference_ids])
+    if params[:reference_ids].nil?
+      flash[:alert] = "No references selected"
+    else 
+      Reference.destroy(params[:reference_ids])
+    end
     redirect_to references_path
   end
 
