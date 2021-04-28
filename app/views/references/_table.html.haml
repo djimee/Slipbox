@@ -29,3 +29,5 @@
     -# paginate option to navigate through table pages
     .paginate
       = paginate @references
+    .error-msg 
+      = flash[:alert]
