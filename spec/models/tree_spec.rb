@@ -14,7 +14,8 @@ RSpec.describe Tree, type: :model do
   context 'validation tests' do
     it 'should save tree successfully' do
       tree1 = described_class.new
-      tree1.title = "hello"
+      tree1.title = "hello123"
+      tree1.slipbox_id = 0
       expect(tree1).to be_valid
     end
   end
