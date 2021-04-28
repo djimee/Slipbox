@@ -31,5 +31,9 @@ class User < ApplicationRecord
   has_many :slipbox_users
   has_many :slipboxes, :through => :slipbox_users
   
+  validates :email, presence: true
+  validates :sign_in_count, presence: true
+  validates :created_at, presence: true
+  validates :updated_at, presence: true
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   end
