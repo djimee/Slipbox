@@ -11,5 +11,12 @@
 require 'rails_helper'
 
 RSpec.describe Tree, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validation tests' do
+    it 'should save tree successfully' do
+      tree1 = described_class.new
+      tree1.title = "hello"
+      expect(tree1).to be_valid
+    end
+  end
+
 end

@@ -9,7 +9,45 @@
 #  user_id    :bigint           not null
 #
 require 'rails_helper'
+require 'spec_helper'
+require 'date'
 
 RSpec.describe SlipboxUser, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validation tests' do
+
+    it 'ensures admin field is present' do
+      slipbox_user = SlipboxUser.new(created_at: DateTime.new(2021,2,3,4,5,6), updated_at: DateTime.new(2021,2,3,4,5,6), slipbox_id: 2,user_id: 1).save
+      expect(slipbox_user).to eq(false)
+    end
+
+    it 'ensures created_at field is present' do
+      slipbox_user = SlipboxUser.new(admin: true, updated_at: DateTime.new(2021,2,3,4,5,6), slipbox_id: 2,user_id: 1).save
+      expect(slipbox_user).to eq(false)
+    end
+
+    it 'ensures updated_at field is present' do
+      slipbox_user = SlipboxUser.new(admin: true, created_at: DateTime.new(2021,2,3,4,5,6), slipbox_id: 2,user_id: 1).save
+      expect(slipbox_user).to eq(false)
+    end
+
+    it 'ensures slipbox_id field is present' do
+      slipbox_user = SlipboxUser.new(admin: true, created_at: DateTime.new(2021,2,3,4,5,6), updated_at: DateTime.new(2021,2,3,4,5,6),user_id: 1).save
+      expect(slipbox_user).to eq(false)
+    end
+
+    it 'ensures user_id field is present' do
+      slipbox_user = SlipboxUser.new(admin: true, created_at: DateTime.new(2021,2,3,4,5,6), updated_at: DateTime.new(2021,2,3,4,5,6),slipbox_id: 2).save
+      expect(slipbox_user).to eq(false)
+    end
+
+    it 'should save slipbox_user successfully' do
+      slipbox_user = SlipboxUser.new(admin: true, created_at: DateTime.new(2021,2,3,4,5,6), updated_at: DateTime.new(2021,2,3,4,5,6),slipbox_id: 2, user_id: 1).save
+      expect(slipbox_user).to eq(true)
+    end
+
+  end
+
+  context 'scope tests' do 
+  end
 end
+

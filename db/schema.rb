@@ -61,13 +61,25 @@ ActiveRecord::Schema.define(version: 2021_04_26_164602) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "edit_notes", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "tree_id", null: false
     t.string "unique_identifier", null: false
-    t.bigint "reference_id"
+  end
+
+  create_table "notes_references", id: false, force: :cascade do |t|
+    t.bigint "note_id", null: false
+    t.bigint "reference_id", null: false
+    t.index ["note_id", "reference_id"], name: "index_notes_references_on_note_id_and_reference_id"
+    t.index ["reference_id", "note_id"], name: "index_notes_references_on_reference_id_and_note_id"
   end
 
   create_table "references", force: :cascade do |t|
@@ -107,7 +119,6 @@ ActiveRecord::Schema.define(version: 2021_04_26_164602) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
-    t.integer "sort"
   end
 
   create_table "trees", force: :cascade do |t|
@@ -133,7 +144,6 @@ ActiveRecord::Schema.define(version: 2021_04_26_164602) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "remember_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["username"], name: "index_users_on_username"
   end

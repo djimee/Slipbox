@@ -11,4 +11,5 @@
 class SlipboxUser < ApplicationRecord
   belongs_to :slipbox
   belongs_to :note
+  
 end

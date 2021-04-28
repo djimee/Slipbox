@@ -10,6 +10,6 @@
 #
 FactoryBot.define do
   factory :slipbox_user do
-    admin { false }
+    
   end
 end
