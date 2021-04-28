@@ -14,8 +14,8 @@ class Reference < ApplicationRecord
   # define association with slipbox
   has_and_belongs_to_many :slipboxes
 
-  # show 10 references per page for ref table
-  paginates_per 8
+  # show 7 references per page for ref table
+  paginates_per 7
 
   # ensure author is present when creating a reference
   validates :author, presence: true
