@@ -9,6 +9,6 @@
 #  user_id    :bigint           not null
 #
 class SlipboxUser < ApplicationRecord
-    belongs_to :slipbox
-    belongs_to :note
+  belongs_to :slipbox
+  belongs_to :note
 end

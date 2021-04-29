@@ -9,8 +9,10 @@
 #  slipbox_id :bigint           not null
 #
 class Tree < ApplicationRecord
-    belongs_to :slipbox
-    has_many :notes
+  # define assocations and dependencies
+  belongs_to :slipbox
+  has_many :notes, :dependent => :destroy
 
-    validates :title, presence: true, uniqueness: { case_sensitive: false }
+  # ensure there is a unique title for a tree when creating
+  validates :title, presence: true, uniqueness: { case_sensitive: false }
 end

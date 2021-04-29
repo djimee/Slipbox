@@ -2,7 +2,19 @@ Rails.application.routes.draw do
   mount EpiCas::Engine, at: "/"
   devise_for :users
   
-  resources :slipboxes, :notes, :trees, :references, :help, :settings
+  resources :slipboxes, :trees, :help, :settings
+
+  # allow destroy multiple action for references
+  resources :references do
+    collection do
+      delete 'destroy_multiple'
+    end
+  end
+
+  # allow searching of notes using a POST method 
+  resources :notes do
+    post :search, on: :collection
+  end
 
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all

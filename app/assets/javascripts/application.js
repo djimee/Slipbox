@@ -10,4 +10,9 @@
 //= require select2
 //= require select2_init
 //= require trix
+//= require select_all.js
 
+// function for deleting all selected - in reference page
+$(function() {
+    $("#selectAll").select_all();
+  });

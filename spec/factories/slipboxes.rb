@@ -11,6 +11,6 @@
 #
 FactoryBot.define do
   factory :slipbox do
-    title { "MyString" }
+    
   end
 end

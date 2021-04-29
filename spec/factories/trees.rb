@@ -10,6 +10,6 @@
 #
 FactoryBot.define do
   factory :tree do
-    title { "MyString" }
+    
   end
 end

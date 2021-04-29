@@ -21,7 +21,6 @@
             = link_to '< Back to tree page', :back
       
         %section#notes
-
           #notesWrapper
             .noteWrapper
               - if !@tree.notes.empty?
@@ -33,3 +32,7 @@
           %svg
           %section
   / <haml_loud> javascript_include_tag "threads" </haml_loud>
+
+  -# = simple_form_for :search, url: search_notes_path, method: :post do |f|
+  -#   = f.submit 'Search'
+  -#   = link_to 'Reset', notes_path

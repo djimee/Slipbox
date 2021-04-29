@@ -1,0 +1,3 @@
+-# IGNORE, THIS IS TO DO WITH THE KAMINARI GEM
+%li.page-item
+  = link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, rel: 'next', remote: remote, class: 'page-link'

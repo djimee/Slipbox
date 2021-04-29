@@ -3,17 +3,23 @@ class ReferencesController < ApplicationController
 
   # GET /references
   def index
-    @references = Reference.all
-    @reference = Reference.new
-  end
+    # sort references by most recently edited to least recently updated
+    @sorted_refs = Reference.all.sort_by { |r| [r.updated_at] }.reverse
 
-  # GET /references/1
-  def show
+    # paginate @sorted_refs with 7 seven references showing per 'page' on the table
+    @references = Kaminari.paginate_array(@sorted_refs).page(params[:page]).per(7)
+
+    # action to create a new reference on the index page
+    @reference = Reference.new
   end
 
   # GET /references/new
   def new
     @reference = Reference.new
+  end
+
+  # GET /references/1
+  def show
   end
 
   # GET /references/1/edit
@@ -42,11 +48,23 @@ class ReferencesController < ApplicationController
   # PATCH/PUT /references/1
   def update
     if @reference.update(reference_params)
-      @references = Reference.all
+      # re-initialise instance variables after updating a note
+      @sorted_refs = Reference.all.sort_by { |r| [r.updated_at] }
+      @references = Kaminari.paginate_array(@sorted_refs).page(params[:page]).per(7)
       render 'update_success'
     else
       render 'update_failure'
     end
+  end
+  
+  # method to destroy multiple references at once
+  def destroy_multiple
+    if params[:reference_ids].nil?
+      flash[:alert] = "No references selected"
+    else 
+      Reference.destroy(params[:reference_ids])
+    end
+    redirect_to references_path
   end
 
   private

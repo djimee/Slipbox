@@ -93,6 +93,14 @@ ul {
 /* Reference object styling */
 /****************************/
 
+// this may need to be changed for responsiveness!!!
+input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border: 2px solid #555;
+}
+
 #ref-table {
   width: 100%;
   border: 1px solid #c0c0c0;
@@ -112,7 +120,32 @@ tr:nth-child(odd) {
   display: inline-block;
 }
 
-td,
-th {
+table p {
+  display: inline-block;
+  vertical-align: top;
+}
+
+th,
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6) {
+  text-align: center;
+}
+
+td {
   text-align: left;
+}
+
+#buttons {
+  width: 100%;
+}
+.delete {
+  float: right;
+}
+.paginate {
+  float: left;
+}
+.error-msg {
+  color: #f04135;
+  text-align: center;
 }
