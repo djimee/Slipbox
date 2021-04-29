@@ -12,6 +12,7 @@
   padding: 1% 1%;
   width: auto;
 }
+
 button {
   background-color: #ffffff;
   border: none;
@@ -35,6 +36,7 @@ button:hover {
 #note-ni-title {
   padding: 1% 2%;
 }
+
 /****************************/
 /* Element grid positioning */
 /****************************/
@@ -139,12 +141,15 @@ td {
 #buttons {
   width: 100%;
 }
+
 .delete {
   float: right;
 }
+
 .paginate {
   float: left;
 }
+
 .error-msg {
   color: #f04135;
   text-align: center;

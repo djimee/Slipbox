@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+
 /* --- Semantic sections styling ---*/
 #wrapper {
     display: grid;
@@ -17,8 +18,8 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 6;
-    background: rgb(2,0,36);
-    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgb(102, 146, 228) 0%, rgba(26, 68, 124, 0.658) 100%); 
+    background: rgb(2, 0, 36);
+    background: linear-gradient(45deg, rgba(2, 0, 36, 1) 0%, rgb(102, 146, 228) 0%, rgba(26, 68, 124, 0.658) 100%);
     padding: 10px 20px;
 }
 
@@ -44,9 +45,10 @@
     margin: 20px 3px 20px 3px;
     border-bottom: 2px solid #FFF;
 }
+
 .threads {
-    background: rgb(2,0,36);
-    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgb(81, 124, 202) 0%, rgba(47, 162, 185, 0.658) 100%); 
+    background: rgb(2, 0, 36);
+    background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgb(81, 124, 202) 0%, rgba(47, 162, 185, 0.658) 100%);
 
     height: 100px;
     margin: auto;
@@ -56,18 +58,29 @@
 
 
 /* --- Per element styling ---*/
-html, body { height: 100%; }
+html,
+body {
+    height: 100%;
+}
 
-a { text-decoration: none; }
+a {
+    text-decoration: none;
+}
 
-h1, h2, a, ul, small {
+h1,
+h2,
+a,
+ul,
+small {
     font-family: Comfortaa;
     color: #ffffff;
 }
 
-h2, small {
+h2,
+small {
     font-size: 12pt;
 }
+
 #main-title {
     font-size: 30pt;
 }
@@ -75,10 +88,9 @@ h2, small {
 .title {
     font-size: 16pt;
     font-family: Comfortaa;
- 
+
 }
 
-ul { list-style-type: none; }
-
-
-
+ul {
+    list-style-type: none;
+}

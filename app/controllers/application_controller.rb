@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class ApplicationController < ActionController::Base
   # Ensure that CanCanCan is correctly configured
   # and authorising actions on each controller
@@ -51,10 +50,3 @@ class ApplicationController < ActionController::Base
       return redirect_to(ie_warning_path) if request.user_agent.to_s =~ /MSIE [6-7]/ && request.user_agent.to_s !~ /Trident\/7.0/
     end
 end
-=======
-class ApplicationController < ActionController::Base
-
-
-    
-end
->>>>>>> 81addd21f75db013ff8f1b10092a5e69aa83f045

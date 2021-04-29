@@ -3,12 +3,10 @@
   top: 0;
   height: 100%;
   width: 200px;
-  background: linear-gradient(
-    330deg,
-    rgb(175, 222, 227) 10%,
-    rgb(127, 162, 225) 37%,
-    rgb(26, 68, 124) 97%
-  );
+  background: linear-gradient(330deg,
+      rgb(175, 222, 227) 10%,
+      rgb(127, 162, 225) 37%,
+      rgb(26, 68, 124) 97%);
   color: white;
   font-family: Comfortaa;
 }
@@ -43,6 +41,7 @@
   width: 90%;
   margin: auto;
 }
+
 ul li:hover a {
   padding-left: 30px;
   transition: 0.5s;
