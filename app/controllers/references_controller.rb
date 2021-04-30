@@ -3,7 +3,7 @@ class ReferencesController < ApplicationController
 
   # GET /references
   def index
-    @references = Reference.page(params[:page])
+    @references = Reference.page(params[:page]).order(:updated_at).reverse_order
     @reference = Reference.new
   end
 
@@ -42,7 +42,7 @@ class ReferencesController < ApplicationController
   # PATCH/PUT /references/1
   def update
     if @reference.update(reference_params)
-      @references = Reference.all
+      @references = Reference.page(params[:page]).order(:updated_at).reverse_order
       render 'update_success'
     else
       render 'update_failure'
