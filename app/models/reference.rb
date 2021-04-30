@@ -14,8 +14,13 @@ class Reference < ApplicationRecord
   # define association with slipbox
   has_and_belongs_to_many :slipboxes
 
-  # ensure author is present when creating a reference
-  validates :author, presence: true
+  # ensure author and content is present when creating a reference + set
+  # maximum character counts for both
+  validates :author, presence: true, length: { maximum: 50 }
+  validates :content, presence: true, length: { maximum: 110 }
+
+  # allow publication_year to have max 4 characters
+  validates :publication_year, length: { maximum: 4 }
 
   # validates :created_at, presence: true
   # validates :updated_at, presence: true
