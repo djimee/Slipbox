@@ -1,3 +1,5 @@
+-# references table - includes pagination and possibly drag and drop functionality
+-# allow destroying multiple references at once using the path below
 = form_tag destroy_multiple_references_path, method: :delete do
   %table#ref-table.footable.table.table-bordered.toggle-arrow-tiny{"data-filter": "#filter", "data-page-size": "31"}
     %thead
@@ -29,5 +31,6 @@
     -# paginate option to navigate through table pages
     .paginate
       = paginate @references
+    -# show error-msg when no references are selected to be deleted
     .error-msg 
       = flash[:alert]

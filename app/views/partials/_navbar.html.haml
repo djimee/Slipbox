@@ -1,12 +1,9 @@
+-# partial for the navbar shown on the left of the page 
 = stylesheet_link_tag "navbar"
 %section#navbar
   %h1
     #main-title.title Slipbox
   %ul
-    -# navbar for when on the index/slipboxes page
-      -# navbar for when on the threads page
-      -# navbar for when on notes
-    -# links that will be shown on the navbar regardless of current page
     %li.navbar-item
       %a{href: "/slipboxes"} Slipboxes
     %li.navbar-item
