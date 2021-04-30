@@ -18,6 +18,7 @@ class Slipbox < ApplicationRecord
 
   # ensure there is a title when creating a slipbox
   validates :title, presence: true, uniqueness: { case_sensitive: false }
-  validates :created_at, presence: true
-  validates :updated_at, presence: true
+ 
+  # validates :created_at, presence: true
+  # validates :updated_at, presence: true
 end

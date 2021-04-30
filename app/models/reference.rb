@@ -14,10 +14,11 @@ class Reference < ApplicationRecord
   # define association with slipbox
   has_and_belongs_to_many :slipboxes
 
-  # ensure author, created_at and updated_at is present when creating a reference
+  # ensure author is present when creating a reference
   validates :author, presence: true
-  validates :created_at, presence: true
-  validates :updated_at, presence: true
+
+  # validates :created_at, presence: true
+  # validates :updated_at, presence: true
 
   # show 7 references per page for ref table
   paginates_per 7
