@@ -3,17 +3,20 @@ class ReferencesController < ApplicationController
 
   # GET /references
   def index
+    # sort references with most recently updated reference first
     @references = Reference.page(params[:page]).order(:updated_at).reverse_order
-    @reference = Reference.new
-  end
 
-  # GET /references/1
-  def show
+    # action to create a new reference on the index page
+    @reference = Reference.new
   end
 
   # GET /references/new
   def new
     @reference = Reference.new
+  end
+
+  # GET /references/1
+  def show
   end
 
   # GET /references/1/edit
@@ -51,7 +54,11 @@ class ReferencesController < ApplicationController
   
   # method to destroy multiple references at once
   def destroy_multiple
-    Reference.destroy(params[:reference_ids])
+    if params[:reference_ids].nil?
+      flash[:alert] = "No references selected"
+    else 
+      Reference.destroy(params[:reference_ids])
+    end
     redirect_to references_path
   end
 
