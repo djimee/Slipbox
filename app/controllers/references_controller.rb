@@ -34,7 +34,7 @@ class ReferencesController < ApplicationController
     if @reference.save
       redirect_to references_path
     else
-      @references = Reference.all
+      @references = Reference.page(params[:page]).order(:updated_at).reverse_order
       render :index
     end
   end
