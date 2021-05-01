@@ -20,7 +20,7 @@ class Reference < ApplicationRecord
   validates :content, presence: true, length: { maximum: 110 }
 
   # allow publication_year to have max 4 characters
-  validates :publication_year, length: { maximum: 4 }
+  validates :publication_year, presence: true, length: { maximum: 4 }
 
   # validates :created_at, presence: true
   # validates :updated_at, presence: true
