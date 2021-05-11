@@ -14,11 +14,17 @@
       #content-wrapper
         -# show which tree currently creating a new note for
         %section#top-navbar
+        -# if @tree_title value isn't passed, don't display slipbox title above form
+        - if !@tree_title.nil?
           %p Creating a new Note for the Tree - "#{@tree_title}"
+        - else
+          %p Creating a new Note
         %section#new-note
           -# render form to edit an existing note
           = render "new_form"
         %p#go-back
+        -# if @tree_title value isn't passed, don't display back button 
+        - if !@tree_title.nil?
           = link_to "< Back to " "\"#{@tree_title}\"" " Tree", :back
 
 -# %ul#note-n

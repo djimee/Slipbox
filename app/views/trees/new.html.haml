@@ -13,9 +13,15 @@
       = render "partials/navbar"
       #content-wrapper
         %section#top-navbar
+        -# if @slipbox_title value isn't passed, don't display slipbox title above form
+        - if !@slipbox_title.nil?
           %p Creating a new tree for the Slipbox - "#{@slipbox_title}"
+        - else
+          %p Creating a new tree
         %section#edit-note
           -# render form to edit an existing note
           = render "form"
         %p#go-back
+        -# if @slipbox_title value isn't passed, don't display back button 
+        - if !@slipbox_title.nil?
           = link_to "< Back to " "\"#{@slipbox_title}\"", :back
