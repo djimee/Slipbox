@@ -2,16 +2,20 @@ class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
   # GET /notes
+  # Page that displays all the notes.
+  # TO DO: Remove if not necessary.
   def index
       @notes = Note.all
       # @notes = Note.all.sort_by { |n| [n.unique_identifier] }
   end
 
   # GET /notes/1
+  # Shows the note with the unique id.
   def show
   end
 
   # GET /notes/new
+  # Initiliazes new note and get the tree title to use in other parts of the program.
   def new
       @note = Note.new
       # get title of tree the note belongs to
@@ -19,10 +23,12 @@ class NotesController < ApplicationController
   end
 
   # GET /notes/1/edit
+  # Renders the editing contents of a note page.
   def edit
   end
 
   # DELETE /notes/1
+  # Deletes note with the unique id.
   def destroy
     @note.destroy
     # redirect to the tree that the note belonged to after deleting
@@ -30,12 +36,14 @@ class NotesController < ApplicationController
   end
 
   # POST /notes/search
+  # Searchs through all existing notes.
   def search
     @notes = Note.where(title: params[:search][:title])
     render :index
   end
 
   # POST /notes
+  # Creates a note.
   def create
     @note = Note.new(note_params)
     if @note.save
@@ -57,6 +65,7 @@ class NotesController < ApplicationController
   # end
 
   # PATCH/PUT /notes/1
+  # Updates the parameter of the note with the unique id.
   def update
     if @note.update(note_params)
         redirect_to :notes

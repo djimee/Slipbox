@@ -3,7 +3,7 @@ class SlipboxesController < ApplicationController
 
   # GET /slipboxes  
   def index
-    # sort slipboxes by date created to append newer to the left
+    # Sort slipboxes by date created to append newer to the left
     @slipboxes = Slipbox.all.sort_by { |s| [s.created_at] }
     @slipbox = Slipbox.new
       
@@ -12,15 +12,20 @@ class SlipboxesController < ApplicationController
   end
 
   # GET /slipboxes/1
+  # Renders the page showing the trees that belong to the slipbox 
+  # with the unique id.
   def show
   end
 
   # GET /slipboxes/1/edit
+  # Renders the page for editing the content of the slipbox
+  # with the unique id.
   def edit
     render layout: false
   end
   
   # POST /slipboxes
+  # Creates a new slipbox with the appropriate parameters. 
   def create
     @slipbox = Slipbox.new(slipbox_params)
 
@@ -34,6 +39,7 @@ class SlipboxesController < ApplicationController
   end
     
   # PATCH/PUT /slipboxes/1
+  # Updates the parameter of the slipbox with the unique id.
   def update
     if @slipbox.update(slipbox_params)
       @slipboxes = Slipbox.all
@@ -44,6 +50,7 @@ class SlipboxesController < ApplicationController
   end
 
   # DELETE /slipboxes/1
+  # Deletes the slipbox with the unique id.
   def destroy
     @slipbox.destroy
     redirect_to slipboxes_url

@@ -4,6 +4,8 @@ class ErrorsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:error_422]
   skip_authorization_check
 
+  # TO DO: Delete if not necessary.
+
   def error_403
   end
 

@@ -16,21 +16,27 @@ class ReferencesController < ApplicationController
   end
 
   # GET /references/1
+  # Redirects to showing the reference with the unique id.
   def show
   end
 
   # GET /references/1/edit
+  # Renders the page for editing the contents of the reference.
   def edit
     render layout: false
   end
 
   # DELETE /references/1
+  # Deletes the reference with the unique id and 
+  # redirects to the page showing all the references.
   def destroy
     @reference.destroy
     redirect_to references_url
   end
 
   # POST /references
+  # Creates a references with the correct parameters
+  # and redirects to the page showing all the references.
   def create
     @reference = Reference.new(reference_params)
 
@@ -43,6 +49,7 @@ class ReferencesController < ApplicationController
   end
 
   # PATCH/PUT /references/1
+  # Updates the contents of the reference with theh unique id.
   def update
     if @reference.update(reference_params)
       @references = Reference.page(params[:page]).order(:updated_at).reverse_order
@@ -52,7 +59,7 @@ class ReferencesController < ApplicationController
     end
   end
   
-  # method to destroy multiple references at once
+  # Destroys multiple references at once.
   def destroy_multiple
     if params[:reference_ids].nil?
       flash[:alert] = "No references selected"

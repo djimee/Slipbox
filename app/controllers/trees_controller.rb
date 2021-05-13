@@ -2,6 +2,7 @@ class TreesController < ApplicationController
   before_action :set_tree, only: [:show, :edit, :update, :destroy]
 
   # GET /trees
+  # Displays the tree with the unique id.
   def index
       @temp = getNoteData
       @trees = Tree.order("updated_at")
@@ -9,21 +10,26 @@ class TreesController < ApplicationController
   end
 
   # GET /trees/new
+  # Creates a tree with the unique id.
   def new
       @tree = Tree.new
-      # get title of tree the note belongs to
+      # Get title of tree the note belongs to.
       @slipbox_title = params[:slipbox_title]
   end
 
   # GET /trees/new
+  # Renders the page that shows the tree with the notes
+  # that belong to that tree.
   def show
   end
 
   # GET /trees/1/edit
   def edit
+    # TO DO: Delete if not necessary.
   end
 
   # PATCH/PUT /trees/1
+  # Updates the parameters of the tree with the unique id.
   def update
       if @tree.update(tree_params)
           @trees = Tree.all
@@ -34,6 +40,7 @@ class TreesController < ApplicationController
   end
 
   # POST /trees
+  # Creates a tree with the unique id. 
   def create
       @tree = Tree.new(tree_params)
 
@@ -44,15 +51,17 @@ class TreesController < ApplicationController
       end
   end 
 
+  # TO DO: Add comments here.
   def self.noteToJson note
     note.to_json
   end
 
+  # TO DO: Add comments here.
   def self.jsonToNote jsonNote
     JSON.parse jsonNote
   end
 
-  #retrieve note data (uniqueID and title) from DB
+  # Retrieves note data (uniqueID and title) from the database.
   def getNoteData
     results = ActiveRecord::Base.connection.execute("select * from notes")
     i = 0
