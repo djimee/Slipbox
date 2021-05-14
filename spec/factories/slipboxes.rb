@@ -8,6 +8,7 @@
 #  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  owner_id    :bigint
 #
 FactoryBot.define do
   factory :slipbox do

@@ -18,6 +18,7 @@
         
         -# check if the slipbox has any references, if it does, display them
         %p Currently viewing your Slipbox - "#{@slipbox.title}"
+        %p "#{@slipbox.owner_id}"
         -# NOTE NOTE NOTE NOTE can we make the slipbox title bold by any chance?
         - if !@slipbox.references.empty?
           %section#showReferences
