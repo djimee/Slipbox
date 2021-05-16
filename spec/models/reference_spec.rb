@@ -6,7 +6,6 @@
 #  author           :string           not null
 #  content          :string
 #  publication_year :integer
-#  sort             :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

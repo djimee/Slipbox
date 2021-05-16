@@ -2,13 +2,12 @@
 #
 # Table name: slipboxes
 #
-#  id          :bigint           not null, primary key
-#  description :string
-#  sort        :integer
-#  title       :string           not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  owner_id    :bigint
+#  id             :bigint           not null, primary key
+#  description    :string
+#  owner_username :string
+#  title          :string           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 class Slipbox < ApplicationRecord
   # define associations and dependencies 
@@ -22,10 +21,10 @@ class Slipbox < ApplicationRecord
   # validates :created_at, presence: true
   # validates :updated_at, presence: true
 
-  after_create :set_slipbox_owner
+  before_create :set_owner_username
 
-  def set_slipbox_owner
-    self.owner_id = current_user.id
+  def set_owner_username
+    self.owner_username = @current_user_username
   end
 
 end
