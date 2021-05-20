@@ -10,7 +10,7 @@ This project aims to provide academics, students or anyone wanting to take notes
 
 - Create slipboxes and view them on a user's account page
 - Display all notes related to a slipbox in a structured tree diagram
-- Include other collaborators to edit your slipboxes/trees/notes
+- Include other collaborators to edit your slipboxes, trees and notes
 - Manage all your notes' references
 
 ### Deployment
@@ -19,5 +19,4 @@ _QA -> Demo -> Production_ using the `epi-deploy` gem.
 
 ### Version details
 
-`Rails 6.0.3.3`
-`Ruby 2.6.6`
+`Rails 6.0.3.3` `Ruby 2.6.6`
