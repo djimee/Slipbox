@@ -18,12 +18,20 @@
         
         -# check if the slipbox has any references, if it does, display them
         %p Currently viewing your Slipbox - "#{@slipbox.title}"
-        %p "Slipbox owner: #{@slipbox.owner_username}"
-        - if !@current_user_username.nil?
-          %p "Logged in with: #{@current_user_username}"
-        - else 
-          %p Current user id is nil. 
-        
+
+        -# show usernames of collaborators on the slipbox
+        - if !@slipbox.users.empty?
+          -# uses same id as references
+          %section#showReferences
+            %h2 Users
+            %hr.solid/
+            .slipFlexContainer
+            %p Username:
+            - @slipbox.users.each do |user|
+              %p= user.username
+              %br
+              %br
+      
         -# NOTE NOTE NOTE NOTE can we make the slipbox title bold by any chance?
         - if !@slipbox.references.empty?
           %section#showReferences
