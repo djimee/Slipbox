@@ -67,13 +67,7 @@ ActiveRecord::Schema.define(version: 2021_05_16_121124) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "tree_id", null: false
     t.string "unique_identifier", null: false
-  end
-
-  create_table "notes_references", id: false, force: :cascade do |t|
-    t.bigint "note_id", null: false
-    t.bigint "reference_id", null: false
-    t.index ["note_id", "reference_id"], name: "index_notes_references_on_note_id_and_reference_id"
-    t.index ["reference_id", "note_id"], name: "index_notes_references_on_reference_id_and_note_id"
+    t.bigint "reference_id"
   end
 
   create_table "references", force: :cascade do |t|
@@ -82,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_05_16_121124) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "content"
     t.integer "publication_year"
+    t.integer "sort"
   end
 
   create_table "references_slipboxes", id: false, force: :cascade do |t|
@@ -105,6 +100,7 @@ ActiveRecord::Schema.define(version: 2021_05_16_121124) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
+    t.integer "sort"
     t.string "owner_username"
   end
 
@@ -138,6 +134,7 @@ ActiveRecord::Schema.define(version: 2021_05_16_121124) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "remember_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["username"], name: "index_users_on_username"
   end
