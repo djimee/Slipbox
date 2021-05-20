@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+  <head>
+    <meta description="Tree page for Slipbox"/>
+    <title>Notes</title>
+    <%= stylesheet_link_tag "trees" %>
+    <%= javascript_include_tag "https://d3js.org/d3.v6.min.js" %>
+    <div id="wrapper">
+      <%= render "partials/navbar" %>
+      <div id="content-wrapper">
+        <section id="titleSection">
+          <p>Currently viewing your Tree - "#{@tree.title}"</p>
+          <% # NOTE NOTE NOTE NOTE can we make the tree title bold by any chance? %>
+          <section id="createNote"></section>
+          <h2>
+            <%= link_to 'Create a new Note', new_note_path(tree_title: @tree.title) %>
+          </h2>
+          <p id="goback">
+            <%= link_to '< Back to tree page', :back %>
+          </p>
+        </section>
+        <section id="notes">
+          <div id="notesWrapper">
+            <div class="noteWrapper">
+              <% if !@tree.notes.empty? %>
+                <section id="notes">
+                  <h2>Notes</h2>
+                  <hr class="solid"/>
+                  <div class="slipFlexContainer">
+                    <%= render @tree.notes.reverse %>
+                  </div>
+                </section>
+              <% end %>
+            </div>
+          </div>
+          <svg></svg>
+          <section></section>
+        </section>
+      </div>
+    </div>
+  </head>
+  <!-- <haml_loud> javascript_include_tag "threads" </haml_loud>
+  -->
+  <% # = simple_form_for :search, url: search_notes_path, method: :post do |f| %>
+  <% #   = f.submit 'Search' %>
+  <% #   = link_to 'Reset', notes_path %>
+</html>
