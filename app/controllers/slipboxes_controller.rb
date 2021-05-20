@@ -14,7 +14,7 @@ class SlipboxesController < ApplicationController
     # gets most recently updated note
     @recent_note = Note.order("updated_at").last
 
-    @num_collaborators = user_ids.length()
+    @num_collaborators = @slipbox.users
   end
 
   # GET /slipboxes/1

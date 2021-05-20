@@ -9,7 +9,7 @@
       <%= render "partials/navbar" %>
       <div id="content-wrapper">
         <section id="titleSection">
-          <p>Currently viewing your Tree - "#{@tree.title}"</p>
+          <%= "Currently viewing your Tree - #{@tree.title}" %>
           <% # NOTE NOTE NOTE NOTE can we make the tree title bold by any chance? %>
           <section id="createNote"></section>
           <h2>
@@ -24,6 +24,15 @@
             <div class="noteWrapper">
               <% if !@tree.notes.empty? %>
                 <section id="notes">
+                  <div class="chart" id="exampleTree"></div>
+                  <script src="/assets/vendor/raphael.js"></script>
+                  <script src="/assets/Treant.js"></script>
+
+                  <script src="/assets/tree.js"></script>
+                  <script>
+                      new Treant( chart_config );
+                  </script>
+                <h2>Trees</h2>
                   <h2>Notes</h2>
                   <hr class="solid"/>
                   <div class="slipFlexContainer">
