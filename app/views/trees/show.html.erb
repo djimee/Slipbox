@@ -9,7 +9,7 @@
       <%= render "partials/navbar" %>
       <div id="content-wrapper">
         <section id="titleSection">
-          <p>Currently viewing your Tree - "#{@tree.title}"</p>
+          <%= "Currently viewing your Tree - #{@tree.title}" %>
           <% # NOTE NOTE NOTE NOTE can we make the tree title bold by any chance? %>
           <section id="createNote"></section>
           <h2>
