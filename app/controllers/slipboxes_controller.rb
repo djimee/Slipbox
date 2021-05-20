@@ -13,6 +13,8 @@ class SlipboxesController < ApplicationController
       
     # gets most recently updated note
     @recent_note = Note.order("updated_at").last
+
+    @num_collaborators = user_ids.length()
   end
 
   # GET /slipboxes/1

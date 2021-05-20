@@ -8,7 +8,7 @@
   - else 
     %p No description given
   
-  -# %p= No. of Collaborators: 3  uncomment once implemented
+  - %p= "No. of Collaborators: #{@num_collaborators}"
   
   -# show date and time in d/m/y-time - this is in UTC by default
   %p Last edited - #{slipbox.updated_at.strftime("%d/%m/%y-%I:%M%P")}
