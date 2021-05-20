@@ -18,9 +18,9 @@
         
         -# check if the slipbox has any references, if it does, display them
         %p Currently viewing your Slipbox - "#{@slipbox.title}"
-        %p "#{@slipbox.owner_username}"
+        %p "Slipbox owner: #{@slipbox.owner_username}"
         - if !@current_user_username.nil?
-          %p "#{@current_user_username}"
+          %p "Logged in with: #{@current_user_username}"
         - else 
           %p Current user id is nil. 
         
