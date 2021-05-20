@@ -59,8 +59,6 @@ class SlipboxesController < ApplicationController
       @slipbox = Slipbox.find(params[:id])
     end
 
-
-    
     # Only allow a trusted parameter "white list" through.
     def slipbox_params
       params.require(:slipbox).permit(:title, :description, user_ids: [])
