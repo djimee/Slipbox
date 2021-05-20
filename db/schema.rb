@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_151602) do
+ActiveRecord::Schema.define(version: 2021_05_16_121124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,20 +95,20 @@ ActiveRecord::Schema.define(version: 2021_04_27_151602) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "slipbox_users", id: false, force: :cascade do |t|
-    t.boolean "admin", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "slipbox_id", null: false
-    t.bigint "user_id", null: false
-  end
-
   create_table "slipboxes", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
     t.integer "sort"
+    t.string "owner_username"
+  end
+
+  create_table "slipboxes_users", id: false, force: :cascade do |t|
+    t.bigint "slipbox_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["slipbox_id", "user_id"], name: "index_slipboxes_users_on_slipbox_id_and_user_id"
+    t.index ["user_id", "slipbox_id"], name: "index_slipboxes_users_on_user_id_and_slipbox_id"
   end
 
   create_table "trees", force: :cascade do |t|

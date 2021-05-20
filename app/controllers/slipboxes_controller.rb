@@ -1,6 +1,10 @@
 class SlipboxesController < ApplicationController
-  before_action :set_slipbox, only: [:show, :edit, :update, :destroy]
+  before_action :set_slipbox, :current_user ,:set_slipbox_owner, only: [:set_slipbox_owner, :show, :edit, :update, :destroy]
 
+  def set_slipbox_owner
+    @current_user_username = current_user.username
+  end
+  
   # GET /slipboxes  
   def index
     # Sort slipboxes by date created to append newer to the left
@@ -61,10 +65,10 @@ class SlipboxesController < ApplicationController
     def set_slipbox
       @slipbox = Slipbox.find(params[:id])
     end
-    
+
     # Only allow a trusted parameter "white list" through.
     def slipbox_params
-      params.require(:slipbox).permit(:title, :description)
+      params.require(:slipbox).permit(:title, :description, user_ids: [])
     end
 
 end

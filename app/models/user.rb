@@ -28,8 +28,7 @@
 class User < ApplicationRecord
   # define associations
   include EpiCas::DeviseHelper
-  has_many :slipbox_users
-  has_many :slipboxes, :through => :slipbox_users
+  has_and_belongs_to_many :slipboxes
   
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   
